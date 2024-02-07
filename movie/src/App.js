@@ -10,6 +10,7 @@ import LogoutComp from "./LogoutComp";
 import UpdatePass from "./Components/UpdatePass";
 import OrderHis from "./Components/OrderHistory";
 import Welcome from "./Components/Welcome";
+import NewsItem from "./Components/MovieItem";
 
 function App() {
   const mystate=useSelector(state=>state.logged)
@@ -40,7 +41,7 @@ function App() {
         
         
       </Routes>
-     
+     <NewsItem/>
     </div>
     
    </div>
