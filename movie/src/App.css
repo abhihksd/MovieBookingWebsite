@@ -3,9 +3,12 @@
 }
 
 .App-logo {
-  height: 40vmin;
+  height: 10vmin;
   pointer-events: none;
+  text-align: left;
+
 }
+
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
@@ -15,17 +18,19 @@
 
 .App-header {
   background-color: #282c34;
-  min-height: 100vh;
+  min-height: auto;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  flex-direction: row;
+  align-items: right;
+  text-align: left;
+  justify-content: left;
   font-size: calc(10px + 2vmin);
   color: white;
 }
 
+
 .App-link {
-  color: #61dafb;
+  color: #0fcff5;
 }
 
 @keyframes App-logo-spin {
@@ -36,3 +41,33 @@
     transform: rotate(360deg);
   }
 }
+ul li {
+  display: inline;
+  list-style-type: none;
+  margin: 0;
+  padding: 10px;
+}
+ul a{
+  color: whitesmoke;
+  text-decoration: none;
+
+}
+ul a:hover {
+  color: rgb(111, 109, 112);
+}
+.nav-bar {
+  /* list-style: none; */
+  padding: 0;
+  /* text-align: left; Align the list items to the left */
+}
+
+.nav-item {
+  display: inline-block;/* Display list items horizontally*/
+  /* margin-right: 10px; Add some spacing between list items if needed */
+}
+
+.selected-link{
+  color: red;
+}
+
+
