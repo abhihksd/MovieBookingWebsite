@@ -4,7 +4,7 @@ import { Component, useReducer, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { login } from "../loggedSlice";
-import img from "../img/img3.avif"
+import img from "../img/movie.jpg"
 
 export default function LoginForm() {
 
@@ -16,32 +16,40 @@ const dispatch=useDispatch()
   const [msg, setMsg] = useState("");
 
   const nav = useNavigate();
-  const loginFun = (e) => {
-    e.preventDefault();
-    const reqOption = {
-      method: "POST",
-      headers: { "content-type": "application/json" },
-      body: JSON.stringify({
-        username: user,
-        password: pass,
-      }),
-    };
+
+  //to login 
+  // const loginFun = (e) => {
+  //   e.preventDefault();
+  //   const reqOption = {
+  //     method: "POST",
+  //     headers: { "content-type": "application/json" },
+  //     body: JSON.stringify({
+  //       username: user,
+  //       password: pass,
+  //     }),
+  //   };
    
-    console.log(user + "" + pass);
-    fetch("http://localhost:9000/login", reqOption)
-      .then((resp) => resp.text())
-      .then((data) => {
-        setMsg(data);
-        if (  data === "success") {
-          // setLoggedInUser(user); 
-          dispatch(login())
-          nav("/home");
-        }
-      })
+  //   console.log(user + "" + pass);
+  //   fetch("http://localhost:9000/login", reqOption)
+  //     .then((resp) => resp.text())
+  //     .then((data) => {
+  //       setMsg(data);
+  //       if (  data === "success") {
+  //         // setLoggedInUser(user); 
+  //         dispatch(login())
+  //         nav("/home");
+  //       }
+  //     })
 
-  };
+  // };
+  const loginFun=(e)=>{
+    e.preventDefault()
+   // setLoggedInUser(user); 
+    dispatch(login())
+       nav("/home");
+  }
   localStorage.setItem("user",user);
-
+  // to reset form
   const resetForm = () => {
     setUser('');
     setPass('');

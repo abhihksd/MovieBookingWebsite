@@ -3,59 +3,74 @@
 }
 
 .App-logo {
-  height: 20vmin;
+  height: 12vmin;
   pointer-events: none;
   text-align: left;
-  margin: 0%;
+  margin: 0; /* Updated to remove margin */
 }
-
-
+.topnav {
+  overflow: hidden;
+  background: color #333;
+}
+.topnav-right{
+  float: right;
+  padding-top: 15px;
+}
 .App-header {
-  background-color: #000000;
-min-height: 20px;
-display: flex;
-flex-direction: row;
-align-items: right;
-text-align: left;
-justify-content: left;
-font-size: calc(8px + 2vmin); /* Adjust the values to your preference */
-color: rgb(0, 0, 0);
+  background-color: #eee8e8;
+  min-height: 10px;
+  /* display: flex; */
+  flex-direction: row;
+  align-items: right;
+  text-align: left;
+  justify-content: left;
+  font-size: calc(6px + 2vmin);
+  color: rgb(0, 0, 0);
+  margin: 0; /* Updated to remove margin */
 }
-
 
 .App-link {
   color: #0fcff5;
 }
 
-
 ul li {
   display: inline;
   list-style-type: none;
-  margin: 0;
-  padding: 10px;
+  /* margin: 0;
+  padding: 0px; */
 }
-ul a{
-  color: whitesmoke;
-  text-decoration: none;
 
+ul a {
+  color: rgb(0, 0, 0);
+  text-decoration: none;
 }
-ul img{ padding: 0%;}
+
+ul img {
+  padding: 0%;
+}
+
 ul a:hover {
   color: rgb(111, 109, 112);
 }
+
 .nav-bar {
-  /* list-style: none; */
   padding: 0;
-  /* text-align: left; Align the list items to the left */
 }
 
 .nav-item {
-  display: inline-block;/* Display list items horizontally*/
-  /* margin-right: 10px; Add some spacing between list items if needed */
+  display: inline-block;
 }
 
-.selected-link{
+.selected-link {
   color: red;
 }
 
+.search {
+  width: 450px; 
+  height: 50px;
+  border-radius: 6px;
+  display: flex;
+   /* float: right; */
+ /* margin-left: 750px; */
 
+}

@@ -10,13 +10,11 @@
     color: white;
   }
   .App-logo2{
-    /* height: 8vmin;
-  pointer-events: none;
-  text-align: left;
-  align-items: left;
-  justify-content: left; */
-  width: 100px; /* Adjust the width as needed */
-  /* margin-right: 10px; */
+   
+  width: 100px;
+  max-height: 10px; 
   }
+.nav-item {
+    margin-right: 20px;
+}
 
-  

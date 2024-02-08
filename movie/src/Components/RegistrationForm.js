@@ -1,6 +1,6 @@
 import { useReducer, useState } from "react";
 import { Form, FormGroup, FormLabel, Button, Image } from 'react-bootstrap';
-import img from "../img/reg.avif"
+import img from "../img/movie.jpg"
 import { useNavigate } from "react-router-dom";
 
 
