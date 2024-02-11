@@ -32,8 +32,9 @@ public class CustomerController {
 		Role r=rservice.getRole(1);
 		Login l=new Login(cr.getUsername(),cr.getPassword(),r);
 		Login saved=lservice.save(l);
+
 		
-		Customer c=new Customer(cr.getName(),cr.getContact(),cr.getDob(),cr.getEmail(),l);
+		Customer c=new Customer(cr.getName(),cr.getPhone_number(),cr.getAddress(),cr.getEmail(),l);
 		return cservice.saveCustomer(c);
 		
 	}

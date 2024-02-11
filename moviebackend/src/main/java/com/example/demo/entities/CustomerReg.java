@@ -12,8 +12,8 @@ public class CustomerReg {
 	String username;
 	String password;
 	String name;
-	String contact;
-	Date dob;
+	String phone_number;
+	String address;
 	String email;
 	Login login;
 

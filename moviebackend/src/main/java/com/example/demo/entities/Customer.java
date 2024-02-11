@@ -13,29 +13,34 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+
 @Getter
 @Setter
 @Entity
 @NoArgsConstructor
-@Table(name = "customers")
+@Table(name = "users")
 public class Customer {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	int cust_id;
+	int user_id;
 	String name;
-	String contact;
-	Date dob;
+
 	String email;
+
+	String phone_number;
+
+	String address;
+
 	@OneToOne
 	@JoinColumn(name="login_id")
 	Login login_id;
-	public Customer(String name, String contact, Date dob, String email, Login login) {
+	public Customer(String name, String phone_number, String address, String email, Login login_id) {
 		super();
 		this.name = name;
-		this.contact = contact;
-		this.dob = dob;
+		this.phone_number = phone_number;
+		this.address = address;
 		this.email = email;
-		this.login_id = login;
+		this.login_id = login_id;
 	}
 	
 	
