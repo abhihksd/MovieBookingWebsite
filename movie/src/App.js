@@ -15,6 +15,7 @@ import NewsItem from "./Components/MovieItem";
 
 import SystemAdmin from "./Components/SystemAdmin";
 import TheatreAdmin from "./Components/TheatreAdmin";
+import User from "./Components/User";
 
 function App() {
   //initialState of logged
@@ -58,6 +59,7 @@ function App() {
           <Route path="/login" element={<LoginForm />} />
           <Route path="/systemAdmin" element={<SystemAdmin/>} />
           <Route path="/theatreAdmin" element={<TheatreAdmin/>} />
+          <Route path="/user" element={<User/>} />
           <Route path="/logout" element={<LogoutComp/>} />
           
 

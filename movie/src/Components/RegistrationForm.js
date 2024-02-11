@@ -130,34 +130,33 @@ export default function Register() {
   .then((resp) => resp.text())
   .then((data) => {
     setMsg(data);
-    if (data === "success") { // Check the updated value of data
-      alert("success");
+    if (data.length > 0 ) { // Check the updated value of data
       nav("/login");
     }
   });
     
   };
-  const checkusername=()=>{
-    const reqOption={
-      method: "POST",
-      headers:{'content-type':'application/json'},
-      body:JSON.stringify({
-          username:user.username.value,
-      })
-  }
+  // const checkusername=()=>{
+  //   const reqOption={
+  //     method: "POST",
+  //     headers:{'content-type':'application/json'},
+  //     body:JSON.stringify({
+  //         username:user.username.value,
+  //     })
+  // }
 
-    fetch("http://localhost:9000/check",reqOption)
-    .then(res=>res.text())
-    .then(data=>{
-      setCheck(data)
-      console.log(data)
-      if(data=="Invalid")
-      user.username.valid=false
-    if(data=="Valid")
-    user.username.valid=true
-    })
+  //   fetch("http://localhost:8080/check",reqOption)
+  //   .then(res=>res.text())
+  //   .then(data=>{
+  //     setCheck(data)
+  //     console.log(data)
+  //     if(data=="Invalid")
+  //     user.username.valid=false
+  //   if(data=="Valid")
+  //   user.username.valid=true
+  //   })
 
-  }
+  // }
   
   const[check,setCheck]=useState(" ") 
   const [user, dispatch] = useReducer(reducer, init);
@@ -255,7 +254,7 @@ export default function Register() {
               }}
               className={`form-control ${user.userType.touched && !user.userType.valid ? 'is-invalid' : ''}`}
             >
-              <option value="">Select User Type</option>
+              <option value="0">Select User Type</option>
               <option value="1">User</option>
               <option value="2">Theater Admin</option>
               <option value="3">System Admin</option>
@@ -274,9 +273,9 @@ export default function Register() {
           onChange={(e) => {
             handleChange("username", e.target.value);
           }}
-          onBlur={()=>{
-            checkusername()
-          }}
+          // onBlur={()=>{
+          //   checkusername()
+          // }}
           className={`form-control ${user.username.touched && !user.username.valid ? 'is-invalid' : ''}`}
         />
         {/* Error message for username */}
@@ -288,7 +287,7 @@ export default function Register() {
       <FormGroup>
         <FormLabel>Password</FormLabel>
         <input
-          type="text"
+          type="password"
           name="password"
           placeholder="Enter password"
           onChange={(e) => {
