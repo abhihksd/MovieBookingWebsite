@@ -117,7 +117,7 @@ export default function Register() {
         body:JSON.stringify({
             name:user.name.value,
             email:user.email.value,
-            phone:user.phone.value,
+            phone_number:user.phone.value,
             address:user.address.value,
             userType:user.userType.value,
             username:user.username.value,
@@ -125,19 +125,7 @@ export default function Register() {
 
         })
     }
-    // fetch("http://localhost:9000/insertcust",reqOption)
-    // .then(resp=>resp.text())
-    // .then((data)=>{setMsg(data)
-    //   if({msg}=="success")
-    //   {
-    //     nav("/login");
-    //   }
-    //   })
-    //   window.alert(msg)
-    //   if({msg}=="success")
-    //   {
-    //     nav("/login");
-    //   }
+    
     fetch("http://localhost:8080/registeruser", reqOption)
   .then((resp) => resp.text())
   .then((data) => {
@@ -313,7 +301,7 @@ export default function Register() {
       </FormGroup>
 
       {/* Submit and Reset buttons */}
-      <Button variant="primary" type="submit" disabled={!user.formValid}  onClick={(e) => submitData(e)}>Submit</Button>
+      <Button variant="primary" type="submit"   onClick={(e) => submitData(e)}>Submit</Button>
       <Button variant="danger" type="reset" >Reset</Button>
       <p style={{color:msg=="success"?"green":"red"}}  >{msg}</p>
       
