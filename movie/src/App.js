@@ -26,6 +26,7 @@ import AddTheater from "./Components/System_AddTheatre";
 import EditTheatre from "./Components/System_EditTheatre";
 import RemoveTheatre from "./Components/System_RemoveTheatre";
 import BookMoive from "./Components/User_BookMovie";
+import { ErrorBoundary } from "react-error-boundary";
 
 
 function App() {
@@ -62,7 +63,13 @@ function App() {
         
       </header>
       <div>
-      
+      <ErrorBoundary fallbackRender={()=>{
+        return (
+          <h2>Oops!! Something went wrong</h2>
+        )
+      }}
+
+  >
         <Routes>
           <Route path="/" element={<Welcome />} />
           <Route path="/register" element={<Register />} />
@@ -87,7 +94,7 @@ function App() {
           
 
         </Routes>
-        
+        </ErrorBoundary>
       </div>
     </div>
       

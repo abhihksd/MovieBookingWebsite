@@ -29,7 +29,7 @@ public class CustomerController {
 	@PostMapping("/registeruser")
 	public Customer regCustomer(@RequestBody CustomerReg cr)
 	{
-		Role r=rservice.getRole(1);
+		Role r=rservice.getRole(cr.getUserType());
 		Login l=new Login(cr.getUsername(),cr.getPassword(),r);
 		Login saved=lservice.save(l);
 

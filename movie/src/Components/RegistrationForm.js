@@ -254,7 +254,7 @@ export default function Register() {
               }}
               className={`form-control ${user.userType.touched && !user.userType.valid ? 'is-invalid' : ''}`}
             >
-              <option value="0">Select User Type</option>
+              <option value="type">Select User Type</option>
               <option value="1">User</option>
               <option value="2">Theater Admin</option>
               <option value="3">System Admin</option>

@@ -16,5 +16,6 @@ public class CustomerReg {
 	String address;
 	String email;
 	Login login;
-
+	
+	int userType;
 }
