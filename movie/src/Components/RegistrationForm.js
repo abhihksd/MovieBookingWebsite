@@ -1,6 +1,6 @@
 import { useReducer, useState } from "react";
 import { Form, FormGroup, FormLabel, Button, Image } from 'react-bootstrap';
-import img from "../img/movie.jpg"
+// import img from "../img/movie.jpg"
 import { useNavigate } from "react-router-dom";
 
 
@@ -168,7 +168,7 @@ export default function Register() {
      
   <div className="col">
     
-    <Image src={img} style={{ width: "500px", height: "500px", margin: "0 auto" }} alt="Logo" />
+    {/* <Image src={img} style={{ width: "500px", height: "500px", margin: "0 auto" }} alt="Logo" /> */}
   </div>
   
 
