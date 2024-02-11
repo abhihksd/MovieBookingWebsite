@@ -16,26 +16,12 @@ export default function Home() {
           style={{ marginRight: "10px" }}
           alt="Logo"
         />
-        <li className="nav-item">
-          <Link to="history" className="nav-link">
-            Order history
-          </Link>
-        </li>
-        <li className="nav-item">
-          <Link to="logout" className="nav-link">
-            Logout
-          </Link>
-        </li>
-        <li className="nav-item">
-          <Link to="update" className="nav-link">
-            Update
-          </Link>
-        </li>
        
       </ul>
 
       <h1>HOME PAGE!!</h1>
-      <h2>Welcome {localStorage.getItem("user")}</h2>
+      
+      {/* <h2>Welcome {localStorage.getItem("user")}</h2> */}
       {/* <p>Login Status: {mystate.loggedIn.toString()}</p> */}
 
       

@@ -1,6 +1,7 @@
 import logo from "./logo.svg";
 import bike from "./img/logo.jpeg";
 import "./App.css";
+
 import Register from "./Components/RegistrationForm";
 import { Link, Route, Routes } from "react-router-dom";
 import LoginForm from "./Components/LoginForm";
@@ -12,16 +13,20 @@ import OrderHis from "./Components/OrderHistory";
 import Welcome from "./Components/Welcome";
 import NewsItem from "./Components/MovieItem";
 
+import SystemAdmin from "./Components/SystemAdmin";
+import TheatreAdmin from "./Components/TheatreAdmin";
+
 function App() {
+  //initialState of logged
   const mystate = useSelector((state) => state.logged);
   return (
     <div>
       <header
-        className="App-header"
+        // className="App-header"
         style={{ minHeight: mystate.loggedIn ? "0vh" : "auto" }}
       >
         <div style={{ display: mystate.loggedIn ? "none" : "block" }}>
-          <ul className="nav-bar">
+          <ul className="navbar navbar-expand-sm bg-light mb-3">
             <div className="topnav">
               <li className="nav-item">
                 <img className="App-logo" src={bike} alt="Logo" />
@@ -41,17 +46,27 @@ function App() {
             </div>
           </ul>
         </div>
+        
+        
       </header>
       <div>
+      
         <Routes>
           <Route path="/" element={<Welcome />} />
           <Route path="/register" element={<Register />} />
+          <Route path="/home" element={<Home />} />
           <Route path="/login" element={<LoginForm />} />
+          <Route path="/systemAdmin" element={<SystemAdmin/>} />
+          <Route path="/theatreAdmin" element={<TheatreAdmin/>} />
+          <Route path="/logout" element={<LogoutComp/>} />
+          
+
         </Routes>
         
       </div>
-      <NewsItem/>
     </div>
+      
+      
   );
 }
 
