@@ -15,6 +15,9 @@ export default function TheatreAdmin(){
                   <Link to="/addSlot">Add slot</Link>
                 </li>
                 <li className="nav-item">
+                  <Link to="/editSlot">Edit slot</Link>
+                </li>
+                <li className="nav-item">
                   <Link to="/addMovie">Add movie</Link>
                 </li>
                 <li className="nav-item">
@@ -25,9 +28,6 @@ export default function TheatreAdmin(){
                 </li>
                 <li className="nav-item">
                   <Link to="/removeMovie">Remove movie</Link>
-                </li>
-                <li className="nav-item">
-                  <Link to="/editSlot">Edit slot</Link>
                 </li>
                 <li className="nav-item">
                   <Link to="/logout">Logout</Link>
