@@ -61,13 +61,14 @@ const reducerAction =  useDispatch();
             reducerAction(login()) //state false to true
 
             if(obj.role_id.role_id === 1){
-              navigate("/systemAdmin")
+              
+              navigate("/user")
             }
             else if (obj.role_id.role_id === 2){
               navigate("/theatreAdmin")
             }
             else if (obj.role_id.role_id === 3){
-
+              navigate("/systemAdmin")
             }
           }
         }
