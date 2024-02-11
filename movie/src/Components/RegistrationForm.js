@@ -22,7 +22,9 @@ export default function Register() {
     switch (action.type) {
       case "update":
         const { key, value, touched, valid, error,formValid } = action.data;
-        return { ...state, [key]: { value, touched, valid, error },formValid };
+        return { ...state, [key]: { value, touched, valid, error }, formValid };
+
+        
       case "reset":
         return init;
       default:
@@ -300,7 +302,7 @@ export default function Register() {
       </FormGroup>
 
       {/* Submit and Reset buttons */}
-      <Button variant="primary" type="submit"   onClick={(e) => submitData(e)}>Submit</Button>
+      <Button variant="primary" type="submit" disabled={!user.formValid}   onClick={(e) => submitData(e)}>Submit</Button>
       <Button variant="danger" type="reset" >Reset</Button>
       <p style={{color:msg=="success"?"green":"red"}}  >{msg}</p>
       

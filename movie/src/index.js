@@ -14,9 +14,9 @@ root.render(
   <Provider store={store}>
     <BrowserRouter>
       <React.StrictMode>
-        {/* <ErrorBoundary fallbackRender="Opps something went wrong"> */}
+        <ErrorBoundary fallbackRender="Opps something went wrong">
           <App />
-        {/* </ErrorBoundary> */}
+        </ErrorBoundary>
       </React.StrictMode>
     </BrowserRouter>
   </Provider>

@@ -63,13 +63,13 @@ function App() {
         
       </header>
       <div>
-      <ErrorBoundary fallbackRender={()=>{
+      {/* <ErrorBoundary fallbackRender={()=>{
         return (
           <h2>Oops!! Something went wrong</h2>
         )
       }}
 
-  >
+  > */}
         <Routes>
           <Route path="/" element={<Welcome />} />
           <Route path="/register" element={<Register />} />
@@ -94,7 +94,7 @@ function App() {
           
 
         </Routes>
-        </ErrorBoundary>
+        {/* </ErrorBoundary> */}
       </div>
     </div>
       
