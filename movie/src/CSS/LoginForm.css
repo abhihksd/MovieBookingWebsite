@@ -43,7 +43,7 @@ button{
   /* Your existing styles for the image container */
   margin:0%;
 
-  @media (max-width: 768px) {
+  @media (max-width: 450px) {
     /* Add responsive styles for smaller screens */
     
   }

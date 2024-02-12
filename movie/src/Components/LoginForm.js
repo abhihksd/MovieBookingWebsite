@@ -78,9 +78,13 @@ const reducerAction =  useDispatch();
 
  
   return (
-    <div>
-      
-<form className="my-4">
+    
+      <div className="row"> 
+     
+     <div className="col">
+       
+        </div>
+<form className="login-form">
   <div className="mb-3 row">
     <label htmlFor="username" className="col-sm-2 col-form-label">
       Enter UID:
