@@ -4,7 +4,6 @@ import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import m1 from "../img/M1.jpg";
 
-
 const NewsItem = (props) => {
   return (
     <Card style={{ width: "14rem" }}>
@@ -13,14 +12,11 @@ const NewsItem = (props) => {
         <Card.Title>Fighter</Card.Title>
         <Card.Text>
           Shamsher Pathania fulfills his lifelong dream and becomes a member of
-          the Indian air force. 
+          the Indian air force.
         </Card.Text>
         <Button variant="primary">Book now</Button>
       </Card.Body>
-      
     </Card>
-
-    
   );
 };
 
