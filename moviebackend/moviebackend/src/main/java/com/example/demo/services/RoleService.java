@@ -8,6 +8,7 @@ import com.example.demo.repositories.RoleRepository;
 
 @Service
 public class RoleService {
+
 	@Autowired
 	RoleRepository rrepo;
 	

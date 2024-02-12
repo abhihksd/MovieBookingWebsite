@@ -15,6 +15,10 @@ public class CustomerReg {
 	String phone_number;
 	String address;
 	String email;
+<<<<<<< Updated upstream
+=======
+	int userType;
+>>>>>>> Stashed changes
 	Login login;
 
 }

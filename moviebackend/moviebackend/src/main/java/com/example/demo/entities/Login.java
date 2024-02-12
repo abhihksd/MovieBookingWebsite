@@ -12,7 +12,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-
 @Getter
 @Setter
 @NoArgsConstructor
@@ -34,6 +33,12 @@ public class Login {
 		this.username = username;
 		this.password = password;
 		this.role_id = role_id;
+	}
+	public Login(String username, String password, int role_id) {
+		super();
+		this.username = username;
+		this.password = password;
+		this.role_id.role_id = role_id;
 	}
 
 }
