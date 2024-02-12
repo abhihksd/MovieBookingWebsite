@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-export default function SystemAdmin() {
+export default function RemoveMovie() {
   return (
     <div>
       <ul className="navbar navbar-expand-sm bg-light mb-3">
@@ -8,23 +8,13 @@ export default function SystemAdmin() {
             <li className="nav-item search-field">
               <input className="search" type="text" placeholder="Search" />
             </li>
-
-            <li className="nav-item">
-              <Link to="/addTheatre">Add theatre</Link>
-            </li>
-            <li className="nav-item">
-              <Link to="/removeTheatre">Remove theatre</Link>
-            </li>
-            <li className="nav-item">
-              <Link to="/editTheatre">Edit theatre details</Link>
-            </li>
             <li className="nav-item">
               <Link to="/logout">Logout</Link>
             </li>
           </div>
         </div>
       </ul>
-      <h1>Welcome System Admin</h1>
+      <h1>Remove Movie</h1>
     </div>
   );
 }

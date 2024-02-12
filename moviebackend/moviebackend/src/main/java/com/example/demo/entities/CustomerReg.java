@@ -20,5 +20,7 @@ public class CustomerReg {
 	int userType;
 >>>>>>> Stashed changes
 	Login login;
+	
+	int userType;
 
 }

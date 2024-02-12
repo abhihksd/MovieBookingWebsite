@@ -11,5 +11,5 @@ public class MoviebackendApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(MoviebackendApplication.class, args);
 	}
-
+	
 }
