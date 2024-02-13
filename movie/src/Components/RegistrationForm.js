@@ -303,6 +303,7 @@ export default function Register() {
           <Button
             variant="primary"
             type="submit"
+            disabled={!user.formValid} 
             onClick={(e) => submitData(e)}
             style={{ marginRight: "20px" }}
           >
