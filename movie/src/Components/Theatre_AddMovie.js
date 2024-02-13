@@ -38,9 +38,9 @@ export default function AddMovie() {
         key: name,
         value,
         touched: true,
-        valid: true, // You can update this based on your validation logic
-        error: "", // You can update this based on your validation logic
-        formValid: true, // You can update this based on your validation logic
+        valid: true,
+        error: "",
+        formValid: true,
       },
     });
   };
@@ -125,7 +125,7 @@ export default function AddMovie() {
             <div className="invalid-feedback">{movie.director.error}</div>
           </FormGroup>
 
-          <FormGroup>
+          {/*<FormGroup>
             <FormLabel>Release Date:</FormLabel>
             <input
               type="date"
@@ -141,20 +141,50 @@ export default function AddMovie() {
             />
 
             <div className="invalid-feedback">{movie.releaseDate.error}</div>
+            </FormGroup> */}
+
+          <FormGroup>
+            <FormLabel>Release Date:</FormLabel>
+            <input
+              type="date"
+              name="releaseDate"
+              placeholder="Enter date"
+              value={movie.releaseDate.value}
+              onChange={handleChange}
+              min={new Date().toISOString().split("T")[0]}
+              className={`form-control ${
+                movie.releaseDate.touched && !movie.releaseDate.valid
+                  ? "is-invalid"
+                  : ""
+              }`}
+            />
+            
+            
           </FormGroup>
 
           <FormGroup>
             <FormLabel>Genre:</FormLabel>
-            <input
-              type="text"
+            <select
               name="genre"
               placeholder="Enter genre"
               value={movie.genre.value}
               onChange={handleChange}
-              className={`form-control ${
+              className={`form-select ${
                 movie.genre.touched && !movie.genre.valid ? "is-invalid" : ""
               }`}
-            />
+            >
+              <option value="type">Select Genre</option>
+              <option value="Action">Action</option>
+              <option value="Animation">Animation</option>
+              <option value="Comedy">Comedy</option>
+              <option value="Crime">Crime</option>
+              <option value="Drama">Drama</option>
+              <option value="Horror">Horror</option>
+              <option value="Romance">Romance</option>
+              <option value="Science Fiction">Science Fiction</option>
+              <option value="Thriller">Thriller</option>
+              <option value="Other">Other</option>
+            </select>
 
             <div className="invalid-feedback">{movie.genre.error}</div>
           </FormGroup>
