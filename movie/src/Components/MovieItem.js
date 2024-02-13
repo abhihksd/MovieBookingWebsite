@@ -1,23 +1,30 @@
 import React from "react";
-
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
-import m1 from "../img/M1.jpg";
 
-const NewsItem = (props) => {
+import '../CSS/card.css';
+const MovieItem = ({ title, description, release_date, genre, duration, language, director, imageurl }) => {
   return (
-    <Card style={{ width: "14rem" }}>
-      <Card.Img variant="top" src={m1} />
-      <Card.Body>
-        <Card.Title>Fighter</Card.Title>
-        <Card.Text>
-          Shamsher Pathania fulfills his lifelong dream and becomes a member of
-          the Indian air force.
-        </Card.Text>
-        <Button variant="primary">Book now</Button>
-      </Card.Body>
-    </Card>
+    <div>
+      
+      <Card style={{ width: "14rem" }}>
+        <Card.Img variant="top" />
+        {/* <Card.Img variant="top" src={imageurl} alt={`Image for ${title}`} /> */}
+        <Card.Body>
+          <span className="position-absolute top-0 translate-middle badge rounded-pill bg-danger" style={{ left: '85%', zIndex: 1 }}>{genre}</span>
+          <Card.Img variant="top" />
+          <Card.Title>{title}</Card.Title>
+          <Card.Text>{director}</Card.Text>
+          <Card.Text>{release_date}</Card.Text>
+          <Card.Text>{duration}</Card.Text>
+          <Card.Text>{language}</Card.Text>
+          <Card.Text>{description}</Card.Text>
+          <Button variant="primary">Book now</Button>
+        </Card.Body>
+      </Card>
+      
+    </div>
   );
 };
 
-export default NewsItem;
+export default MovieItem;

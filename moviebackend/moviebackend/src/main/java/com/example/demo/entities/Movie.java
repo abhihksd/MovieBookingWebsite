@@ -34,15 +34,21 @@ public class Movie {
 	@Column
 	String language;
 	
-	public Movie(String title, String director, Date release_date, String genre, int duration, String language) {
+
+	
+	public Movie(String title, String director, Date release_date, String genre, int duration,
+			String language) {
 		super();
+		
 		this.title = title;
 		this.director = director;
 		this.release_date = release_date;
 		this.genre = genre;
 		this.duration = duration;
 		this.language = language;
+	
 	}
+	
 	
 	
 

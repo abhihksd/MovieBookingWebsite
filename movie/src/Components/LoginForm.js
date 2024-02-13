@@ -1,8 +1,8 @@
-import { Form, Button, Image } from "react-bootstrap/";
+
 import "../CSS/LoginForm.css";
-import { Component, useReducer, useState } from "react";
+import {  useReducer, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { login } from "../loggedSlice";
 
 
@@ -66,7 +66,7 @@ export default function LoginForm() {
           }
         }
       })
-      .catch((error) => alert("wrong uid or pwd"));
+      .catch((error) => alert("Connection error!!!"));
   };
 
   return (

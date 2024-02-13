@@ -25,6 +25,8 @@ import AddTheater from "./Components/System_AddTheatre";
 import EditTheatre from "./Components/System_EditTheatre";
 import RemoveTheatre from "./Components/System_RemoveTheatre";
 import BookMoive from "./Components/User_BookMovie";
+import { ErrorBoundary } from "react-error-boundary";
+import FetchAPI from "./Components/FetchData";
 
 function App() {
   //initialState of logged
@@ -58,6 +60,8 @@ function App() {
         </div>
       </header>
       <div>
+      <ErrorBoundary>
+  
         <Routes>
           <Route path="/" element={<Welcome />} />
           <Route path="/register" element={<Register />} />
@@ -78,6 +82,8 @@ function App() {
           <Route path="/editTheatre" element={<EditTheatre />} />
           <Route path="/bookMovie" element={<BookMoive />} />
         </Routes>
+        </ErrorBoundary>
+        <FetchAPI/>
       </div>
     </div>
   );

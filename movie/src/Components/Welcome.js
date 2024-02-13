@@ -8,17 +8,7 @@ export default function Welcome() {
     <div className="App">
       <h1>Welcome to MovieDekho</h1>
 
-      <Card style={{ width: "14rem" }}>
-        <Card.Img variant="top" src={m1} />
-        <Card.Body>
-          <Card.Title>Fighter</Card.Title>
-          <Card.Text>
-            Shamsher Pathania fulfills his lifelong dream and becomes a member
-            of the Indian air force.
-          </Card.Text>
-          <Button variant="primary">Book now</Button>
-        </Card.Body>
-      </Card>
+    
     </div>
   );
 }
