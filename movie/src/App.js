@@ -2,29 +2,29 @@ import logo from "./logo.svg";
 import bike from "./img/logo.jpeg";
 import "./App.css";
 
-import Register from "./Components/RegistrationForm";
+import Register from './components/RegistrationForm'
 import { Link, Route, Routes } from "react-router-dom";
-import LoginForm from "./Components/LoginForm";
-import Home from "./Components/Home";
+import LoginForm from "./components/LoginForm";
+import Home from "./components/Home";
 import { useSelector } from "react-redux";
 import LogoutComp from "./LogoutComp";
-import UpdatePass from "./Components/UpdatePass";
-import OrderHis from "./Components/OrderHistory";
-import Welcome from "./Components/Welcome";
+import UpdatePass from "./components/UpdatePass";
+import OrderHis from "./components/OrderHistory";
+import Welcome from "./components/Welcome";
 
-import SystemAdmin from "./Components/SystemAdmin";
-import TheatreAdmin from "./Components/TheatreAdmin";
-import User from "./Components/User";
-import AddSlot from "./Components/Theatre_AddSlot";
-import EditSlot from "./Components/Theatre_EditSlot";
-import ViewSchedule from "./Components/Theatre_ViewSchedule";
-import RemoveMovie from "./Components/Theatre_RemoveMovie";
-import AddMovie from "./Components/Theatre_AddMovie";
-import EditMovie from "./Components/Theatre_EditMovie";
-import AddTheater from "./Components/System_AddTheatre";
-import EditTheatre from "./Components/System_EditTheatre";
-import RemoveTheatre from "./Components/System_RemoveTheatre";
-import BookMoive from "./Components/User_BookMovie";
+import SystemAdmin from "./components/SystemAdmin";
+import TheatreAdmin from "./components/TheatreAdmin";
+import User from "./components/User";
+import AddSlot from "./components/Theatre_AddSlot";
+import EditSlot from "./components/Theatre_EditSlot";
+import ViewSchedule from "./components/Theatre_ViewSchedule";
+import RemoveMovie from "./components/Theatre_RemoveMovie";
+import AddMovie from "./components/Theatre_AddMovie";
+import EditMovie from "./components/Theatre_EditMovie";
+import AddTheater from "./components/System_AddTheatre";
+import EditTheatre from "./components/System_EditTheatre";
+import RemoveTheatre from "./components/System_RemoveTheatre";
+import BookMoive from "./components/User_BookMovie";
 
 function App() {
   //initialState of logged

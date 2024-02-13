@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 import logo from "../img/logo.jpeg";
-import "../CSS/Home.css";
+import "../css/Home.css";
 
 export default function Home() {
   const mystate = useSelector((state) => state.logged);

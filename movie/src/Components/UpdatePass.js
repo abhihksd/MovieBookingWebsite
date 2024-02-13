@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "../CSS/UpdateForm.css";
+import "../css/UpdateForm.css";
 export default function UpdatePass() {
   const [msg, setMsg] = useState(""); //updated
   const [user, setUser] = useState(""); //state for username

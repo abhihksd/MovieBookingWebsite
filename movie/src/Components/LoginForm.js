@@ -1,5 +1,5 @@
 import { Form, Button, Image } from "react-bootstrap/";
-import "../CSS/LoginForm.css";
+import "../css/LoginForm.css";
 import { Component, useReducer, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
