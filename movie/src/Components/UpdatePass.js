@@ -19,7 +19,7 @@ export default function UpdatePass() {
         newpassword: newpass,
       }),
     };
-    fetch("http://localhost:9000/update", reqOption)
+    fetch("http://localhost:8080/update", reqOption)
       .then((resp) => resp.text())
       .then((data) => {
         setMsg(data);

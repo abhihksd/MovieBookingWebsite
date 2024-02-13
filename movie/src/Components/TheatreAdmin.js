@@ -10,6 +10,10 @@ export default function TheatreAdmin() {
             </li>
 
             <li className="nav-item">
+              <Link to="/AddTheater">Add Theatre</Link>
+            </li>
+
+            <li className="nav-item">
               <Link to="/addMovie">Add movie</Link>
             </li>
             <li className="nav-item">
