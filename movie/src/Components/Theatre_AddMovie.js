@@ -78,17 +78,20 @@ export default function AddMovie() {
   };
 
   return (
-    <div>
-      <form className="my-4" style={{ width: "400px", margin: "auto" }}>
-        <ul className="navbar navbar-expand-sm bg-light mb-3">
-          <div className="topnav">
-            <div className="topnav-right">
-              <li className="nav-item">
-                <Link to="/logout">Logout</Link>
-              </li>
-            </div>
+    <div className="centered-container">
+      <form className="my-2" >
+      <ul className="navbar navbar-expand-sm bg-light mb-3">
+        <div className="topnav">
+          <div className="topnav-right">
+            <li className="nav-item search-field">
+              <input className="search" type="text" placeholder="Search" />
+            </li>
+            <li className="nav-item">
+              <Link to="/logout">Logout</Link>
+            </li>
           </div>
-        </ul>
+        </div>
+      </ul>
         <h1 style={{ textAlign: "center" }}>Add Movie</h1>
 
         <Form className="login-form" onReset={handleReset}>
