@@ -10,7 +10,6 @@ export default function LoginForm() {
   const [password, setPassword] = useState(""); // State for password
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const [cookies, setCookie] = useCookies(["username", "password"]); // Cookies
 
   const sendData = (e) => {
     e.preventDefault();
@@ -40,17 +39,41 @@ export default function LoginForm() {
           } else {
             dispatch(login()); // Set login state to true
             if (obj.role_id.role_id === 1) {
-              setCookie("username", username, { path: "/" });
-              setCookie("password", password, { path: "/" });
+              
               navigate("/user");
             } else if (obj.role_id.role_id === 2) {
-              // Store username and password in cookies
-              setCookie("username", username, { path: "/" });
-              setCookie("password", password, { path: "/" });
-              navigate("/theatreAdmin");
+
+              const theaterAdminInfo = { username: obj.username, password: obj.password };
+              const theaterAdminReqOptions = {
+                method: "POST",
+                headers: { "content-type": "application/json" },
+                body: JSON.stringify(theaterAdminInfo),
+              };
+
+              fetch("http://localhost:8080/getTheaterAdminStatus", theaterAdminReqOptions)
+                .then((resp) => {
+                  if (resp.ok) {
+                    return resp.json();
+                  } else {
+                    console.log(resp.statusText);
+                    throw new Error("Server error");
+                  }
+                })
+                .then((statusObj) => {
+                  console.log("above status object")
+                  console.log("This is an admin status"+statusObj.admin_status);
+                  if (statusObj.admin_status === 1) {
+                    console.log("in status object")
+            
+                    dispatch(login()); // Set login state to true
+                    navigate("/theatreAdmin");
+                  } else {
+                    alert("Access not granted");
+                  }
+                })
+                .catch((error) => console.error("Error checking theater admin status:", error));
             } else if (obj.role_id.role_id === 3) {
-              setCookie("username", username, { path: "/" });
-              setCookie("password", password, { path: "/" });
+             
               navigate("/systemAdmin");
             }
           }

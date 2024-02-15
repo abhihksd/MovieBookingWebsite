@@ -23,9 +23,10 @@ public class MovieController {
 	public Movie addMovie(@RequestBody Movie mr, HttpServletRequest request)
 	{
 		//how to get theater id here
-		Theater theater = tservice.getTheaterByTheaterId(request.theater_id).get(); //it returns Optional so write get()
-		Movie m = new Movie(mr.getTitle(),mr.getDirector(),mr.getRelease_date(),mr.getGenre(),mr.getDuration(),mr.getLanguage(),mr.getDescription(),theater);
-		return mservice.saveMovie(m);
+//		Theater theater = tservice.getTheaterByTheaterId(request.theater_id).get(); //it returns Optional so write get()
+//		Movie m = new Movie(mr.getTitle(),mr.getDirector(),mr.getRelease_date(),mr.getGenre(),mr.getDuration(),mr.getLanguage(),mr.getDescription(),theater);
+//		return mservice.saveMovie(m);
+		return  new Movie();
 	}
 
 }

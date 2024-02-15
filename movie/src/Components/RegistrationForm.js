@@ -6,6 +6,11 @@ import { useNavigate } from "react-router-dom";
 export default function Register() {
   const nav = useNavigate();
   const [msg, setMsg] = useState("");
+  const [licenseNumber, setLicenseNumber] = useState(""); // 1. Add state for license number
+  const [theater_name, setTheaterName] = useState("");
+  const [total_seats, setTotalSeats] = useState("");
+  const [theater_location, setTheaterLocation] = useState("");
+
   const init = {
     name: { value: "", valid: false, touched: false, error: "" },
     email: { value: "", valid: false, touched: false, error: "" },
@@ -13,7 +18,7 @@ export default function Register() {
     username: { value: "", valid: false, touched: false, error: "" },
     password: { value: "", valid: false, touched: false, error: "" },
     address: { value: "", valid: false, touched: false, error: "" },
-    userType: { value: "", valid: false, touched: false, error: "" },
+    userType: { value: "", valid: false, touched: false, error: "" }, 
     formValid: false,
   };
   const reducer = (state, action) => {
@@ -121,15 +126,21 @@ export default function Register() {
         userType: user.userType.value,
         username: user.username.value,
         password: user.password.value,
+        licenseNumber: user.userType.value === "2" ? licenseNumber : "",
+        theater_name:theater_name,
+        total_seats:total_seats,
+        theater_location:theater_location
       }),
     };
 
-    fetch("http://localhost:8080/registeruser", reqOption)
+    fetch(
+      user.userType.value === "2" ? "http://localhost:8080/addTheater" : "http://localhost:8080/registeruser", // Use different endpoint based on user type
+      reqOption
+    )
       .then((resp) => resp.text())
       .then((data) => {
         setMsg(data);
         if (data.length > 0) {
-          // Check the updated value of data
           nav("/login");
         }
       });
@@ -244,10 +255,54 @@ export default function Register() {
               <option value="type">Select User Type</option> //change
               <option value="1">User</option>
               <option value="2">Theater Admin</option>
-              <option value="3">System Admin</option>
+              {/* <option value="3">System Admin</option> */}
             </select>
             <div className="invalid-feedback">{user.userType.error}</div>
           </FormGroup>
+          {user.userType.value === "2" && (
+            <FormGroup>
+             
+              <FormLabel>Theater Name:</FormLabel>
+              <input
+                type="text"
+                name="theater_name"
+                placeholder="Enter Theater name"
+                value={theater_name}
+                onChange={(e) => setTheaterName(e.target.value)}
+                className="form-control"
+              />
+
+              <FormLabel>Total Seats:</FormLabel>
+              <input
+                type="text"
+                name="total_seats"
+                placeholder="Enter Total seats"
+                value={total_seats}
+                onChange={(e) => setTotalSeats(e.target.value)}
+                className="form-control"
+              />
+               <FormLabel>License Number:</FormLabel>
+              <input
+                type="text"
+                name="licenseNumber"
+                placeholder="Enter license number"
+                value={licenseNumber}
+                onChange={(e) => setLicenseNumber(e.target.value)}
+                className="form-control"
+              />
+
+              <FormLabel>Theater Location:</FormLabel>
+              <input
+                type="text"
+                name="theater_location"
+                placeholder="Enter Theater Location"
+                value={theater_location}
+                onChange={(e) => setTheaterLocation(e.target.value)}
+                className="form-control"
+              />
+            </FormGroup>
+            
+          )}
 
           {/* Input for username */}
           <FormGroup>
@@ -319,3 +374,5 @@ export default function Register() {
     </div>
   );
 }
+
+
