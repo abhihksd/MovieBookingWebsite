@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.entities.Login;
-import com.example.demo.entities.LoginCheck;
+import com.example.demo.POJO.LoginCheck;
 import com.example.demo.services.LoginService;
 
 @CrossOrigin(origins="http://localhost:3000")

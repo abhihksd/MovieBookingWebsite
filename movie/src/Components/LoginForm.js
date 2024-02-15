@@ -1,33 +1,20 @@
-import { Form, Button, Image } from "react-bootstrap/";
-import "../css/LoginForm.css";
-import { Component, useReducer, useState } from "react";
+import React, { useState } from "react";
+import { Form, Button } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { login } from "../loggedSlice";
-
+import { useCookies } from "react-cookie";
 
 export default function LoginForm() {
-  const init = {
-    username: "",
-    password: "",
-  };
-  // const dispatch=useDispatch()
-  const reducer = (state, action) => {
-    switch (action.type) {
-      case "update":
-        return { ...state, [action.fld]: action.val };
-      case "reset":
-        return init;
-    }
-  };
-  const [info, dispatch] = useReducer(reducer, init);
-  const [msg, setMsg] = useState("");
+  const [username, setUsername] = useState(""); // State for username
+  const [password, setPassword] = useState(""); // State for password
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const [cookies, setCookie] = useCookies(["username", "password"]); // Cookies
 
-  const reducerAction = useDispatch();
-  //to login
   const sendData = (e) => {
     e.preventDefault();
+    const info = { username, password }; // Create an object with username and password
     const reqOptions = {
       method: "POST",
       headers: { "content-type": "application/json" },
@@ -37,36 +24,39 @@ export default function LoginForm() {
     fetch("http://localhost:8080/chkLogin", reqOptions)
       .then((resp) => {
         if (resp.ok) {
-          console.log(resp.status);
           return resp.text();
         } else {
           console.log(resp.statusText);
           throw new Error("Server error");
         }
-      }) //revice normal text
-      .then((text) => (text.length ? JSON.parse(text) : {})) //to check length of text
+      })
+      .then((text) => (text.length ? JSON.parse(text) : {}))
       .then((obj) => {
         if (Object.keys(obj).length === 0) {
-          //if uid or pwd is wrong
-          setMsg("Wrong uid or password");
+          console.log("Wrong uid or password");
         } else {
           if (obj.status === false) {
-            //req is not approved
-            alert("request has not been approved");
+            alert("Request has not been approved");
           } else {
-            reducerAction(login()); //state false to true
-
+            dispatch(login()); // Set login state to true
             if (obj.role_id.role_id === 1) {
+              setCookie("username", username, { path: "/" });
+              setCookie("password", password, { path: "/" });
               navigate("/user");
             } else if (obj.role_id.role_id === 2) {
+              // Store username and password in cookies
+              setCookie("username", username, { path: "/" });
+              setCookie("password", password, { path: "/" });
               navigate("/theatreAdmin");
             } else if (obj.role_id.role_id === 3) {
+              setCookie("username", username, { path: "/" });
+              setCookie("password", password, { path: "/" });
               navigate("/systemAdmin");
             }
           }
         }
       })
-      .catch((error) => alert("wrong uid or pwd"));
+      .catch((error) => alert("Wrong uid or pwd"));
   };
 
   return (
@@ -82,14 +72,8 @@ export default function LoginForm() {
               className="form-control form-control-sm"
               id="username"
               name="username"
-              value={info.username}
-              onChange={(e) => {
-                dispatch({
-                  type: "update",
-                  fld: "username",
-                  val: e.target.value,
-                });
-              }}
+              value={username}
+              onChange={(e) => setUsername(e.target.value)} // Update username state
             />
           </div>
         </div>
@@ -103,14 +87,8 @@ export default function LoginForm() {
               className="form-control form-control-sm"
               id="password"
               name="password"
-              value={info.password}
-              onChange={(e) => {
-                dispatch({
-                  type: "update",
-                  fld: "password",
-                  val: e.target.value,
-                });
-              }}
+              value={password}
+              onChange={(e) => setPassword(e.target.value)} // Update password state
             />
           </div>
         </div>
@@ -120,9 +98,7 @@ export default function LoginForm() {
             <button
               type="submit"
               className="btn btn-primary me-2"
-              onClick={(e) => {
-                sendData(e);
-              }}
+              onClick={sendData}
             >
               Submit
             </button>
@@ -130,7 +106,8 @@ export default function LoginForm() {
               type="reset"
               className="btn btn-danger"
               onClick={() => {
-                dispatch({ type: "reset" });
+                setUsername(""); // Reset username state
+                setPassword(""); // Reset password state
               }}
             >
               Reset
@@ -138,9 +115,6 @@ export default function LoginForm() {
           </div>
         </div>
       </form>
-
-      {/* <p>{JSON.stringify(info)}</p> */}
-      {/* <Image className="image-container" src={img}></Image> */}
     </div>
   );
 }

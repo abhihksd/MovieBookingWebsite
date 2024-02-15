@@ -11,7 +11,7 @@ import com.example.demo.repositories.LoginRepository;
 @Service
 public class LoginService {
 	@Autowired
-	LoginRepository lrepo;
+	private LoginRepository lrepo;
 	
 	public Login getLogin(String username,String password)
 	{

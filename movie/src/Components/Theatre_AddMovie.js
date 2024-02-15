@@ -13,6 +13,7 @@ export default function AddMovie() {
     genre: { value: "", valid: false, touched: false, error: "" },
     duration: { value: "", valid: false, touched: false, error: "" },
     language: { value: "", valid: false, touched: false, error: "" },
+    
     formValid: false,
   };
 

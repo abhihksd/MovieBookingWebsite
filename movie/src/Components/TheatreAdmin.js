@@ -1,5 +1,9 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
+import AddTheater from "./System_AddTheatre";// Import AddTheater component
+
 export default function TheatreAdmin() {
+  
+
   return (
     <div>
       <ul className="navbar navbar-expand-sm bg-light mb-3">
@@ -10,7 +14,7 @@ export default function TheatreAdmin() {
             </li>
 
             <li className="nav-item">
-              <Link to="/AddTheater">Add Theatre</Link>
+              <Link to={{ pathname: "/addTheater"}}>Add Theatre</Link> {/* Pass location state as prop */}
             </li>
 
             <li className="nav-item">
@@ -38,9 +42,6 @@ export default function TheatreAdmin() {
         </div>
       </ul>
       <h1 style={{ textAlign: "center" }}>Theatre Admin Homepage</h1>
-
-    
     </div>
-
   );
 }

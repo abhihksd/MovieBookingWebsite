@@ -5,12 +5,40 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b778588d-22db-445e-bdf4-1445db05692c" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../movie-ticket/src/Components/RegForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/../movie-ticket/src/Components/RegForm.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../movie/node_modules/.cache/.eslintcache" beforeDir="false" afterPath="$PROJECT_DIR$/../../movie/node_modules/.cache/.eslintcache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../movie/node_modules/.cache/default-development/0.pack" beforeDir="false" afterPath="$PROJECT_DIR$/../../movie/node_modules/.cache/default-development/0.pack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../movie/node_modules/.cache/default-development/1.pack" beforeDir="false" afterPath="$PROJECT_DIR$/../../movie/node_modules/.cache/default-development/1.pack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../movie/node_modules/.cache/default-development/10.pack" beforeDir="false" afterPath="$PROJECT_DIR$/../../movie/node_modules/.cache/default-development/10.pack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../movie/node_modules/.cache/default-development/11.pack" beforeDir="false" afterPath="$PROJECT_DIR$/../../movie/node_modules/.cache/default-development/11.pack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../movie/node_modules/.cache/default-development/12.pack" beforeDir="false" afterPath="$PROJECT_DIR$/../../movie/node_modules/.cache/default-development/12.pack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../movie/node_modules/.cache/default-development/13.pack" beforeDir="false" afterPath="$PROJECT_DIR$/../../movie/node_modules/.cache/default-development/13.pack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../movie/node_modules/.cache/default-development/14.pack" beforeDir="false" afterPath="$PROJECT_DIR$/../../movie/node_modules/.cache/default-development/14.pack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../movie/node_modules/.cache/default-development/15.pack" beforeDir="false" afterPath="$PROJECT_DIR$/../../movie/node_modules/.cache/default-development/15.pack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../movie/node_modules/.cache/default-development/2.pack" beforeDir="false" afterPath="$PROJECT_DIR$/../../movie/node_modules/.cache/default-development/2.pack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../movie/node_modules/.cache/default-development/3.pack" beforeDir="false" afterPath="$PROJECT_DIR$/../../movie/node_modules/.cache/default-development/3.pack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../movie/node_modules/.cache/default-development/4.pack" beforeDir="false" afterPath="$PROJECT_DIR$/../../movie/node_modules/.cache/default-development/4.pack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../movie/node_modules/.cache/default-development/6.pack" beforeDir="false" afterPath="$PROJECT_DIR$/../../movie/node_modules/.cache/default-development/6.pack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../movie/node_modules/.cache/default-development/7.pack" beforeDir="false" afterPath="$PROJECT_DIR$/../../movie/node_modules/.cache/default-development/7.pack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../movie/node_modules/.cache/default-development/8.pack" beforeDir="false" afterPath="$PROJECT_DIR$/../../movie/node_modules/.cache/default-development/8.pack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../movie/node_modules/.cache/default-development/9.pack" beforeDir="false" afterPath="$PROJECT_DIR$/../../movie/node_modules/.cache/default-development/9.pack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../movie/node_modules/.cache/default-development/index.pack" beforeDir="false" afterPath="$PROJECT_DIR$/../../movie/node_modules/.cache/default-development/index.pack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../movie/node_modules/.cache/default-development/index.pack.old" beforeDir="false" afterPath="$PROJECT_DIR$/../../movie/node_modules/.cache/default-development/index.pack.old" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../movie/src/Components/LoginForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../movie/src/Components/LoginForm.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../movie/src/Components/System_AddTheatre.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../movie/src/Components/System_AddTheatre.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../movie/src/Components/TheatreAdmin.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../movie/src/Components/TheatreAdmin.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -33,12 +61,12 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration name="MoviebackendApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.example.demo.MoviebackendApplication" />
@@ -69,5 +97,16 @@
       <updated>1707610889836</updated>
     </task>
     <servers />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/example/demo/entities/Theater.java</url>
+          <line>10</line>
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

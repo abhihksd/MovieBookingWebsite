@@ -24,13 +24,9 @@ public class Customer {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	int user_id;
 	String name;
-
 	String email;
-
 	String phone_number;
-
 	String address;
-
 	@OneToOne
 	@JoinColumn(name="login_id")
 	Login login_id;

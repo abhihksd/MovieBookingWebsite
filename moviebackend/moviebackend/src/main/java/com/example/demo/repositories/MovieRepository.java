@@ -7,5 +7,4 @@ import com.example.demo.entities.Movie;
 @Repository
 public interface MovieRepository extends JpaRepository<Movie, Integer> {
 
-	
 }

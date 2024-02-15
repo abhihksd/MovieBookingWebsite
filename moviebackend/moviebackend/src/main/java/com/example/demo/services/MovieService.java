@@ -8,15 +8,15 @@ import com.example.demo.repositories.MovieRepository;
 
 @Service
 public class MovieService {
-	
+
 	@Autowired
-	MovieRepository mrepo;
-	
+	private MovieRepository mrepo;
+
 	public Movie saveMovie(Movie m)
 	{
 		return mrepo.save(m);
 	}
 
-	
+
 
 }

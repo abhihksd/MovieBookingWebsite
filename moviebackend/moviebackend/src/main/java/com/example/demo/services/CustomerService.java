@@ -9,7 +9,7 @@ import com.example.demo.repositories.CustomerRepository;
 @Service
 public class CustomerService {
 	@Autowired
-	CustomerRepository crepo;
+	private CustomerRepository crepo;
 	
 	public Customer saveCustomer(Customer c)
 	{

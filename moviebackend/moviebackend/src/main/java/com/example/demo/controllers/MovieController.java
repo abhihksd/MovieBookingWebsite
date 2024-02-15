@@ -1,10 +1,10 @@
 package com.example.demo.controllers;
 
+import com.example.demo.entities.Theater;
+import com.example.demo.services.TheaterService;
+import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.example.demo.entities.Movie;
 import com.example.demo.services.MovieService;
@@ -12,15 +12,20 @@ import com.example.demo.services.MovieService;
 @CrossOrigin(origins="http://localhost:3000")
 @RestController
 public class MovieController {
-	
+
+	@Autowired
+	private TheaterService tservice;
+
 	@Autowired
 	private MovieService mservice;
-	
+
 	@PostMapping("/addMovie")
-	public Movie addMovie(@RequestBody Movie mr)
-	{		
-		Movie m = new Movie(mr.getTitle(),mr.getDirector(),mr.getRelease_date(),mr.getGenre(),mr.getDuration(),mr.getLanguage());
-		return mservice.saveMovie(m);	
+	public Movie addMovie(@RequestBody Movie mr, HttpServletRequest request)
+	{
+		//how to get theater id here
+		Theater theater = tservice.getTheaterByTheaterId(request.theater_id).get(); //it returns Optional so write get()
+		Movie m = new Movie(mr.getTitle(),mr.getDirector(),mr.getRelease_date(),mr.getGenre(),mr.getDuration(),mr.getLanguage(),mr.getDescription(),theater);
+		return mservice.saveMovie(m);
 	}
-	
+
 }
