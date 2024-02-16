@@ -10,14 +10,14 @@ import lombok.Setter;
 @Getter
 @Setter
 public class CustomerReg {
-	String username;
-	String password;
-	String name;
-	String phone_number;
-	String address;
-	String email;
-	Login login;
+	private String username;
+	private String password;
+	private String name;
+	private String phone_number;
+	private String address;
+	private String email;
+	private Login login;
 	
-	int userType;
+	private int userType;
 
 }

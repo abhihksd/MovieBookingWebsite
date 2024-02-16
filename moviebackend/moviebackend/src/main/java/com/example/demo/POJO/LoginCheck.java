@@ -7,8 +7,8 @@ import lombok.Setter;
 @Setter
 public class LoginCheck {
 	
-	String username;
-	String password;
+	private String username;
+	private String password;
 
 	public LoginCheck(String username, String password) {
 		this.username = username;

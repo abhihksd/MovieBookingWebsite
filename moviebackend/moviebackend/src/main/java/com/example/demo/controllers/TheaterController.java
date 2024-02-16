@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@CrossOrigin(origins="http://localhost:3000")
+@CrossOrigin(origins="http://localhost:3000",exposedHeaders = "**")
 @RestController
 public class TheaterController {
     @Autowired
@@ -55,8 +55,6 @@ public class TheaterController {
         status = theater.getTheater_status();
 
         return  theater;
-
-
 
     }
 

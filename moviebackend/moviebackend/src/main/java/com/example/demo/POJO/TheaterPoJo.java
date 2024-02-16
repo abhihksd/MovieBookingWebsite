@@ -8,15 +8,15 @@ import lombok.Setter;
 @Getter
 @Setter
 public class TheaterPoJo {
-    String name;
-    String email;
-    String phone_number;
-    String address;
-    String userType;
-    String username;
-    String password;
-    String licenseNumber;
-    String theater_name;
+    private String name;
+    private String email;
+    private String phone_number;
+    private String address;
+    private String userType;
+    private String username;
+    private String password;
+    private String licenseNumber;
+    private String theater_name;
     int total_seats;
-    String theater_location;
+    private String theater_location;
 }
