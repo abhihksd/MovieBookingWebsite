@@ -2,6 +2,7 @@ package com.example.demo.POJO;
 
 import java.sql.Date;
 import java.sql.Time;
+import java.time.LocalDate;
 import java.time.LocalTime;
 
 import com.example.demo.entities.Theater;
@@ -20,8 +21,8 @@ public class MoviePoJo {
 
     String title;
     String director;
-    Date release_date;
-    Date show_date;
+    LocalDate release_date;
+    LocalDate show_date;
     LocalTime show_time;
     String genre;
     String description;

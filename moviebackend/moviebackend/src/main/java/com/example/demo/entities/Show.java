@@ -16,6 +16,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.Date;
 
@@ -32,7 +33,7 @@ public class Show {
 
     @JsonFormat(pattern="yyyy-MM-dd")
     @Column
-    Date show_date;
+    LocalDate show_date;
 
     @JsonFormat(pattern="HH:mm:ss")
     @Column
@@ -46,7 +47,7 @@ public class Show {
     @JoinColumn(name="theater_id")
     Theater theater;
 
-    public Show(Date show_date, LocalTime show_time, Movie movie, Theater theater) {
+    public Show(LocalDate show_date, LocalTime show_time, Movie movie, Theater theater) {
         super();
         this.show_date = show_date;
         this.show_time = show_time;

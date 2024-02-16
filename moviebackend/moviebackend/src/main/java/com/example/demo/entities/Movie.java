@@ -1,5 +1,6 @@
 package com.example.demo.entities;
 import java.sql.Date;
+import java.time.LocalDate;
 
 
 import jakarta.persistence.*;
@@ -21,7 +22,7 @@ public class Movie {
 	@Column
 	String director;
 	@Column
-	Date release_date;
+	LocalDate release_date;
 	@Column
 	String genre;
 	@Column
@@ -35,7 +36,7 @@ public class Movie {
 	@JoinColumn(name = "theater_id")
 	Theater theater;
 
-	public Movie(String title, String director, Date release_date, String genre,String description, int duration, String language,Theater theater) {
+	public Movie(String title, String director, LocalDate release_date, String genre,String description, int duration, String language,Theater theater) {
 		super();
 		this.title = title;
 		this.director = director;

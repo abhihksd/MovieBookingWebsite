@@ -43,11 +43,12 @@ public class MovieController {
 		//int theater_id = t.getTheater_id();
 
 		Movie m1 = new Movie(mr.getTitle(),mr.getDirector(),mr.getRelease_date(),mr.getGenre(),mr.getDescription(),mr.getDuration(),mr.getLanguage(),t);
-
+		Movie movie = mservice.saveMovie(m1);
+		//save movie before passing to show
 		Show s = new Show(mr.getShow_date(),mr.getShow_time(),m1,t);
 		Show saved = sservice.saveShow(s);
 
-		return mservice.saveMovie(m1);
+		return movie;
 	}
 
 

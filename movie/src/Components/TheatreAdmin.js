@@ -1,29 +1,36 @@
 import { Link } from "react-router-dom";
-import { useEffect } from "react";
-import AddTheater from "./System_AddTheatre";// Import AddTheater component
+import { useEffect, useState } from "react";
+import AddTheater from "./System_AddTheatre";
 
 export default function TheatreAdmin() {
-  
+  const [theaterInfo, setTheaterInfo] = useState(null);
 
-  useEffect(()=>{
-      const loginid = JSON.parse(localStorage.getItem("user")).login_id;
-      fetch("http://localhost:8080/getTheater?id="+loginid)
-      .then(resp => resp.json())
-      .then(obj => localStorage.setItem("theater",JSON.stringify(obj)))
-  },[])
+  useEffect(() => {
+    const user = JSON.parse(localStorage.getItem("user"));
+    if (user && user.login_id) {
+      const loginid = user.login_id;
+      fetch("http://localhost:8080/getTheater?id=" + loginid)
+        .then(resp => resp.json())
+        .then(obj => {
+          localStorage.setItem("theater", JSON.stringify(obj));
+          setTheaterInfo(obj);
+        })
+        .catch(error => console.error("Error fetching theater:", error));
+    } else {
+      console.error("User object or login_id not found in localStorage.");
+    }
+  }, []);
 
   return (
     <div>
       <ul className="navbar navbar-expand-sm bg-light mb-3">
         <div className="topnav">
           <div className="topnav-right">
-            <li className="nav-item search-field">
-              <input className="search" type="text" placeholder="Search" />
-            </li>
-
-            <li className="nav-item">
-              <Link to={{ pathname: "/addTheater"}}>Add Theatre</Link> {/* Pass location state as prop */}
-            </li>
+            {theaterInfo && (
+              <li className="nav-item">
+                <p>Welcome {theaterInfo.owner_name}, {theaterInfo.theater_name}, {theaterInfo.theater_location}, Total Seats: {theaterInfo.total_seats}</p>
+              </li>
+            )}
 
             <li className="nav-item">
               <Link to="/addMovie">Add movie</Link>

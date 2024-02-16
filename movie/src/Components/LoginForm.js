@@ -35,6 +35,7 @@ export default function LoginForm() {
       .then((text) => (text.length ? JSON.parse(text) : {}))
       .then((obj) => {
         console.log(JSON.stringify(obj));
+        //setting user object in localstorage..BM
         localStorage.setItem("user",JSON.stringify(obj))
         if (Object.keys(obj).length === 0) {
           console.log("Wrong uid or password");
@@ -65,10 +66,8 @@ export default function LoginForm() {
                   }
                 })
                 .then((statusObj) => {
-                  console.log("above status object")
-                  console.log("This is an admin status"+statusObj.theater_status);
-                  if (statusObj.theater_status === 1) {
-                    console.log("in status object")
+                 
+                  if (statusObj.theater_status === 1) {                   
                     
                     dispatch(login()); // Set login state to true
                     navigate("/theatreAdmin");
