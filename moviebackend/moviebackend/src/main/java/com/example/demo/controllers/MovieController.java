@@ -19,7 +19,7 @@ public class MovieController {
 	@PostMapping("/addMovie")
 	public Movie addMovie(@RequestBody Movie mr)
 	{		
-		Movie m = new Movie(mr.getTitle(),mr.getDirector(),mr.getRelease_date(),mr.getGenre(),mr.getDuration(),mr.getLanguage());
+		Movie m = new Movie(mr.getTitle(),mr.getDirector(),mr.getRelease_date(),mr.getGenre(),mr.getDuration(),mr.getLanguage(),mr.getDescription());
 		return mservice.saveMovie(m);	
 	}
 	
