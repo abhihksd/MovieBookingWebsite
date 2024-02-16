@@ -11,6 +11,7 @@ export default function AddMovie() {
     director: { value: "", valid: false, touched: false, error: "" },
     releaseDate: { value: "", valid: false, touched: false, error: "" },
     genre: { value: "", valid: false, touched: false, error: "" },
+    description: { value: "", valid: false, touched: false, error: "" },
     duration: { value: "", valid: false, touched: false, error: "" },
     language: { value: "", valid: false, touched: false, error: "" },
     formValid: false,
@@ -60,6 +61,7 @@ export default function AddMovie() {
         director: movie.director.value,
         release_date: movie.releaseDate.value,
         genre: movie.genre.value,
+        description: movie.description.value,
         duration: movie.duration.value,
         language: movie.language.value,
       }),
@@ -78,20 +80,17 @@ export default function AddMovie() {
   };
 
   return (
-    <div className="centered-container">
-      <form className="my-2" >
-      <ul className="navbar navbar-expand-sm bg-light mb-3">
-        <div className="topnav">
-          <div className="topnav-right">
-            <li className="nav-item search-field">
-              <input className="search" type="text" placeholder="Search" />
-            </li>
-            <li className="nav-item">
-              <Link to="/logout">Logout</Link>
-            </li>
+    <div>
+      <form className="my-4" style={{ width: "400px", margin: "auto" }}>
+        <ul className="navbar navbar-expand-sm bg-light mb-3">
+          <div className="topnav">
+            <div className="topnav-right">
+              <li className="nav-item">
+                <Link to="/logout">Logout</Link>
+              </li>
+            </div>
           </div>
-        </div>
-      </ul>
+        </ul>
         <h1 style={{ textAlign: "center" }}>Add Movie</h1>
 
         <Form className="login-form" onReset={handleReset}>
@@ -161,8 +160,6 @@ export default function AddMovie() {
                   : ""
               }`}
             />
-            
-            
           </FormGroup>
 
           <FormGroup>
@@ -186,10 +183,27 @@ export default function AddMovie() {
               <option value="Romance">Romance</option>
               <option value="Science Fiction">Science Fiction</option>
               <option value="Thriller">Thriller</option>
-              <option value="Other">Other</option>
             </select>
 
             <div className="invalid-feedback">{movie.genre.error}</div>
+          </FormGroup>
+
+          <FormGroup>
+            <FormLabel>Description:</FormLabel>
+            <input
+              type="text"
+              name="description"
+              placeholder="Enter movie description"
+              value={movie.description.value}
+              onChange={handleChange}
+              className={`form-control ${
+                movie.description.touched && !movie.description.valid
+                  ? "is-invalid"
+                  : ""
+              }`}
+            />
+
+            <div className="invalid-feedback">{movie.description.error}</div>
           </FormGroup>
 
           <FormGroup>

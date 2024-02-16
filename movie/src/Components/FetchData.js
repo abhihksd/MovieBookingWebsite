@@ -26,12 +26,12 @@ function FetchData() {
                 <MovieItem
                     key={movie.movie_id}
                     title={movie.title}
-                    description={movie.description}
                     release_date={movie.release_date}
                     genre={movie.genre}
                     duration={movie.duration}
                     language={movie.language}
                     director={movie.director}
+                    description={movie.description}
                    
                 />
             ))}

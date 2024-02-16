@@ -16,11 +16,11 @@ const MovieItem = ({ title, description, release_date, genre, duration, language
           <Card.Img variant="top" />
           <Card.Title className="text-center" >{title}</Card.Title>
           <Card.Text>{director}</Card.Text>
-          <Card.Text>{release_date}</Card.Text>
-          <Card.Text>{duration}</Card.Text>
-          <Card.Text>{language}</Card.Text>
-          <Card.Text>{description}</Card.Text>
-          <Button variant="primary">Book now</Button>
+          {/* <Card.Text>{release_date}</Card.Text> */}
+          {/* <Card.Text>{duration}</Card.Text> */}
+          {/* <Card.Text>{language}</Card.Text> */}
+          {/* <Card.Text>{description}</Card.Text> */}
+          <Button variant="primary" >View</Button>
         </Card.Body>
       </Card>
       
