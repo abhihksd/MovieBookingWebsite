@@ -10,10 +10,12 @@ export default function AddMovie() {
     title: { value: "", valid: false, touched: false, error: "" },
     director: { value: "", valid: false, touched: false, error: "" },
     releaseDate: { value: "", valid: false, touched: false, error: "" },
+    showDate: { value: "", valid: false, touched: false, error: "" },
+    showTime: { value: "", valid: false, touched: false, error: "" },
     genre: { value: "", valid: false, touched: false, error: "" },
+    description: { value: "", valid: false, touched: false, error: "" },
     duration: { value: "", valid: false, touched: false, error: "" },
     language: { value: "", valid: false, touched: false, error: "" },
-    
     formValid: false,
   };
 
@@ -39,9 +41,9 @@ export default function AddMovie() {
         key: name,
         value,
         touched: true,
-        valid: true, // You can update this based on your validation logic
-        error: "", // You can update this based on your validation logic
-        formValid: true, // You can update this based on your validation logic
+        valid: true,
+        error: "",
+        formValid: true,
       },
     });
   };
@@ -53,14 +55,26 @@ export default function AddMovie() {
 
   const submitData = (e) => {
     e.preventDefault();
+    const username = localStorage.getItem("username");
+    const password = localStorage.getItem("password");
+
+    // Format the show date and time according to the specified patterns
+    const formattedShowDate = new Date(movie.showDate.value).toISOString().split('T')[0];
+    const formattedShowTime = new Date(`2000-01-01 ${movie.showTime.value}`).toISOString().split('T')[1].split('.')[0];
+
     const reqOption = {
       method: "POST",
       headers: { "content-type": "application/json" },
       body: JSON.stringify({
+        username: username,
+        password: password,
         title: movie.title.value,
         director: movie.director.value,
         release_date: movie.releaseDate.value,
+        show_date: formattedShowDate,
+        show_time: formattedShowTime,
         genre: movie.genre.value,
+        description: movie.description.value,
         duration: movie.duration.value,
         language: movie.language.value,
       }),
@@ -134,30 +148,91 @@ export default function AddMovie() {
               placeholder="Enter date"
               value={movie.releaseDate.value}
               onChange={handleChange}
+              min={new Date().toISOString().split("T")[0]}
               className={`form-control ${
                 movie.releaseDate.touched && !movie.releaseDate.valid
                   ? "is-invalid"
                   : ""
               }`}
             />
-
             <div className="invalid-feedback">{movie.releaseDate.error}</div>
           </FormGroup>
 
           <FormGroup>
-            <FormLabel>Genre:</FormLabel>
+            <FormLabel>Show Date:</FormLabel>
             <input
-              type="text"
+              type="date"
+              name="showDate"
+              placeholder="Enter show date"
+              value={movie.showDate.value}
+              onChange={handleChange}
+              min={new Date().toISOString().split("T")[0]}
+              className={`form-control ${
+                movie.showDate.touched && !movie.showDate.valid
+                  ? "is-invalid"
+                  : ""
+              }`}
+            />
+            <div className="invalid-feedback">{movie.showDate.error}</div>
+          </FormGroup>
+
+          <FormGroup>
+            <FormLabel>Show Time:</FormLabel>
+            <input
+              type="time"
+              name="showTime"
+              placeholder="Enter time"
+              value={movie.showTime.value}
+              onChange={handleChange}
+              className={`form-control ${
+                movie.showTime.touched && !movie.showTime.valid
+                  ? "is-invalid"
+                  : ""
+              }`}
+            />
+            <div className="invalid-feedback">{movie.showTime.error}</div>
+          </FormGroup>
+
+          <FormGroup>
+            <FormLabel>Genre:</FormLabel>
+            <select
               name="genre"
               placeholder="Enter genre"
               value={movie.genre.value}
               onChange={handleChange}
-              className={`form-control ${
+              className={`form-select ${
                 movie.genre.touched && !movie.genre.valid ? "is-invalid" : ""
               }`}
-            />
-
+            >
+              <option value="type">Select Genre</option>
+              <option value="Action">Action</option>
+              <option value="Animation">Animation</option>
+              <option value="Comedy">Comedy</option>
+              <option value="Crime">Crime</option>
+              <option value="Drama">Drama</option>
+              <option value="Horror">Horror</option>
+              <option value="Romance">Romance</option>
+              <option value="Science Fiction">Science Fiction</option>
+              <option value="Thriller">Thriller</option>
+            </select>
             <div className="invalid-feedback">{movie.genre.error}</div>
+          </FormGroup>
+
+          <FormGroup>
+            <FormLabel>Description:</FormLabel>
+            <input
+              type="text"
+              name="description"
+              placeholder="Enter movie description"
+              value={movie.description.value}
+              onChange={handleChange}
+              className={`form-control ${
+                movie.description.touched && !movie.description.valid
+                  ? "is-invalid"
+                  : ""
+              }`}
+            />
+            <div className="invalid-feedback">{movie.description.error}</div>
           </FormGroup>
 
           <FormGroup>
@@ -174,7 +249,6 @@ export default function AddMovie() {
                   : ""
               }`}
             />
-
             <div className="invalid-feedback">{movie.duration.error}</div>
           </FormGroup>
 
@@ -192,7 +266,6 @@ export default function AddMovie() {
                   : ""
               }`}
             />
-
             <div className="invalid-feedback">{movie.language.error}</div>
           </FormGroup>
 
@@ -211,6 +284,6 @@ export default function AddMovie() {
           <p style={{ color: msg === "success" ? "green" : "red" }}>{msg}</p>
         </Form>
       </form>
-    </div>
-  );
+    </div>
+  );
 }

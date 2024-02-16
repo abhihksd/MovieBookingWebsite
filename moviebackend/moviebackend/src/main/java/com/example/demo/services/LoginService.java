@@ -29,4 +29,8 @@ public class LoginService {
 	{
 		return lrepo.save(l);
 	}
+
+	public Login getLoginById(int id) {
+		return  lrepo.getLoginByLId(id);
+	}
 }

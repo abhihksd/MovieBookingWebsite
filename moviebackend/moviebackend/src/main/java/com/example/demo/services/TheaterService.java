@@ -1,6 +1,7 @@
 package com.example.demo.services;
 
 import com.example.demo.Exception.TheaterNotFoundException;
+import com.example.demo.entities.Login;
 import com.example.demo.entities.Theater;
 import com.example.demo.repositories.TheaterRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,8 +18,9 @@ public class TheaterService {
         return theaterRepository.save(t);
     }
 
-    public Theater getTheaterByLoginId(int login_id){
-        return (theaterRepository.getTheaterByLoginId(login_id)).get(); //return type is Theater so use get because of Optional<Theater>
+    public Theater getTheaterByLoginId(Login login_id){
+        return theaterRepository.getTheaterByLoginId(login_id);
+        //return (theaterRepository.getTheaterByLoginId(login_id)).get(); //return type is Theater so use get because of Optional<Theater>
     }
 
     public Optional<Theater> getTheaterByTheaterId(int theater_id){

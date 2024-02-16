@@ -12,6 +12,7 @@ import com.example.demo.services.RoleService;
 import com.example.demo.services.TheaterService;
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
+import lombok.extern.java.Log;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -49,9 +50,9 @@ public class TheaterController {
 
         Login login = lservice.getLogin(lc.getUsername(),lc.getPassword());
 
-        int login_id = login.getLogin_id();
+        //int login_id = login.getLogin_id();
 
-        Theater theater = theaterservice.getTheaterByLoginId(login_id);
+        Theater theater = theaterservice.getTheaterByLoginId(login);
         status = theater.getTheater_status();
 
         return  theater;
@@ -68,6 +69,14 @@ public class TheaterController {
         theaterservice.updateTheaterStatus(id, request.getStatus());
         Theater t = theaterservice.getTheaterByTheaterId(id).get();
         return t;
+    }
+
+    @GetMapping("/getTheater/{id}")
+    public Theater getTheater(@PathVariable("id") int id){
+        Login login = lservice.getLoginById(id);
+
+        return theaterservice.getTheaterByLoginId(login);
+
     }
 
 }

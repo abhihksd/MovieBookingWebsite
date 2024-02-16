@@ -11,4 +11,7 @@ import com.example.demo.entities.Login;
 public interface LoginRepository extends JpaRepository<Login, Integer> {
 	@Query("select l from Login l where username=:username and password=:password")
 	public Optional<Login> getLogin(String username,String password);
+
+	@Query("select l from Login l where login_id=:id")
+    public Login getLoginByLId(int id);
 }

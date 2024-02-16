@@ -14,6 +14,9 @@ export default function LoginForm() {
   const sendData = (e) => {
     e.preventDefault();
     const info = { username, password }; // Create an object with username and password
+    localStorage.setItem("username", username);
+    localStorage.setItem("password", password);
+
     const reqOptions = {
       method: "POST",
       headers: { "content-type": "application/json" },
@@ -31,6 +34,8 @@ export default function LoginForm() {
       })
       .then((text) => (text.length ? JSON.parse(text) : {}))
       .then((obj) => {
+        console.log(JSON.stringify(obj));
+        localStorage.setItem("user",JSON.stringify(obj))
         if (Object.keys(obj).length === 0) {
           console.log("Wrong uid or password");
         } else {
@@ -43,7 +48,7 @@ export default function LoginForm() {
               navigate("/user");
             } else if (obj.role_id.role_id === 2) {
 
-              const theaterAdminInfo = { username: obj.username, password: obj.password };
+              const theaterAdminInfo = { username: username, password: password };
               const theaterAdminReqOptions = {
                 method: "POST",
                 headers: { "content-type": "application/json" },
@@ -64,7 +69,7 @@ export default function LoginForm() {
                   console.log("This is an admin status"+statusObj.theater_status);
                   if (statusObj.theater_status === 1) {
                     console.log("in status object")
-            
+                    
                     dispatch(login()); // Set login state to true
                     navigate("/theatreAdmin");
                   } else {

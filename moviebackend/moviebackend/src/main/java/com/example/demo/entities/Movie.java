@@ -35,7 +35,7 @@ public class Movie {
 	@JoinColumn(name = "theater_id")
 	Theater theater;
 
-	public Movie(String title, String director, Date release_date, String genre, int duration, String language,String description,Theater theater) {
+	public Movie(String title, String director, Date release_date, String genre,String description, int duration, String language,Theater theater) {
 		super();
 		this.title = title;
 		this.director = director;

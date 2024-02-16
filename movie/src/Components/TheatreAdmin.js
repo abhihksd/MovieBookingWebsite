@@ -1,8 +1,16 @@
-import { Link, useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
+import { useEffect } from "react";
 import AddTheater from "./System_AddTheatre";// Import AddTheater component
 
 export default function TheatreAdmin() {
   
+
+  useEffect(()=>{
+      const loginid = JSON.parse(localStorage.getItem("user")).login_id;
+      fetch("http://localhost:8080/getTheater?id="+loginid)
+      .then(resp => resp.json())
+      .then(obj => localStorage.setItem("theater",JSON.stringify(obj)))
+  },[])
 
   return (
     <div>
