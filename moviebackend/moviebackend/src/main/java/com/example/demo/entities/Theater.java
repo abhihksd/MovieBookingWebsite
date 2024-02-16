@@ -26,7 +26,7 @@ public class Theater {
     Login login_id;
 
     @Column
-    int admin_status;
+    int theater_status;
     @Column
     String owner_name;
 

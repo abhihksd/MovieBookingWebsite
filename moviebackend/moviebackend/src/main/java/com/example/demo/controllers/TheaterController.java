@@ -2,6 +2,7 @@ package com.example.demo.controllers;
 
 import com.example.demo.POJO.LoginCheck;
 import com.example.demo.POJO.TheaterPoJo;
+import com.example.demo.POJO.TheaterStatusRequest;
 import com.example.demo.entities.Login;
 import com.example.demo.entities.Role;
 import com.example.demo.entities.Theater;
@@ -12,7 +13,10 @@ import com.example.demo.services.TheaterService;
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @CrossOrigin(origins="http://localhost:3000")
 @RestController
@@ -48,12 +52,25 @@ public class TheaterController {
         int login_id = login.getLogin_id();
 
         Theater theater = theaterservice.getTheaterByLoginId(login_id);
-        status = theater.getAdmin_status();
+        status = theater.getTheater_status();
 
         return  theater;
 
 
 
     }
+
+    @GetMapping("/displaypendingtheaters")
+    public List<Theater> displayPendingTheaters() {
+        return theaterservice.getPendingTheaters();
+    }
+
+    @PutMapping("/updatestatus/{id}")
+    public Theater updateTheaterStatus(@PathVariable("id") int id, @RequestBody TheaterStatusRequest request) {
+        theaterservice.updateTheaterStatus(id, request.getStatus());
+        Theater t = theaterservice.getTheaterByTheaterId(id).get();
+        return t;
+    }
+
 }
 

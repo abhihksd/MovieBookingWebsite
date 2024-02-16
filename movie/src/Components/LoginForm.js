@@ -61,8 +61,8 @@ export default function LoginForm() {
                 })
                 .then((statusObj) => {
                   console.log("above status object")
-                  console.log("This is an admin status"+statusObj.admin_status);
-                  if (statusObj.admin_status === 1) {
+                  console.log("This is an admin status"+statusObj.theater_status);
+                  if (statusObj.theater_status === 1) {
                     console.log("in status object")
             
                     dispatch(login()); // Set login state to true
@@ -79,7 +79,7 @@ export default function LoginForm() {
           }
         }
       })
-      .catch((error) => alert("Wrong uid or pwd"));
+      .catch((error) => alert("Connection Error!!!"));
   };
 
   return (
