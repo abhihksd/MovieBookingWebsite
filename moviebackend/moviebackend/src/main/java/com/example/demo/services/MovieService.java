@@ -1,5 +1,6 @@
 package com.example.demo.services;
 
+import com.example.demo.entities.Login;
 import com.example.demo.entities.Theater;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,10 +21,12 @@ public class MovieService {
 		return mrepo.save(m);
 	}
 
-	public List<Movie> getMoviesByTheaterLogin_id(int loginId) {
-		return mrepo.findByTheaterLogin_id(loginId);
+//	public List<Movie> getMoviesByTheaterLogin_id(Login loginId) {
+//		return mrepo.findByTheaterLogin_id(loginId);
+//	}
+
+
+	public List<Movie> moviesByTheaterId(int theaterId) {
+		return mrepo.getMoviesByTheaterId(theaterId);
 	}
-
-
-
 }

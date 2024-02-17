@@ -23,8 +23,8 @@ public class TheaterService {
         //return (theaterRepository.getTheaterByLoginId(login_id)).get(); //return type is Theater so use get because of Optional<Theater>
     }
 
-    public Optional<Theater> getTheaterByTheaterId(int theater_id){
-        return  theaterRepository.findById(theater_id);
+    public Theater getTheaterByTheaterId(int theater_id){
+        return  theaterRepository.findById(theater_id).get();
     }
 
     //for system admin

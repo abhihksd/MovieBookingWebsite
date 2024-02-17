@@ -52,7 +52,13 @@ public class MovieController {
 
 	@PostMapping("/getMovies/{id}")
 		public List<Movie> getMoviesByTheaterLoginId(@PathVariable("id") int loginId) {
-			return mservice.getMoviesByTheaterLogin_id(loginId);
+
+		Login login = lservice.getLoginById(loginId);
+
+		Theater theater = tservice.getTheaterByLoginId(login);
+		int theater_id = theater.getTheater_id();
+
+		return mservice.moviesByTheaterId(theater_id);
 		}
 
 }

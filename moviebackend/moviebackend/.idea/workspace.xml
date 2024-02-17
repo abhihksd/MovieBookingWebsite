@@ -4,7 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b778588d-22db-445e-bdf4-1445db05692c" name="Changes" comment="" />
+    <list default="true" id="b778588d-22db-445e-bdf4-1445db05692c" name="Changes" comment="method for getting movie list based on theater id">
+      <change beforePath="$PROJECT_DIR$/../../movie/node_modules/.cache/default-development/3.pack" beforeDir="false" afterPath="$PROJECT_DIR$/../../movie/node_modules/.cache/default-development/3.pack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../movie/node_modules/.cache/default-development/index.pack" beforeDir="false" afterPath="$PROJECT_DIR$/../../movie/node_modules/.cache/default-development/index.pack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../movie/node_modules/.cache/default-development/index.pack.old" beforeDir="false" afterPath="$PROJECT_DIR$/../../movie/node_modules/.cache/default-development/index.pack.old" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -75,7 +79,19 @@
       <option name="presentableId" value="Default" />
       <updated>1707610889836</updated>
     </task>
+    <task id="LOCAL-00001" summary="method for getting movie list based on theater id">
+      <created>1708143909123</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1708143909123</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="method for getting movie list based on theater id" />
+    <option name="LAST_COMMIT_MESSAGE" value="method for getting movie list based on theater id" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

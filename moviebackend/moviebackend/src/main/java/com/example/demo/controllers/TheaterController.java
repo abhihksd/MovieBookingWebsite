@@ -67,7 +67,7 @@ public class TheaterController {
     @PutMapping("/updatestatus/{id}")
     public Theater updateTheaterStatus(@PathVariable("id") int id, @RequestBody TheaterStatusRequest request) {
         theaterservice.updateTheaterStatus(id, request.getStatus());
-        Theater t = theaterservice.getTheaterByTheaterId(id).get();
+        Theater t = theaterservice.getTheaterByTheaterId(id);
         return t;
     }
 

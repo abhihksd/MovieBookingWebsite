@@ -34,9 +34,9 @@ public class Movie {
 
 	@ManyToOne
 	@JoinColumn(name = "theater_id")
-	Theater theater;
+	Theater theater_id;
 
-	public Movie(String title, String director, LocalDate release_date, String genre,String description, int duration, String language,Theater theater) {
+	public Movie(String title, String director, LocalDate release_date, String genre,String description, int duration, String language,Theater theater_id) {
 		super();
 		this.title = title;
 		this.director = director;
@@ -45,6 +45,6 @@ public class Movie {
 		this.duration = duration;
 		this.language = language;
 		this.description = description;
-		this.theater = theater;
+		this.theater_id = theater_id;
 	}
 }
