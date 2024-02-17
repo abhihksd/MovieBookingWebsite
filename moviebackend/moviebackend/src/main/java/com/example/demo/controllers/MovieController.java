@@ -1,10 +1,7 @@
 package com.example.demo.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.example.demo.entities.Login;
 import com.example.demo.entities.Movie;
@@ -15,6 +12,8 @@ import com.example.demo.services.LoginService;
 import com.example.demo.services.MovieService;
 import com.example.demo.services.ShowService;
 import com.example.demo.services.TheaterService;
+
+import java.util.List;
 
 @CrossOrigin(origins="http://localhost:3000")
 @RestController
@@ -51,6 +50,9 @@ public class MovieController {
 		return movie;
 	}
 
-
+	@PostMapping("/getMovies/{id}")
+		public List<Movie> getMoviesByTheaterLoginId(@PathVariable("id") int loginId) {
+			return mservice.getMoviesByTheaterLogin_id(loginId);
+		}
 
 }
