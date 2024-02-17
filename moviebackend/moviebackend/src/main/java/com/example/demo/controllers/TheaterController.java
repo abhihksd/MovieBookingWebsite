@@ -50,9 +50,9 @@ public class TheaterController {
 
         Login login = lservice.getLogin(lc.getUsername(),lc.getPassword());
 
-        //int login_id = login.getLogin_id();
+        int login_id = login.getLogin_id();
 
-        Theater theater = theaterservice.getTheaterByLoginId(login);
+        Theater theater = theaterservice.getTheaterByLogin(login);
         status = theater.getTheater_status();
 
         return  theater;
@@ -75,8 +75,7 @@ public class TheaterController {
     public Theater getTheater(@PathVariable("id") int id){
         Login login = lservice.getLoginById(id);
 
-        return theaterservice.getTheaterByLoginId(login);
-
+        return theaterservice.getTheaterByLogin(login);
     }
 
 }

@@ -23,7 +23,7 @@ public class Theater {
 
     @OneToOne
     @JoinColumn(name = "login_id")
-    Login login_id;
+    Login login;
 
     @Column
     int theater_status;
@@ -40,11 +40,11 @@ public class Theater {
     @Column
     String address;
 
-    public Theater(String theater_name, String theater_location, int total_seats, Login login_id, String owner_name, String licence_no, String email, String phone_no, String address) {
+    public Theater(String theater_name, String theater_location, int total_seats, Login login, String owner_name, String licence_no, String email, String phone_no, String address) {
         this.theater_name = theater_name;
         this.theater_location = theater_location;
         this.total_seats = total_seats;
-        this.login_id = login_id;
+        this.login = login;
         this.owner_name = owner_name;
         this.licence_no = licence_no;
         this.email = email;

@@ -26,7 +26,7 @@ public class MovieService {
 //	}
 
 
-	public List<Movie> moviesByTheaterId(int theaterId) {
-		return mrepo.getMoviesByTheaterId(theaterId);
+	public List<Movie> moviesByTheater(Theater theater) {
+		return mrepo.getMoviesByTheater(theater);
 	}
 }

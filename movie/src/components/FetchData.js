@@ -25,6 +25,7 @@ function FetchData() {
             {movies.map((movie) => (
                 <MovieItem
                     key={movie.movie_id}
+                    movie_id={movie.movie_id}
                     title={movie.title}
                     release_date={movie.release_date}
                     genre={movie.genre}

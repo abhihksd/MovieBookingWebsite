@@ -36,10 +36,10 @@ public class MovieController {
 	{
 		System.out.println(mr);
 		Login l = lservice.getLogin(mr.getUsername(),mr.getPassword());
-		//int login_id = l.getLogin_id();
 
-		Theater t = tservice.getTheaterByLoginId(l);
-		//int theater_id = t.getTheater_id();
+
+		Theater t = tservice.getTheaterByLogin(l);
+
 
 		Movie m1 = new Movie(mr.getTitle(),mr.getDirector(),mr.getRelease_date(),mr.getGenre(),mr.getDescription(),mr.getDuration(),mr.getLanguage(),t);
 		Movie movie = mservice.saveMovie(m1);
@@ -50,15 +50,16 @@ public class MovieController {
 		return movie;
 	}
 
-	@PostMapping("/getMovies/{id}")
+	@GetMapping("/getMovies/{id}")
 	public List<Movie> getMoviesByTheaterLoginId(@PathVariable("id") int loginId) {
 
 		Login login = lservice.getLoginById(loginId);
 
-		Theater theater = tservice.getTheaterByLoginId(login);
-		int theater_id = theater.getTheater_id();
 
-		return mservice.moviesByTheaterId(theater_id);
+		Theater theater = tservice.getTheaterByLogin(login);
+
+
+		return mservice.moviesByTheater(theater);
 	}
 
 

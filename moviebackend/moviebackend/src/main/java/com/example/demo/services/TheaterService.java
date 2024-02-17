@@ -18,17 +18,15 @@ public class TheaterService {
         return theaterRepository.save(t);
     }
 
-    public Theater getTheaterByLoginId(Login login_id){
-        return theaterRepository.getTheaterByLoginId(login_id);
+    public Theater getTheaterByLogin(Login login){
+        return theaterRepository.getTheaterByLogin(login);
         //return (theaterRepository.getTheaterByLoginId(login_id)).get(); //return type is Theater so use get because of Optional<Theater>
     }
 
     public Theater getTheaterByTheaterId(int theater_id){
         return  theaterRepository.findById(theater_id).get();
     }
-
     //for system admin
-
     public List<Theater> getPendingTheaters() {
         return theaterRepository.findTheatersWithStatusZero(); // Assuming 0 represents pending status
     }

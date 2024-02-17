@@ -11,13 +11,9 @@ import java.util.Optional;
 @Repository
 public interface TheaterRepository extends JpaRepository<Theater,Integer> {
 
-    @Query("select t from Theater t where login_id=:loginId")
-    public Theater getTheaterByLoginId(Login loginId);
-
+    @Query("select t from Theater t where t.login=:login")
+    public Theater getTheaterByLogin(Login login);
     @Query("SELECT t FROM Theater t WHERE t.theater_status = 0")
     List<Theater> findTheatersWithStatusZero();
-
-
-
 
 }
