@@ -4,7 +4,14 @@ import Card from "react-bootstrap/Card";
 import M1 from"../img/M1.jpg"
 
 import '../css/card.css';
+import MovieDetails from "./MovieDetailsAfterClick";
+import { useNavigate } from "react-router";
+
+
+
 const MovieItem = ({ title, description, release_date, genre, duration, language, director, imageurl }) => {
+
+  const navigate = useNavigate();
   return (
     <div>
       
@@ -16,11 +23,8 @@ const MovieItem = ({ title, description, release_date, genre, duration, language
           <Card.Img variant="top" />
           <Card.Title className="text-center" >{title}</Card.Title>
           <Card.Text>{director}</Card.Text>
-          {/* <Card.Text>{release_date}</Card.Text> */}
-          {/* <Card.Text>{duration}</Card.Text> */}
-          {/* <Card.Text>{language}</Card.Text> */}
-          {/* <Card.Text>{description}</Card.Text> */}
-          <Button variant="primary" >View</Button>
+         
+          <Button variant="primary" onClick={()=>{navigate('/MovieDetails')}}>View</Button>
         </Card.Body>
       </Card>
       
