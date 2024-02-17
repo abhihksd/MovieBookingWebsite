@@ -2,7 +2,8 @@ import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 import logo from "../img/logo.jpeg";
-import "../css/Home.css";
+import "../CSS/Home.css";
+import FetchData from "./FetchData";
 
 export default function Home() {
   const mystate = useSelector((state) => state.logged);
@@ -19,7 +20,7 @@ export default function Home() {
       </ul>
 
       <h1>HOME PAGE!!</h1>
-
+    <FetchData/>
       {/* <h2>Welcome {localStorage.getItem("user")}</h2> */}
       {/* <p>Login Status: {mystate.loggedIn.toString()}</p> */}
     </div>

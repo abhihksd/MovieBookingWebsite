@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import MovieItem from './MovieItem';
-import '../css/card.css';
+import '../CSS/card.css';
 
 function FetchData() {
     const [movies, setMovies] = useState([]);

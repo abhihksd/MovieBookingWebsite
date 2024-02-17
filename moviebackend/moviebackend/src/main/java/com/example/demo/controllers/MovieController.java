@@ -4,6 +4,7 @@ import com.example.demo.entities.Theater;
 import com.example.demo.services.TheaterService;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import com.example.demo.entities.Movie;
@@ -28,5 +29,10 @@ public class MovieController {
 //		return mservice.saveMovie(m);
 		return  new Movie();
 	}
-
+	@PutMapping("/editmovie/{id}")
+	public ResponseEntity<Movie> updateMovie(@PathVariable Integer id,@RequestBody Movie updatedMovie)
+	{
+		Movie movie=mservice.updateMovie(id, updatedMovie);
+		return ResponseEntity.ok().body(movie);
+	}
 }

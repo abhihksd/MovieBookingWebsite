@@ -3,7 +3,7 @@ import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import M1 from"../img/M1.jpg"
 
-import '../css/card.css';
+import '../CSS/card.css';
 const MovieItem = ({ title, description, release_date, genre, duration, language, director, imageurl }) => {
   return (
     <div>

@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import FetchData from "./FetchData";
 export default function User() {
   return (
     <div>
@@ -20,6 +21,10 @@ export default function User() {
         </div>
       </ul>
       <h1> Welcome User</h1>
+      <div>
+      <FetchData/>
+
+      </div>
     </div>
   );
 }

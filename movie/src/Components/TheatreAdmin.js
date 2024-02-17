@@ -1,6 +1,6 @@
 import { Link, useLocation } from "react-router-dom";
-import AddTheater from "./System_AddTheatre";// Import AddTheater component
-
+// import AddTheater from "./System_AddTheatre";// Import AddTheater component
+import AddTheater from "./System_AddTheatre";
 export default function TheatreAdmin() {
   
 
@@ -30,7 +30,7 @@ export default function TheatreAdmin() {
               <Link to="/editSlot">Edit slot</Link>
             </li>
             <li className="nav-item">
-              <Link to="/editMoive">Edit movie details</Link>
+              <Link to="/editMovie">Edit movie details</Link>
             </li>
             <li className="nav-item">
               <Link to="/removeMovie">Remove movie</Link>

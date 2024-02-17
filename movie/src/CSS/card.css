@@ -1,0 +1,16 @@
+
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start; /* Align cards to the start of the container */
+  }
+  
+  .card {
+    width: calc(18.6667% - 15px); /* Adjust the width based on your layout preference */
+    margin: 12px; /* Adjust margin for spacing between cards */
+  }
+  
+  /* Make sure to add styles for the last card in the row to remove right margin */
+  .card:last-child {
+    margin-right: 0;
+  }
