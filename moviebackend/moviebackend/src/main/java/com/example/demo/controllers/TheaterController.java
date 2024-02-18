@@ -71,11 +71,12 @@ public class TheaterController {
         return t;
     }
 
-    @GetMapping("/getTheater/{id}")
-    public Theater getTheater(@PathVariable("id") int id){
+    @GetMapping("/getTheater")
+    public Theater getTheater(@RequestParam int id){
         Login login = lservice.getLoginById(id);
+        Theater theater = theaterservice.getTheaterByLogin(login);
 
-        return theaterservice.getTheaterByLogin(login);
+        return theater;
     }
 
 }
