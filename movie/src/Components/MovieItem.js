@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import Button from "react-bootstrap/Button";
+
 import Card from "react-bootstrap/Card";
 import M1 from "../img/M1.jpg";
 import { Link, useNavigate } from "react-router-dom";
 
-const MovieItem = ({ movie_id, title, description, release_date, genre, duration, language, director, imageurl }) => {
+const MovieItem = ({ movie_id, title, description, release_date, genre, duration, language, director }) => {
   const navigate = useNavigate();
   
   const handleViewDetails = () => {
@@ -15,6 +15,8 @@ const MovieItem = ({ movie_id, title, description, release_date, genre, duration
     <div>
       <Card style={{ width: "14rem" }}>
         <Card.Img variant="top" src={M1} alt={`Image for ${title}`} />
+        
+   
         <Card.Body>
           <span className="position-absolute top-0 translate-middle badge rounded-pill bg-danger" style={{ left: '85%', zIndex: 1 }}>{genre}</span>
           <Card.Title className="text-center">{title}</Card.Title>

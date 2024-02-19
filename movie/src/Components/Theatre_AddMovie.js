@@ -937,6 +937,7 @@ export default function AddMovie() {
         }
       });
   };
+ 
 
   return (
     <div>
@@ -1114,7 +1115,7 @@ export default function AddMovie() {
             />
             <div className="invalid-feedback">{movie.language.error}</div>
           </FormGroup>
-
+          
           <div style={{ margin: "20px 0" }}></div>
           <Button
             variant="primary"
@@ -1131,7 +1132,7 @@ export default function AddMovie() {
           <p style={{ color: msg === "success" ? "green" : "red" }}>{msg}</p>
         </Form>
       </form>
-    </div>
-  );
+ </div>
+);
 }
 
