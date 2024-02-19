@@ -37,7 +37,7 @@ export default function TheatreAdmin() {
       <div className="navbar navbar-expand-sm bg-light mb-3">
         <div className="container-fluid">
           <div className="navbar-collapse">                      
-            <ul className="navbar-nav ms-auto">
+            <ul >
               <li className="nav-item">
                 <Link className="nav-link" to="/addMovie">Add movie</Link>
               </li>

@@ -25,7 +25,8 @@ import AddTheater from "./components/System_AddTheatre";
 import EditTheatre from "./components/System_EditTheatre";
 import RemoveTheatre from "./components/System_RemoveTheatre";
 import BookMoive from "./components/User_BookMovie";
-import MovieDetails from "./components/MovieDetailsAfterClick";
+import MovieDetails from "./components/MovieDetailsAfterClick"
+import FetchData from "./components/FetchData";
 
 function App() {
   //initialState of logged
@@ -78,7 +79,10 @@ function App() {
           <Route path="/removeTheatre" element={<RemoveTheatre />} />
           <Route path="/editTheatre" element={<EditTheatre />} />
           <Route path="/bookMovie" element={<BookMoive />} />
-          <Route path="/MovieDetails" element={<MovieDetails />}/>
+          {/* <Route path="/MovieDetails" element={<MovieDetails />}/> */}
+          {/* <Route path="/movie/:movie_id"  component={MovieDetails} /> */}
+          <Route path="/movie/:movie_id" element={<MovieDetails />} />
+
         </Routes>
       </div>
     </div>

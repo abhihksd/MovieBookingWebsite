@@ -13,6 +13,7 @@ function FetchData() {
         try {
             const response = await fetch('http://localhost:8080/movies/getAllMovies');
             const data = await response.json();
+            localStorage.setItem("movies",JSON.stringify(data))
             setMovies(data);
         } catch (error) {
             console.error('Error fetching movies:', error);
@@ -33,6 +34,9 @@ function FetchData() {
                     language={movie.language}
                     director={movie.director}
                     description={movie.description}
+                    imageurl={null}
+                    
+                    //specify img url from database
                    
                 />
             ))}
