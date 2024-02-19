@@ -10,10 +10,12 @@ import com.example.demo.repositories.FetchMovieRepository;
 
 @Service
 public class FetchMovieService {
-@Autowired
-private FetchMovieRepository fetchmovieRepository;
+	
+	 	@Autowired
+	    private FetchMovieRepository fetchmovieRepository;
 
-public List<Movie> getAllMovies(){
-	return fetchmovieRepository.findAll();
-}
+	    public List<Movie> getAllMovies(){
+	        return fetchmovieRepository.findAll();
+	    }
+
 }

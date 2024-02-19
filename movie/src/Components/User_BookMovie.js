@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-export default function BookMoive() {
+export default function BookMovie() {
   return (
     <div>
       <ul className="navbar navbar-expand-sm bg-light mb-3">

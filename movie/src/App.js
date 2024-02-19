@@ -24,10 +24,10 @@ import EditMovie from "./Components/Theatre_EditMovie";
 import AddTheater from "./Components/System_AddTheatre";
 import EditTheatre from "./Components/System_EditTheatre";
 import RemoveTheatre from "./Components/System_RemoveTheatre";
-import BookMoive from "./Components/User_BookMovie";
-import { ErrorBoundary } from "react-error-boundary";
-import FetchAPI from "./Components/FetchData";
+import BookMovie from "./Components/User_BookMovie";
 
+import FetchData from './Components/FetchData';
+import MovieItem from './Components/MovieItem';
 function App() {
   //initialState of logged
   const mystate = useSelector((state) => state.logged);
@@ -60,8 +60,6 @@ function App() {
         </div>
       </header>
       <div>
-      <ErrorBoundary>
-  
         <Routes>
           <Route path="/" element={<Welcome />} />
           <Route path="/register" element={<Register />} />
@@ -77,13 +75,13 @@ function App() {
           <Route path="/viewSchedule" element={<ViewSchedule />} />
           <Route path="/editMoive" element={<EditMovie />} />
           <Route path="/removeMovie" element={<RemoveMovie />} />
-          <Route path="/addTheatre" element={<AddTheater />} />
+          <Route path="/AddTheater" element={<AddTheater />} />
           <Route path="/removeTheatre" element={<RemoveTheatre />} />
           <Route path="/editTheatre" element={<EditTheatre />} />
-          <Route path="/bookMovie" element={<BookMoive />} />
+          <Route path="/bookMovie" element={<BookMovie />} />
+
+          
         </Routes>
-        </ErrorBoundary>
-        <FetchAPI/>
       </div>
     </div>
   );
