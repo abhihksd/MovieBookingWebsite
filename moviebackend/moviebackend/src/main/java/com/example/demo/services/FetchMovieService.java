@@ -17,5 +17,7 @@ public class FetchMovieService {
 	    public List<Movie> getAllMovies(){
 	        return fetchmovieRepository.findAll();
 	    }
-
+	    public Movie getMovieById(int id) {
+	        return fetchmovieRepository.findById(id).get();
+	    }
 }

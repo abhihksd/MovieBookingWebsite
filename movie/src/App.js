@@ -28,6 +28,7 @@ import BookMovie from "./Components/User_BookMovie";
 
 import FetchData from './Components/FetchData';
 import MovieItem from './Components/MovieItem';
+import MovieDetails from "./Components/MovieDetailsAfterClick";
 function App() {
   //initialState of logged
   const mystate = useSelector((state) => state.logged);
@@ -79,7 +80,7 @@ function App() {
           <Route path="/removeTheatre" element={<RemoveTheatre />} />
           <Route path="/editTheatre" element={<EditTheatre />} />
           <Route path="/bookMovie" element={<BookMovie />} />
-
+          <Route path="/movie/:movie_id" element={<MovieDetails />} />
           
         </Routes>
       </div>
