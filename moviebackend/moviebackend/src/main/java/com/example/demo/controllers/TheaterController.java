@@ -18,6 +18,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Set;
 
 @CrossOrigin(origins="http://localhost:3000",exposedHeaders = "**")
 @RestController
@@ -78,6 +79,9 @@ public class TheaterController {
 
         return theater;
     }
+
+    @GetMapping("/getTheatersByMovie")
+    public Set<Theater> getTheaterByMovie
 
 }
 

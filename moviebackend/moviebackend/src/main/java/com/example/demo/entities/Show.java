@@ -40,11 +40,11 @@ public class Show {
     LocalTime show_time;
 
     @ManyToOne
-    @JoinColumn(name="movie_id")
+    @JoinColumn(name="movie_id",referencedColumnName = "movie_id")
     Movie movie;
 
     @ManyToOne
-    @JoinColumn(name="theater_id")
+    @JoinColumn(name="theater_id",referencedColumnName = "theater_id")
     Theater theater;
 
     public Show(LocalDate show_date, LocalTime show_time, Movie movie, Theater theater) {
