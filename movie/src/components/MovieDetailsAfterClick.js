@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import {Link, useParams } from "react-router-dom";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import Container from "react-bootstrap/Container";
@@ -48,7 +48,9 @@ const MovieDetails = () => {
             <h4>Director: </h4>{director}
             <h4>Description:</h4> {description}
             <br/>
-            <Button variant="success">Book Ticket</Button>
+            <Link to={`/book-ticket/${movie_id}`}>
+              <Button variant="success">Book Ticket</Button>
+            </Link>
           </div>
         </Col>
       </Row>

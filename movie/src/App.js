@@ -80,7 +80,8 @@ function App() {
           <Route path="/editTheatre" element={<EditTheatre />} />
           <Route path="/bookMovie" element={<BookMoive />} />
           <Route path="/MovieDetails" element={<MovieDetails />}/>
-          
+          <Route path="/movie/:movie_id" element={<MovieDetails />} />
+          <Route path="/book-ticket/:movie_id" element={<BookTicket />} />
         </Routes>
       </div>
     </div>
