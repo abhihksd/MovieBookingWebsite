@@ -23,7 +23,7 @@ public class Customer {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	int user_id;
-	String name;                 //hello
+	String name;                 
 
 	String email;
 
