@@ -81,7 +81,6 @@ function FetchData() {
                 />
             ))}
             </div>
-            <p>hello git</p>
         </div>
     );
 }

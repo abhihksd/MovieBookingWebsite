@@ -575,7 +575,7 @@ export default function Register() {
               onChange={(e) => {
                 handleChange("userType", e.target.value);
               }}
-              className={`form-control ${
+              className={`form-select ${
                 user.userType.touched && !user.userType.valid
                   ? "is-invalid"
                   : ""
