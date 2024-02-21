@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.entities.Movie;
 import com.example.demo.services.FetchMovieService;
-
 @CrossOrigin(origins = "http://localhost:3000")
 @RestController
 @RequestMapping("/movies")

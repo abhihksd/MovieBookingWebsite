@@ -13,8 +13,10 @@ import com.example.demo.services.LoginService;
 @CrossOrigin(origins="http://localhost:3000")
 @RestController
 public class LoginController {
+	
 	@Autowired
 	LoginService lservice;
+	
 	@PostMapping("chkLogin")
 	public Login chkLogin(@RequestBody LoginCheck lcheck) {
 		return lservice.getLogin(lcheck.getUsername(), lcheck.getPassword());

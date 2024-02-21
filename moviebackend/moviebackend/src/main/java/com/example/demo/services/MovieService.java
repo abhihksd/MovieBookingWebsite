@@ -3,15 +3,21 @@ package com.example.demo.services;
 import com.example.demo.Exception.MovieNotFoundException;
 import com.example.demo.entities.Login;
 import com.example.demo.entities.Theater;
+import java.util.List;
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
 import com.example.demo.entities.Movie;
+import com.example.demo.entities.Theater;
 import com.example.demo.repositories.MovieRepository;
 
-import java.util.List;
+import jakarta.persistence.Table;
 
 @Service
+//@Table(name="movie")
 public class MovieService {
 
 	@Autowired
@@ -53,7 +59,24 @@ public class MovieService {
 		movie.setDescription(updateMovie.getDescription());
 		
 		return mrepo.save(movie);
-	
+	}
+
+	public void deleteMovieById(int movie_id) {
+		// TODO Auto-generated method stub
+		Optional<Movie> movie = mrepo.findById(movie_id);
+		if (movie.isPresent())
+			mrepo.deleteById(movie_id);
 
 	}
-}
+
+	public boolean uploadImage(int id, byte[] image) {
+		if(mrepo.uploadImage(id, image) == 1) {
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
+
+	}
+

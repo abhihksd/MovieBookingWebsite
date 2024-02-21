@@ -29,7 +29,7 @@ export default function AddTheater() {
         setTheaterInfo({
           theater_name: "",
           location: "",
-          total_seats: ""
+          total_seats: "",
         });
       } else {
         console.error("Failed to save theater info");
@@ -43,7 +43,7 @@ export default function AddTheater() {
     const { name, value } = e.target;
     setTheaterInfo((prevInfo) => ({
       ...prevInfo,
-      [name]: value
+      [name]: value,
     }));
   };
 
@@ -92,7 +92,6 @@ export default function AddTheater() {
                 onChange={handleChange}
               />
             </Form.Group>
-           
             <Button variant="primary" type="submit">
               Submit
             </Button>

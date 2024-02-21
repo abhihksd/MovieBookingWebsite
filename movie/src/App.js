@@ -27,6 +27,8 @@ import MovieDetails from "./Components/MovieDetailsAfterClick";
 import ShowTheater from "./Components/System_ShowTheater";
 import SeatPicker from "./Components/SeatPicker";
 
+import FetchData from './Components/FetchData';
+import MovieItem from './Components/MovieItem';
 function App() {
   //initialState of logged
   const mystate = useSelector((state) => state.logged);

@@ -7,7 +7,6 @@ export default function Welcome() {
     <div className="App">
       <h1>Welcome to MovieDekho</h1>
       <FetchData/>
-
     
     </div>
   );

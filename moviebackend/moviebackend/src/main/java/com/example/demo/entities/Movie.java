@@ -2,8 +2,17 @@ package com.example.demo.entities;
 import java.sql.Date;
 import java.time.LocalDate;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.Lob;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -12,7 +21,7 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @Entity
-@Table(name="movies")
+@Table(name="movies")	
 public class Movie {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -31,12 +40,16 @@ public class Movie {
 	String language;
 	@Column
 	String description;
-
+	@Column(name="image")
+	@Lob
+	private byte[] image;
 	@ManyToOne
 	@JoinColumn(name = "theater_id")
 	Theater theater;
+	
+	
 
-	public Movie(String title, String director, LocalDate release_date, String genre,String description, int duration, String language,Theater theater) {
+	public Movie(String title, String director, LocalDate release_date, String genre,String description, int duration, String language,Theater theater,byte[] image) {
 		super();
 		this.title = title;
 		this.director = director;
@@ -46,5 +59,6 @@ public class Movie {
 		this.language = language;
 		this.description = description;
 		this.theater = theater;
+		this.image = image;
 	}
 }

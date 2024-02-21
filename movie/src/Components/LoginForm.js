@@ -8,8 +8,36 @@ import { useCookies } from "react-cookie";
 export default function LoginForm() {
   const [username, setUsername] = useState(""); // State for username
   const [password, setPassword] = useState(""); // State for password
+  const [errorMessage, setErrorMessage] = useState(""); // State for error message
   const navigate = useNavigate();
   const dispatch = useDispatch();
+
+  // Function to clear error message
+  const clearErrorMessage = () => {
+    setErrorMessage("");
+  };
+
+  // Function to handle changes in the username field
+  const handleUsernameChange = (e) => {
+    setUsername(e.target.value);
+    clearErrorMessage(); // Clear error message when username changes
+  };
+
+  // Function to handle changes in the password field
+  const handlePasswordChange = (e) => {
+    setPassword(e.target.value);
+    clearErrorMessage(); // Clear error message when password changes
+  };
+
+  // Function to handle unsuccessful login
+  const handleLoginFailure = () => {
+    setErrorMessage("Wrong username or password"); // Set error message state
+  };
+
+  // Function to handle successful login
+  const handleLoginSuccess = () => {
+    setErrorMessage(""); // Clear error message state
+  };
 
   const sendData = (e) => {
     e.preventDefault();
@@ -36,9 +64,9 @@ export default function LoginForm() {
       .then((obj) => {
         console.log(JSON.stringify(obj));
         //setting user object in localstorage..BM
-        localStorage.setItem("user",JSON.stringify(obj))
+        localStorage.setItem("user", JSON.stringify(obj));
         if (Object.keys(obj).length === 0) {
-          console.log("Wrong uid or password");
+          handleLoginFailure(); // Call function to handle unsuccessful login
         } else {
           if (obj.status === false) {
             alert("Request has not been approved");
@@ -83,7 +111,10 @@ export default function LoginForm() {
           }
         }
       })
-      .catch((error) => alert("Connection Error!!!"));
+      .catch((error) => {
+        //handleLoginFailure();
+        alert("Connection Error!!!", error);
+      });
   };
 
   return (
@@ -100,7 +131,7 @@ export default function LoginForm() {
               id="username"
               name="username"
               value={username}
-              onChange={(e) => setUsername(e.target.value)} // Update username state
+              onChange={handleUsernameChange}
             />
           </div>
         </div>
@@ -115,7 +146,7 @@ export default function LoginForm() {
               id="password"
               name="password"
               value={password}
-              onChange={(e) => setPassword(e.target.value)} // Update password state
+              onChange={handlePasswordChange}
             />
           </div>
         </div>
@@ -126,6 +157,7 @@ export default function LoginForm() {
               type="submit"
               className="btn btn-primary me-2"
               onClick={sendData}
+              disabled={!username || !password}
             >
               Submit
             </button>
@@ -133,12 +165,14 @@ export default function LoginForm() {
               type="reset"
               className="btn btn-danger"
               onClick={() => {
-                setUsername(""); // Reset username state
-                setPassword(""); // Reset password state
+                setUsername("");
+                setPassword("");
+                clearErrorMessage();
               }}
             >
               Reset
             </button>
+            {errorMessage && <p className="text-danger">{errorMessage}</p>}
           </div>
         </div>
       </form>

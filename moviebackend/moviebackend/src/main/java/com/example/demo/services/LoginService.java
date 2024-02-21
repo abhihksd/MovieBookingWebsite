@@ -16,7 +16,7 @@ public class LoginService {
 	public Login getLogin(String username,String password)
 	{
 		Login l;
-		Optional<Login> ol=lrepo.getLogin(username, password);
+		Optional<Login> ol = lrepo.getLogin(username, password);
 		try {
 			l=ol.get();
 		}catch(Exception e)
