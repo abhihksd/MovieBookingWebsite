@@ -29,6 +29,10 @@ public class MoviePoJo {
     int duration;
     String language;
 
+    byte[] image;
+
+    int movie_id;
+
 
     String username;
     String password;

@@ -9,6 +9,8 @@ import com.example.demo.entities.Movie;
 import com.example.demo.repositories.MovieRepository;
 
 import java.util.List;
+import java.util.Optional;
+import java.util.Set;
 
 @Service
 public class MovieService {
@@ -29,4 +31,31 @@ public class MovieService {
 	public List<Movie> moviesByTheater(Theater theater) {
 		return mrepo.getMoviesByTheater(theater);
 	}
+
+	public void deleteMovieById(int movie_id) {
+		// TODO Auto-generated method stub
+		Optional<Movie> movie = mrepo.findById(movie_id);
+		if (movie.isPresent())
+			mrepo.deleteById(movie_id);
+
+	}
+
+	public boolean uploadImage(int id, byte[] image) {
+		if(mrepo.uploadImage(id, image) == 1) {
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
+
+	public Movie getMovieByMid(int mid) {
+		return mrepo.getMovieByMid(mid);
+	}
+
+//	public Set<Integer> getThearesIdByMName(String mname) {
+//		return mrepo.getTheatrIdByMName(mname);
+//	}
+
+
 }

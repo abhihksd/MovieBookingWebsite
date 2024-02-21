@@ -32,11 +32,15 @@ public class Movie {
 	@Column
 	String description;
 
+	@Column(name="image")
+	@Lob
+	private byte[] image;
+
 	@ManyToOne
 	@JoinColumn(name = "theater_id")
 	Theater theater;
 
-	public Movie(String title, String director, LocalDate release_date, String genre,String description, int duration, String language,Theater theater) {
+	public Movie(String title, String director, LocalDate release_date, String genre,String description, int duration, String language,Theater theater,byte[] image ) {
 		super();
 		this.title = title;
 		this.director = director;
@@ -46,5 +50,6 @@ public class Movie {
 		this.language = language;
 		this.description = description;
 		this.theater = theater;
+		this.image=image;
 	}
 }

@@ -34,7 +34,7 @@ function FetchData() {
                     language={movie.language}
                     director={movie.director}
                     description={movie.description}
-                    imageurl={null}
+                    image={movie.image}
                     
                     //specify img url from database
                    

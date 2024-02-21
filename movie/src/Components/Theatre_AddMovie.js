@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 export default function AddMovie() {
   const nav = useNavigate();
   const [msg, setMsg] = useState("");
+  const [file, setFile] = useState();
   const init = {
     title: { value: "", valid: false, touched: false, error: "" },
     director: { value: "", valid: false, touched: false, error: "" },
@@ -16,6 +17,7 @@ export default function AddMovie() {
     description: { value: "", valid: false, touched: false, error: "" },
     duration: { value: "", valid: false, touched: false, error: "" },
     language: { value: "", valid: false, touched: false, error: "" },
+    image: { value: "", valid: false, touched: false, error: "" },
     formValid: false,
   };
 
@@ -35,6 +37,27 @@ export default function AddMovie() {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
+    // Additional validation for show date
+    if (name === 'showDate') {
+      const releaseDate = new Date(movie.releaseDate.value);
+      const showDate = new Date(value);
+
+      if (showDate < releaseDate) {
+        dispatch({
+          type: "update",
+          data: {
+            key: name,
+            value,
+            touched: true,
+            valid: false,
+            error: "Show date must be after release date",
+            formValid: false,
+          },
+        });
+        return;
+      }
+    }
+
     dispatch({
       type: "update",
       data: {
@@ -76,20 +99,36 @@ export default function AddMovie() {
         genre: movie.genre.value,
         description: movie.description.value,
         duration: movie.duration.value,
-        language: movie.language.value,
-      }),
+        language: movie.language.value
+      })
     };
 
     fetch("http://localhost:8080/addMovie", reqOption)
-      .then((resp) => resp.text())
-      .then((data) => {
-        setMsg(data);
-        if (data.length > 0) {
-          nav("/theatreAdmin");
-        } else {
-          alert("Something went wrong");
-        }
-      });
+    .then(resp=>{
+      if(resp.ok)
+         return resp.json();
+      else 
+         throw new Error("server error");  
+    })
+    .then(obj => {
+      console.log(JSON.stringify(obj))
+      var fd = new FormData();
+      fd.append("file",file); 
+      const reqOption1 ={
+        mode: 'cors',
+        method :"POST",
+        body:fd
+      }
+      fetch("http://localhost:8080/uploadImage/"+obj.movie_id,reqOption1)
+              .then(resp => resp.json())
+              .then(data => console.log(JSON.stringify(data)))
+
+              nav("/theatreAdmin");
+      })
+      .catch((error)=> {console.log("Error:"+error)})
+
+
+
   };
 
   return (
@@ -268,13 +307,27 @@ export default function AddMovie() {
             />
             <div className="invalid-feedback">{movie.language.error}</div>
           </FormGroup>
-
+          <FormGroup>
+            <FormLabel>Upload Movie Image:</FormLabel>
+            <input
+              type="file"
+              name="image"
+              accept="image/*"
+              onChange={(e) => setFile(e.target.files[0])} // Call handleFileChange on file selection
+              className={`form-control${
+                movie.image.touched && !movie.image.valid
+                  ? "is-invalid"
+                  : ""
+              }`}
+            />
+          </FormGroup>
           <div style={{ margin: "20px 0" }}></div>
           <Button
             variant="primary"
             type="submit"
             onClick={submitData}
             style={{ marginRight: "20px" }}
+            disabled={!movie.formValid} 
           >
             Submit
           </Button>
@@ -284,6 +337,6 @@ export default function AddMovie() {
           <p style={{ color: msg === "success" ? "green" : "red" }}>{msg}</p>
         </Form>
       </form>
-    </div>
-  );
+ </div>
+);
 }
