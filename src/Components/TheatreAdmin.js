@@ -362,7 +362,7 @@ export default function TheatreAdmin() {
                     <td>{movie.title}</td>
                     <td>
                       <Link to={`/editMovie/${movie.movie_id  }`}>
-                      <Button variant="primary">Edit</Button>
+                      <Button variant="primary" className="mr-2">Edit</Button>
                       </Link>
                       <Button
                         variant="danger"
@@ -381,3 +381,4 @@ export default function TheatreAdmin() {
     </div>
   );
 }
+

@@ -65,7 +65,6 @@ export default function EditMovie() {
   } = state;
   return (
     <div>
-      
       <ul className="navbar navbar-expand-sm bg-light mb-3">
         <div className="topnav">
           <div className="topnav-right">
@@ -156,7 +155,7 @@ export default function EditMovie() {
             name="language"
             value={language}
             onChange={handleChange}
-            className="form-control"
+            className="form-control"  
           />
         </div>
         <div className="mb-3">
@@ -179,3 +178,4 @@ export default function EditMovie() {
     </div>
   );
 }
+
