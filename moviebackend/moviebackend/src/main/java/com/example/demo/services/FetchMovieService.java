@@ -18,7 +18,4 @@ public class FetchMovieService {
 	        return fetchmovieRepository.findAll();
 	    }
 
-	    public Movie getMovieById(int id) {
-	        return fetchmovieRepository.findById(id).get();
-	    }
 }
