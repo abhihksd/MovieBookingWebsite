@@ -99,8 +99,8 @@ export default function AddMovie() {
         genre: movie.genre.value,
         description: movie.description.value,
         duration: movie.duration.value,
-        language: movie.language.value,
-      }),
+        language: movie.language.value
+      })
     };
 
     fetch("http://localhost:8080/addMovie", reqOption)
@@ -115,7 +115,7 @@ export default function AddMovie() {
       var fd = new FormData();
       fd.append("file",file); 
       const reqOption1 ={
-        mode: 'no-cors',
+        mode: 'cors',
         method :"POST",
         body:fd
       }
