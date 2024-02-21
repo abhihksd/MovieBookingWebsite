@@ -25,6 +25,7 @@ import com.example.demo.services.LoginService;
 import com.example.demo.services.MovieService;
 import com.example.demo.services.ShowService;
 import com.example.demo.services.TheaterService;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
@@ -116,6 +117,25 @@ public class MovieController {
 	{
 		Movie movie=mservice.updateMovie(id, updatedMovie);
 		return ResponseEntity.ok().body(movie);
+	}
+
+	@DeleteMapping("/deleteMovie/{movie_id}")
+	public void deleteMovie(@PathVariable int movie_id) {
+		mservice.deleteMovieById(movie_id);
+
+	}
+
+	@PostMapping(value = "/uploadImage/{movie_id}", consumes = "multipart/form-data")
+	public boolean uploadImage(@PathVariable("movie_id") int did, @RequestBody MultipartFile file) {
+
+
+		boolean flag = true;
+		try {
+			flag = mservice.uploadImage(did, file.getBytes());
+		} catch (Exception e) {
+			flag = false;
+		}
+		return flag;
 	}
 
 

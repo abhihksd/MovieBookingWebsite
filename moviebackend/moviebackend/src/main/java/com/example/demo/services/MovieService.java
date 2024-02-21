@@ -15,6 +15,9 @@ import com.example.demo.entities.Theater;
 import com.example.demo.repositories.MovieRepository;
 
 import jakarta.persistence.Table;
+import java.util.List;
+import java.util.Optional;
+import java.util.Set;
 
 @Service
 //@Table(name="movie")
@@ -78,5 +81,13 @@ public class MovieService {
 		}
 	}
 
+	public Movie getMovieByMid(int mid) {
+		return mrepo.getMovieByMid(mid);
 	}
 
+//	public Set<Integer> getThearesIdByMName(String mname) {
+//		return mrepo.getTheatrIdByMName(mname);
+//	}
+
+
+}

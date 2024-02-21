@@ -26,7 +26,7 @@ import BookMovie from "./Components/User_BookMovie";
 import MovieDetails from "./Components/MovieDetailsAfterClick";
 import ShowTheater from "./Components/System_ShowTheater";
 import SeatPicker from "./Components/SeatPicker";
-
+import BookTicket from "./components/BookTicket";
 import FetchData from './Components/FetchData';
 import MovieItem from './Components/MovieItem';
 function App() {
@@ -80,10 +80,13 @@ function App() {
           <Route path="/removeTheatre" element={<RemoveTheatre />} />
           <Route path="/editTheatre" element={<EditTheatre />} />
           <Route path="/bookMovie" element={<BookMovie />} />
-          <Route path="/MovieDetails" element={<MovieDetails />}/>
-          <Route path="/showTheater" element={<ShowTheater/>}/>
-          <Route path="/updatePass" element={<UpdatePass/>}/>
-          <Route path="/seatSelect" element={<SeatPicker/>}/>
+          {/* <Route path="/MovieDetails" element={<MovieDetails />}/> */}
+          {/* <Route path="/movie/:movie_id"  component={MovieDetails} /> */}
+          <Route path="/movie/:movie_id" element={<MovieDetails />} />
+          <Route path="/book-ticket/:movie_id" element={<BookTicket />} />
+         
+          <Route path="/seatselect/:show_id" element={<SeatPicker/>}/>
+                 
           
         </Routes>
       </div>

@@ -39,7 +39,7 @@ const MovieDetails = () => {
   return (
     <Container>
       <Row className="justify-content-md-center">
-        <Col md="auto">
+        {/* <Col md="auto">
           <Card style={{ width: "18rem" }}>
             <Card.Img variant="top" src={M1} alt={`Image for ${title}`} />
             <Card.Body>
@@ -53,6 +53,21 @@ const MovieDetails = () => {
               <Button variant="primary">Book Now</Button>
             </Card.Body>
           </Card>
+        </Col> */}
+        <Col xs={12} md={6}>
+          <div className="details">
+            <h2>{title}</h2>
+            <h4>Release Date: </h4>{release_date}
+            <h4>Genre: </h4>{genre}
+            <h4>Duration: </h4>{duration}
+            <h4>Language: </h4>{language}
+            <h4>Director: </h4>{director}
+            <h4>Description:</h4> {description}
+            <br/>
+            <Link to={`/book-ticket/${movie_id}`}>
+              <Button variant="success">Book Ticket</Button>
+            </Link>
+          </div>
         </Col>
       </Row>
     </Container>

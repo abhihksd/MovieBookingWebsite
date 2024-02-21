@@ -1,6 +1,6 @@
 package com.example.demo.repositories;
 
-import com.example.demo.entities.Login;
+
 import com.example.demo.entities.Theater;
 
 import java.util.List;
@@ -17,8 +17,10 @@ import com.example.demo.entities.Movie;
 import jakarta.persistence.Table;
 import jakarta.transaction.Transactional;
 
-@Transactional
 
+import java.util.List;
+import java.util.Set;
+@Transactional
 @Repository
 //@Table(name="movie")
 public interface MovieRepository extends JpaRepository<Movie, Integer> {

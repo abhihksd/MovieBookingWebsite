@@ -4,12 +4,11 @@ import com.example.demo.POJO.LoginCheck;
 import com.example.demo.POJO.TheaterPoJo;
 import com.example.demo.POJO.TheaterStatusRequest;
 import com.example.demo.entities.Login;
+import com.example.demo.entities.Movie;
 import com.example.demo.entities.Role;
 import com.example.demo.entities.Theater;
 import com.example.demo.repositories.TheaterRepository;
-import com.example.demo.services.LoginService;
-import com.example.demo.services.RoleService;
-import com.example.demo.services.TheaterService;
+import com.example.demo.services.*;
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.extern.java.Log;
@@ -18,6 +17,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Set;
 
 @CrossOrigin(origins="http://localhost:3000",exposedHeaders = "**")
 @RestController
@@ -28,6 +28,11 @@ public class TheaterController {
     private RoleService rservice;
     @Autowired	
     private TheaterService theaterservice;
+    @Autowired
+    private MovieService mservice;
+
+    @Autowired
+    private ShowService showservice;
 
     @PostMapping("/addTheater")
     public Theater addTheater(@RequestBody TheaterPoJo th) {
@@ -90,5 +95,15 @@ public class TheaterController {
     	return theaterservice.getTheaters();
     }
     
+    @GetMapping("/getTheatersByMovie/{mid}")
+    public List<Theater> getTheaterByMovie(@PathVariable("mid") int mid){
+
+        Movie movie = mservice.getMovieByMid(mid);
+
+       List<Theater> theaters = showservice.getTheaters(movie);
+       return theaters;
+
+    }
+
 }
 

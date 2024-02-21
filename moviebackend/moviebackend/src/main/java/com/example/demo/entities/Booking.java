@@ -1,42 +1,39 @@
 package com.example.demo.entities;
 
-
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.time.LocalDate;
-
-@Entity
 @Getter
 @Setter
+@NoArgsConstructor
+@Entity
 @Table(name="booking")
 public class Booking {
-
     @Id
-    @Column(nullable = false, updatable = false)
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer bookingId;
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
+    int booking_id;
+    @ManyToOne
+    @JoinColumn(name="user_id")
+
+    Customer customer;
+    @Column
+    int show_id;
+    @Column
+    int amount;
 
     @Column
-    private LocalDate bookingDate;
+    int status;
 
     @Column
-    private Integer amount;
+    int seat_number;
 
-    @Column(length = 20)
-    private String status;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "screen_details_id")
-    private ScreenDetails screenDetails;
-
+    public Booking(Customer customer, int show_id, int amount, int status, int seat_number) {
+        this.customer = customer;
+        this.show_id = show_id;
+        this.amount = amount;
+        this.status = status;
+        this.seat_number = seat_number;
+    }
 }
