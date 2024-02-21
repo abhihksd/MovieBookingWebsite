@@ -67,25 +67,6 @@ const { title, director, releaseDate, genre, duration, language, description } =
         </div>
       </ul>
       <h1>Edit movie</h1>
-      {/* <form onSubmit={handleSubmit}>
-
-                <label>Title:</label>
-                <input type="text" name="title" value={title} onChange={handleChange} /><br/>
-                <label>Director:</label>
-                <input type="text" name="director" value={director} onChange={handleChange} /><br/>
-                <label>Release Date:</label>
-                <input type="date" name="releaseDate" value={releaseDate} onChange={handleChange} /><br/>
-                <label>Genre:</label>
-                <input type="text" name="genre" value={genre} onChange={handleChange} /><br/>
-                <label>Duration:</label>
-                <input type="number" name="duration" value={duration} onChange={handleChange} /><br/>
-                <label>Language:</label>
-                <input type="text" name="language" value={language} onChange={handleChange} /><br/>
-                <label>Description:</label>
-                <textarea name="description" value={description} onChange={handleChange} /><br/>
-                <button type="submit">Update</button>
-            </form>  */}
-
 <form onSubmit={handleSubmit} className="mt-4">
   <div className="mb-3">
     <label htmlFor="title" className="form-label">Title:</label>

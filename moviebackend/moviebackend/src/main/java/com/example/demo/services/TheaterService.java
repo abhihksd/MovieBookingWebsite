@@ -45,6 +45,11 @@ public class TheaterService {
     public List<String> getAllTheaterLocations(){
     	return theaterRepository.findAllByTheater_location();
     }
+
+	public List<Theater> getTheaters() {
+		// TODO Auto-generated method stub
+		return theaterRepository.findAll();
+	}
     
     
 }

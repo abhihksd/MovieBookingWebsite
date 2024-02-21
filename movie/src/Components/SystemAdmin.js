@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Table, Button } from 'react-bootstrap';
+import NavBar from "./NavBar";
 
 export default function SystemAdmin() {
   const [theaters, setTheaters] = useState([]);
@@ -66,25 +67,7 @@ export default function SystemAdmin() {
 
   return (
     <div>
-      <ul className="navbar navbar-expand-sm bg-light mb-3">
-        <div className="topnav">
-          <div className="topnav-right">
-            <li className="nav-item search-field">
-              <input className="search" type="text" placeholder="Search" />
-            </li>
-           
-            <li className="nav-item">
-              <Link to="/removeTheatre">Remove theatre</Link>
-            </li>
-            <li className="nav-item">
-              <Link to="/editTheatre">Edit theatre details</Link>
-            </li>
-            <li className="nav-item">
-              <Link to="/logout">Logout</Link>
-            </li>
-          </div>
-        </div>
-      </ul>
+      <NavBar/>
       <h1 style={{ textAlign: "center" }}>System Admin Homepage</h1>
 
       <Table striped bordered hover>

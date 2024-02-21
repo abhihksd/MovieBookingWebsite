@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import M1 from "../img/M1.jpg";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import MovieDetails from "./MovieDetailsAfterClick";
 
 const MovieItem = ({ movie_id, title, description, release_date, genre, duration, language, director, imageurl }) => {
@@ -35,7 +35,9 @@ const MovieItem = ({ movie_id, title, description, release_date, genre, duration
           <Card.Text>{director}</Card.Text>
           <Card.Text>{release_date}</Card.Text>
           {showDetails && <MovieDetails movie={mobject} />}
-          <Button variant="primary" onClick={handleViewDetails}>View</Button>
+          <Link to={`/movie/${movie_id}`} className="btn btn-primary" onClick={handleViewDetails}>
+            View Details
+ </Link>
         </Card.Body>
       </Card>
     </div>

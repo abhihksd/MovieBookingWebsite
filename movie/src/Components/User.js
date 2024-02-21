@@ -2,12 +2,14 @@ import { Link } from "react-router-dom";
 import FetchData from "./FetchData";
 import TheaterDropDown from "./TheaterDropDown";
 import { useEffect } from "react";
+import NavBar from "./NavBar";
 
 export default function User() {
 
-  return (
+  return (  
     <div>
-      <ul className="navbar navbar-expand-sm bg-light mb-3">
+      <NavBar/>
+      {/* <ul className="navbar navbar-expand-sm bg-light mb-3">
         <div className="topnav">
           <div className="topnav-right">
             <li className="nav-item search-field">
@@ -20,9 +22,10 @@ export default function User() {
             
           </div>
         </div>
-      </ul>
+      </ul> */}
       <h1> Welcome User</h1>
       <FetchData/>
+      
     </div>
   );
 }

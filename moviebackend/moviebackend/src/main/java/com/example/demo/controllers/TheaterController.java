@@ -26,7 +26,7 @@ public class TheaterController {
     private LoginService lservice;
     @Autowired
     private RoleService rservice;
-    @Autowired
+    @Autowired	
     private TheaterService theaterservice;
 
     @PostMapping("/addTheater")
@@ -83,5 +83,12 @@ public class TheaterController {
     public List<String> getAllTheaterLocations(){
     	return theaterservice.getAllTheaterLocations();
     }
+    
+    //for admin only
+    @GetMapping("/alltheaters")
+    public List<Theater> getAllTheaters(){
+    	return theaterservice.getTheaters();
+    }
+    
 }
 

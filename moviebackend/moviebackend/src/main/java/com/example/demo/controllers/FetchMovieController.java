@@ -19,10 +19,10 @@ public class FetchMovieController {
     @Autowired
     private FetchMovieService fmservice;
 
-//    @GetMapping("/getAllMovies")
-//    public List<Movie> getAllMovies(){
-//        return fmservice.getAllMovies();
-//    }
+    @GetMapping("/getAllMovies")
+    public List<Movie> getAllMovies(){
+        return fmservice.getAllMovies();
+    }
     @GetMapping("/getAllMovies/{city}")
     public List<Movie> getAllMovies(@PathVariable("city") String city){
     	return fmservice.getAllMoviesByTheaterLocation(city);

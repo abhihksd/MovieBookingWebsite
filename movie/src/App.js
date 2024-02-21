@@ -1,7 +1,5 @@
-import logo from "./logo.svg";
-import bike from "./img/logo.jpeg";
+import movie_logo from "./img/logo.jpeg";
 import "./App.css";
-
 import Register from './Components/RegistrationForm'
 import { Link, Route, Routes } from "react-router-dom";
 import LoginForm from "./Components/LoginForm";
@@ -24,9 +22,10 @@ import EditMovie from "./Components/Theatre_EditMovie";
 import AddTheater from "./Components/System_AddTheatre";
 import EditTheatre from "./Components/System_EditTheatre";
 import RemoveTheatre from "./Components/System_RemoveTheatre";
-import BookMoive from "./Components/User_BookMovie";
+import BookMovie from "./Components/User_BookMovie";
 import MovieDetails from "./Components/MovieDetailsAfterClick";
-
+import ShowTheater from "./Components/System_ShowTheater";
+import SeatPicker from "./Components/SeatPicker";
 
 function App() {
   //initialState of logged
@@ -41,7 +40,7 @@ function App() {
           <ul className="navbar navbar-expand-sm bg-light mb-3">
             <div className="topnav">
               <li className="nav-item">
-                <img className="App-logo" src={bike} alt="Logo" />
+                <img className="App-logo" src={movie_logo} alt="Logo" />
               </li>
               <div className="topnav-right">
                 <li className="nav-item search-field">
@@ -78,10 +77,12 @@ function App() {
           <Route path="/addTheater" element={<AddTheater />} />
           <Route path="/removeTheatre" element={<RemoveTheatre />} />
           <Route path="/editTheatre" element={<EditTheatre />} />
-          <Route path="/bookMovie" element={<BookMoive />} />
+          <Route path="/bookMovie" element={<BookMovie />} />
           <Route path="/MovieDetails" element={<MovieDetails />}/>
-          <Route path="/movie/:movie_id" element={<MovieDetails />} />
-          <Route path="/book-ticket/:movie_id" element={<BookTicket />} />
+          <Route path="/showTheater" element={<ShowTheater/>}/>
+          <Route path="/updatePass" element={<UpdatePass/>}/>
+          <Route path="/seatSelect" element={<SeatPicker/>}/>
+          
         </Routes>
       </div>
     </div>

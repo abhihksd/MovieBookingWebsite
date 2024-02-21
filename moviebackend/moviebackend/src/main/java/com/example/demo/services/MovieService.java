@@ -21,10 +21,14 @@ public class MovieService {
 	{
 		return mrepo.save(m);
 	}
+	
+	public List<Movie> getAllMovies(){
+		return mrepo.findAll();
+	}
 
-//	public List<Movie> getMoviesByTheaterLogin_id(Login loginId) {
-//		return mrepo.findByTheaterLogin_id(loginId);
-//	}
+	public List<Movie> getMoviesByTheaterLogin_id(Login loginId) {
+		return mrepo.findByTheaterLogin_id(loginId);
+	}
 
 
 	public List<Movie> moviesByTheater(Theater theater) {

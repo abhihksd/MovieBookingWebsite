@@ -50,6 +50,12 @@ public class MovieController {
 
 		return movie;
 	}
+	
+	@GetMapping("/movies")
+	public List<Movie> getAllMovies()
+	{
+		return mservice.getAllMovies();
+	}
 
 	@GetMapping("/getMovies/{id}")
 	public List<Movie> getMoviesByTheaterLoginId(@PathVariable("id") int loginId) {

@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { Table, Button, Container, Row, Col } from 'react-bootstrap';
 import EditMovie from "./Theatre_EditMovie";
+import NavBar from "./NavBar";
 
 export default function TheatreAdmin() {
   const [theaterInfo, setTheaterInfo] = useState(null);
@@ -38,7 +39,8 @@ export default function TheatreAdmin() {
  }
   return (
     <div>
-      <div className="navbar navbar-expand-sm bg-light mb-3">
+      <NavBar/>
+      {/* <div className="navbar navbar-expand-sm bg-light mb-3">
         <div className="container-fluid">
           <div className="navbar-collapse">                      
             <ul className="navbar-nav ms-auto">
@@ -60,7 +62,7 @@ export default function TheatreAdmin() {
             </ul>
           </div>
         </div>
-      </div>
+      </div> */}
 
       <Container className="d-flex justify-content-center">
         <Row>

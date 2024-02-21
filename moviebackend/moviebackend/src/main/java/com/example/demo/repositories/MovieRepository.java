@@ -16,8 +16,8 @@ public interface MovieRepository extends JpaRepository<Movie, Integer> {
 //    @Query("select m from Movie m, Theater t where m.theater_id = t.theater_id and t.login_id = :loginId")
 //    List<Movie> findByTheaterLogin_id(Login loginId);
 
-    @Query("select m from Movie m where m.theater = :theater")
-    List<Movie> getMoviesByTheater(Theater theater);
+   @Query("select m from Movie m where m.theater = :theater")
+   List<Movie> getMoviesByTheater(Theater theater);
     
     
 
