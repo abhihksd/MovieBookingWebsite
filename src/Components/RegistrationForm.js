@@ -370,17 +370,18 @@ export default function Register() {
     switch (key) {
       case "name":
         // var pattern = /^[a-zA-Z\s]{1,20}$/;
-        var pattern = /^[A-Z]{1}[a-z]{1,} [A-Z]{1}[a-z]{1,}$/; //First Alphabet of First and Last NAME should be capital
+        //var pattern = /^[A-Z]{1}[a-z]{1,} [A-Z]{1}[a-z]{1,}$/; //First Alphabet of First and Last Name should be capital
+        var pattern = /^[A-Z][a-z]{2,} [A-Z][a-z]{2,}$/; //First Alphabet of First and Last Name should be capital and min 3 characters for name and surname
         if (!pattern.test(val)) {
           valid = false;
-          error = "First Alphabet of First and Last Name should be capital";
+          error = "First Alphabet of First and Last Name should be capital and minimum 3 characters for each";
         }
         break;
       case "username":
         pattern = /^[a-zA-Z0-9._-]{6,15}$/; //range from 6 to 15
         if (!pattern.test(val)) {
           valid = false;
-          error = "Username must be between 6 to 15 characters";
+          error = "Username must be between 6 to 15 letters (No special symbols allowed )";
         }
         break;
       case "email":
@@ -402,7 +403,7 @@ export default function Register() {
           /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
         if (!pattern.test(val)) {
           valid = false;
-          error = " Password needs a lowercase,uppercase and a digit ";
+          error = " Password should be combination of lowercase,uppercase,special characters and digits (minimum length 8 characters)";
         }
         break;
       case "address":

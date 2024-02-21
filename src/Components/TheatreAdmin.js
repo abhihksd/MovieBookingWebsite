@@ -361,7 +361,9 @@ export default function TheatreAdmin() {
                   <tr key={movie.movie_id}>
                     <td>{movie.title}</td>
                     <td>
-                      <Button variant="primary">Edit</Button>{" "}
+                      <Link to={`/editMovie/${movie.movie_id  }`}>
+                      <Button variant="primary">Edit</Button>
+                      </Link>
                       <Button
                         variant="danger"
                         onClick={() => handleDeleteMovie(movie.movie_id)}

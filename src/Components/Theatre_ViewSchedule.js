@@ -45,7 +45,7 @@ export default function ViewSchedule() {
 
   const handleSearchChange = (e) => {
     setSearchTerm(e.target.value);
-    // Implement search functionality here
+    // 
   };
 
   return (
@@ -81,6 +81,8 @@ export default function ViewSchedule() {
           </tr>
         </thead>
         <tbody>
+          {/* [{"bookingId":1,"customerId":7,"showId":8,"bookingDate":"2024-02-20","totalAmount":200.00,"status":"1","customer":null,"show":null,"tickets":[]}]
+                {booking.customerId} */}
           {bookings.map((booking) => (
             <tr key={booking.booking_id}>
               <td>{booking.bookingId}</td>
@@ -91,8 +93,6 @@ export default function ViewSchedule() {
               <td>{booking.status}</td>
             </tr>
           ))}
-{/* [{"bookingId":1,"customerId":7,"showId":8,"bookingDate":"2024-02-20","totalAmount":200.00,"status":"1","customer":null,"show":null,"tickets":[]}]
-{booking.customerId} */}
         </tbody>
       </table>
     </div>

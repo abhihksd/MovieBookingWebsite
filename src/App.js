@@ -73,7 +73,7 @@ function App() {
           <Route path="/editSlot" element={<EditSlot />} />
           <Route path="/addMovie" element={<AddMovie />} />
           <Route path="/viewSchedule" element={<ViewSchedule />} />
-          <Route path="/editMoive" element={<EditMovie />} />
+          <Route path="/editMovie/:movie_id" element={<EditMovie />} />
           <Route path="/removeMovie" element={<RemoveMovie />} />
           <Route path="/AddTheater" element={<AddTheater />} />
           <Route path="/removeTheatre" element={<RemoveTheatre />} />
