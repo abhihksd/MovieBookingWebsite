@@ -279,6 +279,26 @@ export default function TheatreAdmin() {
  const handleedit=(movieId)=>{
   setmoveid(movieId);
  }
+ const handleDeleteMovie = (movieId) => {
+    
+  const isConfirmed = window.confirm("Are you sure you want to delete this movie?");
+  
+  
+  if (isConfirmed) {
+    
+    fetch(`http://localhost:8080/deleteMovie/${movieId}`, {
+      method: "DELETE",
+    })
+      .then((resp) => {
+        if (resp.ok) {
+         
+          setMovies(movies.filter((movie) => movie.movie_id !== movieId));
+        }
+      })
+      .catch((error) => console.error("Error deleting movie:", error));
+  }
+};
+ 
   return (
     <div>
       <NavBar/>
