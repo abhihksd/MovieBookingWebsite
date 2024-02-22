@@ -20,4 +20,7 @@ public class FetchMovieService {
     {
     	return fetchmovieRepository.findAllByTheaterLocation(city);
     }
+    public Movie getMovieById(int id) {
+        return fetchmovieRepository.findById(id).get();
+    }
 }

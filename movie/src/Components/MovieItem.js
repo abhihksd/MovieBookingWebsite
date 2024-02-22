@@ -36,7 +36,7 @@ const MovieItem = ({ movie_id, title, description, release_date, genre, duration
           <Card.Title className="text-center">{title}</Card.Title>
           <Card.Text>{director}</Card.Text>
           <Card.Text>{release_date}</Card.Text>
-          <Link to={`/movie/${movie_id}`} className="btn btn-primary"><Button onClick={MovieDetails}>View</Button></Link>
+          <Link to={`/movie/${movie_id}`} className="btn btn-primary"><Button>View</Button></Link>
         </Card.Body>
       </Card>
     </div>

@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router';
-import "../CSS/seat.css"
-function SeatPicker({ match }) {
+import { useParams } from 'react-router-dom';
+import "../CSS/seat.css";
+
+function SeatPicker() {
   const { show_id } = useParams();
   const [selectedSeats, setSelectedSeats] = useState([]);
   const [registeredSeats, setRegisteredSeats] = useState([]);
+  const [billAmount, setBillAmount] = useState(0);
+  const [registrationSuccess, setRegistrationSuccess] = useState(false); // State to track registration success
 
   useEffect(() => {
     // Fetch list of registered seats for the given show_id
@@ -56,31 +59,31 @@ function SeatPicker({ match }) {
 
   const handleSeatRegistration = async () => {
     try {
-      // Get login_id from localStorage
-      const user=JSON.parse(localStorage.getItem("user"))
-      const loginId=user.login_id;
-      console.log("LoginId: "+loginId)
-    
+      const user = JSON.parse(localStorage.getItem("user"));
+      const loginId = user.login_id;
 
-      // Make request to register selected seats
       const response = await fetch('http://localhost:8080/registerSeats', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          show_id:show_id,
+          show_id: show_id,
           login_id: loginId,
           seats: selectedSeats,
-         
         }),
-      }); console.log( loginId)
+      });
 
       if (response.ok) {
         // Clear selected seats on successful registration
         setSelectedSeats([]);
         // Fetch updated list of registered seats
         fetchRegisteredSeats(show_id);
+        // Calculate and set the bill amount
+        const newBillAmount = selectedSeats.length * 200; // Assuming 200 rupees per seat
+        setBillAmount(newBillAmount);
+        // Set registration success to true
+        setRegistrationSuccess(true);
       } else {
         console.error('Failed to register seats');
       }
@@ -90,11 +93,10 @@ function SeatPicker({ match }) {
   };
 
   return (
-    
     <div className="seat-picker">
       <h2>Seat Picker</h2>
       <div className="seat-container">
-        {[...Array(20)].map((_, index) => renderSeat(index + 1))}
+        {[...Array(64)].map((_, index) => renderSeat(index + 1))}
       </div>
       <div className="selected-seats">
         <h3>Selected Seats</h3>
@@ -108,7 +110,14 @@ function SeatPicker({ match }) {
           </ul>
         )}
         {selectedSeats.length > 0 && (
-          <button onClick={handleSeatRegistration}>Register Selected Seats</button>
+          <div>
+            <p>Total Bill: {billAmount} rupees</p>
+            {registrationSuccess ? (
+              <button onClick={() => window.location.href='/generateTicket'}>Pay and Generate Ticket</button>
+            ) : (
+              <button onClick={handleSeatRegistration}>Pay and Generate Ticket</button>
+            )}
+          </div>
         )}
       </div>
     </div>

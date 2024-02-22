@@ -12,7 +12,7 @@ const MovieDetails = () => {
 
   useEffect(() => {
     fetchMovie();
-  }, []);
+  }, [fetchMovie]);
 
   const fetchMovie = async () => {
     try {

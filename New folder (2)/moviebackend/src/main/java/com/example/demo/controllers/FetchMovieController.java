@@ -27,5 +27,9 @@ public class FetchMovieController {
     	return fmservice.getAllMoviesByTheaterLocation(city);
     	
     }
+    @GetMapping("/getMovieById/{id}")
+    public Movie getMovie(@PathVariable("id") int id){
+        return fmservice.getMovieById(id);
+    }
 
 }
