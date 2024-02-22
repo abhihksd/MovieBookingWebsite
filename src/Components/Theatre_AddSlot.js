@@ -1,5 +1,19 @@
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 export default function AddSlot() {
+
+  
+  useEffect(()=>{
+    fetchMovies()
+  },[])
+  const[movies,setMovies]=useState([]) 
+  const fetchMovies=()=>{
+    fetch('http://localhost:8080/movies')
+    .then(response=>response.json())
+    .then(data=>setMovies(data))
+    .catch(error=>console.log('error fetching movies',error))
+  };
+
   return (
     <div>
       <ul className="navbar navbar-expand-sm bg-light mb-3">
@@ -15,6 +29,11 @@ export default function AddSlot() {
         </div>
       </ul>
       <h1>Add slot</h1>
+    
+
+
+
     </div>
   );
 }
+

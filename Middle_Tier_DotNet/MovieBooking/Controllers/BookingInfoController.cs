@@ -19,6 +19,7 @@ namespace MovieBooking.Controllers
             using (var db = new moviesContext())
             {
                 list=db.Bookings.ToList();
+
             }
             return list;
         }

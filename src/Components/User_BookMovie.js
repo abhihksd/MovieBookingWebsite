@@ -1,8 +1,10 @@
 import { Link } from "react-router-dom";
+import NavBar from "./NavBar";
 export default function BookMovie() {
   return (
     <div>
-      <ul className="navbar navbar-expand-sm bg-light mb-3">
+      <NavBar/>
+      {/* <ul className="navbar navbar-expand-sm bg-light mb-3">
         <div className="topnav">
           <div className="topnav-right">
             <li className="nav-item search-field">
@@ -13,8 +15,9 @@ export default function BookMovie() {
             </li>
           </div>
         </div>
-      </ul>
+      </ul> */}
       <h1>Book movie</h1>
     </div>
   );
 }
+

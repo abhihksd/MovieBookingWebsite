@@ -828,6 +828,7 @@ import { Link } from "react-router-dom";
 export default function AddMovie() {
   const nav = useNavigate();
   const [msg, setMsg] = useState("");
+  const [file, setFile] = useState();
   const init = {
     title: { value: "", valid: false, touched: false, error: "" },
     director: { value: "", valid: false, touched: false, error: "" },
@@ -838,6 +839,7 @@ export default function AddMovie() {
     description: { value: "", valid: false, touched: false, error: "" },
     duration: { value: "", valid: false, touched: false, error: "" },
     language: { value: "", valid: false, touched: false, error: "" },
+    image: { value: "", valid: false, touched: false, error: "" },
     formValid: false,
   };
 
@@ -847,11 +849,9 @@ export default function AddMovie() {
         const { key, value, touched, valid, error, formValid } = action.data;
         return { ...state, [key]: { value, touched, valid, error }, formValid };
       case "reset":
-        return {
-          ...init,
-        };
+        return init;
       default:
-        return state;
+        return init;
     }
   };
 
@@ -859,9 +859,8 @@ export default function AddMovie() {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-
     // Additional validation for show date
-    if (name === "showDate") {
+    if (name === 'showDate') {
       const releaseDate = new Date(movie.releaseDate.value);
       const showDate = new Date(value);
 
@@ -881,11 +880,6 @@ export default function AddMovie() {
       }
     }
 
-    const formValid = Object.keys(movie).every((key) => {
-      if (key === "formValid") return true; // Skip checking the formValid key itself
-      return movie[key].value !== ""; // Check if the value is not empty
-    });
-
     dispatch({
       type: "update",
       data: {
@@ -894,7 +888,7 @@ export default function AddMovie() {
         touched: true,
         valid: true,
         error: "",
-        formValid,
+        formValid: true,
       },
     });
   };
@@ -910,13 +904,8 @@ export default function AddMovie() {
     const password = localStorage.getItem("password");
 
     // Format the show date and time according to the specified patterns
-    const formattedShowDate = new Date(movie.showDate.value)
-      .toISOString()
-      .split("T")[0];
-    const formattedShowTime = new Date(`2000-01-01 ${movie.showTime.value}`)
-      .toISOString()
-      .split("T")[1]
-      .split(".")[0];
+    const formattedShowDate = new Date(movie.showDate.value).toISOString().split('T')[0];
+    const formattedShowTime = new Date(`2000-01-01 ${movie.showTime.value}`).toISOString().split('T')[1].split('.')[0];
 
     const reqOption = {
       method: "POST",
@@ -932,24 +921,37 @@ export default function AddMovie() {
         genre: movie.genre.value,
         description: movie.description.value,
         duration: movie.duration.value,
-        language: movie.language.value,
-      }),
+        language: movie.language.value
+      })
     };
 
     fetch("http://localhost:8080/addMovie", reqOption)
-      .then((resp) => resp.text())
-      .then((data) => {
-        setMsg(data);
-        if (data.length > 0) {
-          nav("/theatreAdmin");
-        } else {
-          alert("Something went wrong");
-        }
-      });
-  };
+    .then(resp=>{
+      if(resp.ok)
+         return resp.json();
+      else 
+         throw new Error("server error");  
+    })
+    .then(obj => {
+      console.log(JSON.stringify(obj))
+      var fd = new FormData();
+      fd.append("file",file); 
+      const reqOption1 ={
+        mode: 'cors',
+        method :"POST",
+        body:fd
+      }
+      fetch("http://localhost:8080/uploadImage/"+obj.movie_id,reqOption1)
+              .then(resp => resp.json())
+              .then(data => console.log(JSON.stringify(data)))
 
-  //on 20/02/2024
-  
+              nav("/theatreAdmin");
+      })
+      .catch((error)=> {console.log("Error:"+error)})
+
+
+
+  };
 
   return (
     <div>
@@ -1127,27 +1129,40 @@ export default function AddMovie() {
             />
             <div className="invalid-feedback">{movie.language.error}</div>
           </FormGroup>
-
-
+          <FormGroup>
+            <FormLabel>Upload Movie Image:</FormLabel>
+            <input
+              type="file"
+              name="image"
+              accept="image/*"
+              onChange={(e) => setFile(e.target.files[0])} // Call handleFileChange on file selection
+              className={`form-control${
+                movie.image.touched && !movie.image.valid
+                  ? "is-invalid"
+                  : ""
+              }`}
+            />
+          </FormGroup>
           <div style={{ margin: "20px 0" }}></div>
           <Button
             variant="primary"
             type="submit"
             onClick={submitData}
             style={{ marginRight: "20px" }}
-            disabled={!movie.formValid}
+            disabled={!movie.formValid} 
           >
             Submit
           </Button>
-          <Button variant="danger" type="reset" onClick={handleReset}>
+          <Button variant="danger" type="reset">
             Reset
           </Button>
           <p style={{ color: msg === "success" ? "green" : "red" }}>{msg}</p>
         </Form>
       </form>
-    </div>
-  );
+</div>
+);
 }
+
 
 // import React, { useReducer, useState } from "react";
 // import { Form, FormGroup, FormLabel, Button } from "react-bootstrap";

@@ -369,7 +369,7 @@ export default function Register() {
     let error = "";
     switch (key) {
       case "name":
-        // var pattern = /^[a-zA-Z\s]{1,20}$/;
+        //var pattern = /^[a-zA-Z\s]{1,20}$/;
         //var pattern = /^[A-Z]{1}[a-z]{1,} [A-Z]{1}[a-z]{1,}$/; //First Alphabet of First and Last Name should be capital
         var pattern = /^[A-Z][a-z]{2,} [A-Z][a-z]{2,}$/; //First Alphabet of First and Last Name should be capital and min 3 characters for name and surname
         if (!pattern.test(val)) {

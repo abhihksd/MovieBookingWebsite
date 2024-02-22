@@ -272,7 +272,7 @@ export default function AddTheater() {
     <Container>
       <Row className="justify-content-md-center">
         <Col xs={12} md={6}>
-          <h1 className="text-center mb-4">Add Theatre</h1>
+          <h1 className="text-center mb-4">Add Theater</h1>
           <Form onSubmit={handleSubmit}>
             <Form.Group controlId="theaterName">
               <Form.Label>Theater Name:</Form.Label>
