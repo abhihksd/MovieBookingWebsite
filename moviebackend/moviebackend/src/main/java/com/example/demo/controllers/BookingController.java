@@ -9,10 +9,7 @@ import com.example.demo.services.BookingService;
 import com.example.demo.services.CustomerService;
 import com.example.demo.services.LoginService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -45,5 +42,10 @@ public class BookingController {
         }
         return "success";
 
+    }
+
+    @GetMapping("/getRegisteredSeats/{showId}")
+    public List<Integer> getRegisteredSeats(@PathVariable Integer showId) {
+        return bservice.getSeatNumbersByShowId(showId);
     }
 }

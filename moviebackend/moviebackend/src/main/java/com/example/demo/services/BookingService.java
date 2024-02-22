@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.awt.print.Book;
+import java.util.List;
 
 @Service
 public class BookingService {
@@ -13,4 +14,10 @@ public class BookingService {
     private BookingRepository brepo;
 
     public Booking saveBooking(Booking b){return brepo.save(b);}
+
+    public List<Integer> getSeatNumbersByShowId(Integer showId) {
+        return brepo.findSeatNumbersByShowId(showId);
+    }
+
+
 }
