@@ -84,7 +84,10 @@ export default function AddMovie() {
     // Format the show date and time according to the specified patterns
     const formattedShowDate = new Date(movie.showDate.value).toISOString().split('T')[0];
     const formattedShowTime = new Date(`2000-01-01 ${movie.showTime.value}`).toISOString().split('T')[1].split('.')[0];
-
+    const handleReset = () => {
+      dispatch({ type: "reset" });
+      setMsg("");
+    };
     const reqOption = {
       method: "POST",
       headers: { "content-type": "application/json" },
@@ -130,10 +133,10 @@ export default function AddMovie() {
 
 
   };
-
+  
   return (
     <div>
-      <form className="my-4" style={{ width: "400px", margin: "auto" }}>
+      <form className="my-4 login-form" style={{ width: "400px", margin: "auto" }}  onReset={handleReset}>
         <ul className="navbar navbar-expand-sm bg-light mb-3">
           <div className="topnav">
             <div className="topnav-right">
@@ -145,7 +148,7 @@ export default function AddMovie() {
         </ul>
         <h1 style={{ textAlign: "center" }}>Add Movie</h1>
 
-        <Form className="login-form" onReset={handleReset}>
+        <Form className="login-form">
           <FormGroup>
             <FormLabel>Movie Title:</FormLabel>
             <input
@@ -331,7 +334,7 @@ export default function AddMovie() {
           >
             Submit
           </Button>
-          <Button variant="danger" type="reset">
+          <Button variant="danger" type="reset" onClick={handleReset}>
             Reset
           </Button>
           <p style={{ color: msg === "success" ? "green" : "red" }}>{msg}</p>

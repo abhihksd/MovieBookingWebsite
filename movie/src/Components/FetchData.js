@@ -35,10 +35,8 @@ function FetchData() {
                     language={movie.language}
                     director={movie.director}
                     description={movie.description}
-                    // image={`${JSON.parse(movie.image)}`}
                    image={movie.image}
-                  //image={this.sanitizer.bypassSecurityTrustResourceUrl(`${JSON.parse(movie.image)}`)}
-                   
+                  
                 />
             ))}
             </div>

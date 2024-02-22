@@ -8,8 +8,6 @@ import LoginForm from "./Components/LoginForm";
 import Home from "./Components/Home";
 import { useSelector } from "react-redux";
 import LogoutComp from "./LogoutComp";
-import UpdatePass from "./Components/UpdatePass";
-import OrderHis from "./Components/OrderHistory";
 import Welcome from "./Components/Welcome";
 
 import SystemAdmin from "./Components/SystemAdmin";

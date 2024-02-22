@@ -1,7 +1,7 @@
 .card-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: flex-start; 
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around; 
   }
   
   .card {
@@ -15,7 +15,7 @@
 
 
 .custom-card {
-  width: 14rem; /* Set a fixed width for all cards */
-  height: 100%; /* Set a fixed height for all cards */
-  margin: 12px; /* Adjust margin for spacing between cards */
+  width: 14rem;
+  height: 100%;
+  margin: 12px;
 }

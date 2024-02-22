@@ -768,13 +768,13 @@ export default function LoginForm() {
   // Function to handle changes in the username field
   const handleUsernameChange = (e) => {
     setUsername(e.target.value);
-    clearErrorMessage(); // Clear error message when username changes
+    clearErrorMessage(); 
   };
 
   // Function to handle changes in the password field
   const handlePasswordChange = (e) => {
     setPassword(e.target.value);
-    clearErrorMessage(); // Clear error message when password changes
+    clearErrorMessage();
   };
 
   // Function to handle unsuccessful login
@@ -784,7 +784,7 @@ export default function LoginForm() {
 
   // Function to handle successful login
   const handleLoginSuccess = () => {
-    setErrorMessage(""); // Clear error message state
+    setErrorMessage(""); 
   };
 
   const sendData = (e) => {

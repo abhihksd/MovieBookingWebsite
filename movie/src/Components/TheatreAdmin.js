@@ -303,9 +303,9 @@ export default function TheatreAdmin() {
               <ul className="navbar navbar-expand-sm bg-light mb-3">
                 <div className="topnav">
                   <div className="topnav-right">
-                    <li className="nav-item">
+                    {/* <li className="nav-item">
                       <Link to={{ pathname: "/addTheater" }}>Add Theater</Link>{" "}
-                    </li>
+                    </li> */}
 
                     <li className="nav-item">
                       <Link to="/addMovie">Add movie</Link>
