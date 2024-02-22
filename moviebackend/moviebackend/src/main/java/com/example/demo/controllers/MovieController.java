@@ -156,22 +156,22 @@ public class MovieController {
 	// }
 
 	// as on 19/02/2024
-	@DeleteMapping("/deleteMovie/{movie_id}")
-	public void deleteMovie(@PathVariable int movie_id) {
-		mservice.deleteMovieById(movie_id);
+	// @DeleteMapping("/deleteMovie/{movie_id}")
+	// public void deleteMovie(@PathVariable int movie_id) {
+	// 	mservice.deleteMovieById(movie_id);
 
-	}
+	// }
 
-	@PostMapping(value = "/uploadImage/{movie_id}", consumes = "multipart/form-data")
-	public boolean uploadImage(@PathVariable("movie_id") int did, @RequestBody MultipartFile file) {
+	// @PostMapping(value = "/uploadImage/{movie_id}", consumes = "multipart/form-data")
+	// public boolean uploadImage(@PathVariable("movie_id") int did, @RequestBody MultipartFile file) {
 		
 		
-		boolean flag = true;
-		try {
-			flag = mservice.uploadImage(did, file.getBytes());
-		} catch (Exception e) {
-			flag = false;
-		}
-		return flag;
-	}
+	// 	boolean flag = true;
+	// 	try {
+	// 		flag = mservice.uploadImage(did, file.getBytes());
+	// 	} catch (Exception e) {
+	// 		flag = false;
+	// 	}
+	// 	return flag;
+	// }
 }

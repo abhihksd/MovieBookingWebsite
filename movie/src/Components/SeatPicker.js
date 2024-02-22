@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router';
-import "../css/seat.css"
+import "../CSS/seat.css"
 function SeatPicker({ match }) {
   const { show_id } = useParams();
   const [selectedSeats, setSelectedSeats] = useState([]);

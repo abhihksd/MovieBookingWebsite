@@ -3,6 +3,7 @@ import { useParams, Link } from "react-router-dom";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
+import NavBar from "./NavBar";
 
 const BookTicket = () => {
   const [theaters, setTheaters] = useState([]);
@@ -40,6 +41,8 @@ const BookTicket = () => {
   };
 
   return (
+    <div>
+      <NavBar/>
     <Container>
       <h2 className="mt-4">Book Ticket</h2>
       <Row>
@@ -82,6 +85,7 @@ const BookTicket = () => {
         </Col>
       </Row>
     </Container>
+    </div>
   );
 };
 

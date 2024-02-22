@@ -1,4 +1,5 @@
 // UserNavbar.jsx
+import movie_logo from "../img/logo.jpeg";
 import React from 'react';
 import { Link } from 'react-router-dom';
 import TheaterDropDown from './TheaterDropDown';
@@ -8,9 +9,14 @@ const UserNavbar = () => (
      <ul className="navbar navbar-expand-sm bg-light mb-3">
         <div className="topnav">
           <div className="topnav-right">
-            <li className="nav-item search-field">
+            {/* <li className="nav-item search-field">
               <input className="search" type="text" placeholder="Search" />
-            </li>
+            </li> */}
+             <li className="nav-item">
+                <Link to={"/user"}>
+                <img className="App-logo" src={movie_logo} alt="Logo" />
+                </Link>
+              </li>
             <li className="nav-item">{<TheaterDropDown/>} </li>
 {/* 
             <li className="nav-item">

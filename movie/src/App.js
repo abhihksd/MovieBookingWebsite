@@ -26,7 +26,7 @@ import BookMovie from "./Components/User_BookMovie";
 import MovieDetails from "./Components/MovieDetailsAfterClick";
 import ShowTheater from "./Components/System_ShowTheater";
 import SeatPicker from "./Components/SeatPicker";
-import BookTicket from "./components/BookTicket";
+import BookTicket from "./Components/BookTicket";
 import FetchData from './Components/FetchData';
 import MovieItem from './Components/MovieItem';
 function App() {
@@ -42,7 +42,9 @@ function App() {
           <ul className="navbar navbar-expand-sm bg-light mb-3">
             <div className="topnav">
               <li className="nav-item">
+                <Link to={"/"}>
                 <img className="App-logo" src={movie_logo} alt="Logo" />
+                </Link>
               </li>
               <div className="topnav-right">
                 <li className="nav-item search-field">
