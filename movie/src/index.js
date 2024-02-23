@@ -7,6 +7,8 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { BrowserRouter } from "react-router-dom";
 import { Provider } from "react-redux";
 import store from "./mystore";
+import NavBar from "./Components/NavBar";
+import Footer from "./Components/Footer.js"
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -14,6 +16,7 @@ root.render(
     <BrowserRouter>
       <React.StrictMode>
         <App />
+        {/* <Footer/> */}
       </React.StrictMode>
     </BrowserRouter>
   </Provider>

@@ -1,3 +1,4 @@
+import GuestNavbar from "./GuestNavbar";
 import SystemNavbar from "./SystemNavbar";
 import TheaterNavbar from "./TheaterNavBar";
 import UserNavbar from "./UserNavBar";
@@ -18,7 +19,7 @@ export default function NavBar(){
         case 3:
             return <SystemNavbar/>
         default:
-          return null;
+          return <GuestNavbar/>;
       }
     
       

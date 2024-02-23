@@ -17,4 +17,10 @@ public interface ShowRepository extends JpaRepository<Show,Integer> {
 
     @Query("select s from Show s where s.theater=:theater and s.movie=:movie")
     List<Show> getShowByTidMid(Theater theater, Movie movie);
+    
+    @Query("select s from Show s where s.show_id=:showId")
+    Show getShowBySid(int showId);
+
+    @Query("select s.theater from Show s where s.show_id=:showId")
+    Theater getTheaterByShowId(int showId);
 }

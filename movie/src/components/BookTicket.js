@@ -4,6 +4,7 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import NavBar from "./NavBar";
+import { Button } from "react-bootstrap";
 
 const BookTicket = () => {
   const [theaters, setTheaters] = useState([]);
@@ -42,7 +43,18 @@ const BookTicket = () => {
 
   return (
     <div>
-      <NavBar/>
+      <ul className="navbar navbar-expand-sm bg-secondary mb-3">
+      <div className="container-fluid">
+          <div className="navbar-collapse">                      
+            <ul className="navbar-nav ms-auto">
+              <li className="nav-item">
+                <Link className="nav-link" to="/logout"><Button >Logout</Button></Link>
+                
+              </li>
+            </ul>
+          </div>
+        </div>
+        </ul>
     <Container>
       <h2 className="mt-4">Book Ticket</h2>
       <Row>

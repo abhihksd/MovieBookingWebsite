@@ -1,6 +1,7 @@
 package com.example.demo.services;
 
 import com.example.demo.entities.Booking;
+import com.example.demo.entities.Customer;
 import com.example.demo.repositories.BookingRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,4 +19,11 @@ public class BookingService {
     public List<Integer> getSeatNumbersByShowId(Integer showId) {
         return brepo.findSeatNumbersByShowId(showId);
     }
+//    public List<Integer> getSNumsCustomer(Customer customer) {
+//        return brepo.getSNumsCustomer(customer);
+//    }
+    public List<Integer> getSNumsCustomer(Customer customer, int show_id) {
+        return brepo.getSNumsCustomer(customer,show_id);
+    }
+    
 }

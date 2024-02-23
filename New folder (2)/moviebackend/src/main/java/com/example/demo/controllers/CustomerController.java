@@ -2,6 +2,8 @@ package com.example.demo.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -36,6 +38,12 @@ public class CustomerController {
 		Customer c=new Customer(cr.getName(),cr.getPhone_number(),cr.getAddress(),cr.getEmail(),l);
 		return cservice.saveCustomer(c);
 		
+	}
+	@GetMapping("/userDetails/{login_id}")
+	public Customer giveCustomer(@PathVariable int login_id){
+		Login l = lservice.getLoginById(login_id);
+		Customer c = cservice.getCustomerByLogin(l);
+		return c;
 	}
 	
 }

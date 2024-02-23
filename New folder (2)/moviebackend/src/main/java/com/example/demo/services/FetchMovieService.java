@@ -23,4 +23,7 @@ public class FetchMovieService {
     public Movie getMovieById(int id) {
         return fetchmovieRepository.findById(id).get();
     }
+    public List<Movie> searchMovies(String title) {
+        return fetchmovieRepository.findByTitleContainingIgnoreCase(title);
+    }
 }

@@ -13,4 +13,6 @@ import org.springframework.stereotype.Repository;
 public interface FetchMovieRepository extends JpaRepository<Movie, Integer> {
 	@Query("SELECT m FROM Movie m JOIN m.theater t WHERE t.theater_location = :city")
     List<Movie> findAllByTheaterLocation(@Param("city") String city);
+	
+	List<Movie> findByTitleContainingIgnoreCase(String title);
 }

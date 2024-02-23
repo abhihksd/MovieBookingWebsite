@@ -67,7 +67,19 @@ export default function SystemAdmin() {
 
   return (
     <div>
-      <NavBar/>
+      {/* <NavBar/> */}
+      <ul className="navbar navbar-expand-sm bg-secondary mb-3">
+      <div className="container-fluid">
+          <div className="navbar-collapse">                      
+            <ul className="navbar-nav ms-auto">
+              <li className="nav-item">
+                <Link className="nav-link" to="/logout">Logout</Link>
+                
+              </li>
+            </ul>
+          </div>
+        </div>
+</ul>
       <h1 style={{ textAlign: "center" }}>System Admin Homepage</h1>
 
       <Table striped bordered hover>

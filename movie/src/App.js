@@ -29,10 +29,23 @@ import SeatPicker from "./Components/SeatPicker";
 import BookTicket from "./Components/BookTicket";
 import FetchData from './Components/FetchData';
 import MovieItem from './Components/MovieItem';
+import MovieSearch from "./Components/MovieSearchbar";
+import { ErrorBoundary } from "react-error-boundary";
+import GenerateTicket from "./Components/TicketBooking";
 function App() {
   //initialState of logged
   const mystate = useSelector((state) => state.logged);
   return (
+    <ErrorBoundary fallbackRender={() => {
+      return (
+        <div>
+
+         <h2> Oops!! Something went wrong</h2>
+         <h2 ><a href="/login">Click here</a>  please try again</h2>
+         
+        </div>
+      )
+    }}>
     <div>
       <header
         // className="App-header"
@@ -48,7 +61,7 @@ function App() {
               </li>
               <div className="topnav-right">
                 <li className="nav-item search-field">
-                  <input className="search" type="text" placeholder="Search" />
+                 <MovieSearch/>
                 </li>
 
                 <li className="nav-item">
@@ -88,11 +101,12 @@ function App() {
           <Route path="/book-ticket/:movie_id" element={<BookTicket />} />
          
           <Route path="/seatselect/:show_id" element={<SeatPicker/>}/>
-                 
+          <Route path="/generateTicket" element={<GenerateTicket/>}/>       
           
         </Routes>
       </div>
     </div>
+    </ErrorBoundary>
   );
 }
 
