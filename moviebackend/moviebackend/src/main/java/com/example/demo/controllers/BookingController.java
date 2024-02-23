@@ -4,6 +4,7 @@ package com.example.demo.controllers;
 import com.example.demo.POJO.BookingPoJo;
 import com.example.demo.POJO.TicketInfoPoJo;
 import com.example.demo.entities.*;
+import com.example.demo.repositories.TicketRepository;
 import com.example.demo.services.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -30,6 +31,9 @@ public class BookingController {
 
     @Autowired
     private LoginService lservice;
+
+    @Autowired
+    private TicketRepository ticketRepo;
 
     @PostMapping("/registerSeats")
     public String saveBooking(@RequestBody BookingPoJo bj){
@@ -71,11 +75,24 @@ public class BookingController {
         LocalTime show_time = show.getShow_time();
         String theater_name = theater.getTheater_name();
 
-        seat_numbers = bservice.getSNumsCustomer(customer);
+        seat_numbers = bservice.getSNumsCustomer(customer,show.getShow_id());
+        int no_of_seats = seat_numbers.size();
 
         TicketInfoPoJo ticketInfoPojo = new TicketInfoPoJo(movie_name,theater_name, show_date, show_time, seat_numbers);
-        return ticketInfoPojo;
 
+        Ticket ticket = new Ticket(customer,movie,theater,show,no_of_seats,no_of_seats*200);
+        int user_id = customer.getUser_id();
+        int movie_id = movie.getMovie_id();
+        System.out.println(("@@@@@@@@@@@@@@@"+user_id+"  "+movie_id));
+
+        Ticket ticketcheck = ticketRepo.existsByCustomerAndMovie(user_id,movie_id);
+        System.out.println(ticketcheck);
+
+
+        if(ticketcheck == null) {
+            Ticket saveTicket = ticketRepo.save(ticket);
+        }
+        return ticketInfoPojo;
 
     }
 
