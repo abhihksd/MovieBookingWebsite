@@ -29,10 +29,21 @@ import SeatPicker from "./Components/SeatPicker";
 import BookTicket from "./Components/BookTicket";
 import FetchData from './Components/FetchData';
 import MovieItem from './Components/MovieItem';
+import { ErrorBoundary } from "react-error-boundary";
 function App() {
   //initialState of logged
   const mystate = useSelector((state) => state.logged);
   return (
+    <ErrorBoundary fallbackRender={() => {
+      return (
+        <div>
+
+         <h2> Oops!! Something went wrong</h2>
+         <h2 ><a href="/login">Click here</a>  please try again</h2>
+         
+        </div>
+      )
+    }}>
     <div>
       <header
         // className="App-header"
@@ -93,6 +104,7 @@ function App() {
         </Routes>
       </div>
     </div>
+    </ErrorBoundary>
   );
 }
 
