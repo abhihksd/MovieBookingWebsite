@@ -1,24 +1,25 @@
 .movie-poster {
-    max-width: 100%;
-    margin-bottom: 20px;
-  }
-  
-  .movie-title {
-    font-weight: bold;
-    margin-top: 0;
-  }
-  
-  .movie-info {
-    padding: 20px;
-    height: 100%;
-  }
-  
-  .movie-description {
-    margin-bottom: 20px;
-  }
-  
-  .movie-cast {
-    font-size: 14px;
-    color: #666;
-  }
+  max-width: 100%;
+  margin-bottom: 20px;
+}
+
+.movie-title {
+  font-weight: bold;
+  margin-top: 0;
+}
+
+.movie-info {
+  padding: 20px;
+  height: 100%;
+}
+
+.movie-description {
+  margin-bottom: 20px;
+}
+
+.movie-cast {
+  font-size: 14px;
+  color: #666;
+}
+
   

@@ -5,6 +5,7 @@ import { logout } from "./loggedSlice";
 export default function LogoutComp() {
   const dispatch = useDispatch();
   const navigate = useNavigate("/login");
+  localStorage.removeItem("user")
   dispatch(logout());
   const mystate = useSelector((state) => state.logged);
   navigate("/login");
@@ -15,3 +16,4 @@ export default function LogoutComp() {
     </div>
   );
 }
+

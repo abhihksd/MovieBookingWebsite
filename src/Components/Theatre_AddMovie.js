@@ -860,7 +860,7 @@ export default function AddMovie() {
   const handleChange = (e) => {
     const { name, value } = e.target;
     // Additional validation for show date
-    if (name === 'showDate') {
+    if (name === "showDate") {
       const releaseDate = new Date(movie.releaseDate.value);
       const showDate = new Date(value);
 
@@ -904,8 +904,13 @@ export default function AddMovie() {
     const password = localStorage.getItem("password");
 
     // Format the show date and time according to the specified patterns
-    const formattedShowDate = new Date(movie.showDate.value).toISOString().split('T')[0];
-    const formattedShowTime = new Date(`2000-01-01 ${movie.showTime.value}`).toISOString().split('T')[1].split('.')[0];
+    const formattedShowDate = new Date(movie.showDate.value)
+      .toISOString()
+      .split("T")[0];
+    // const formattedShowTime = new Date(`2000-01-01 ${movie.showTime.value}`)
+    //   .toISOString()
+    //   .split("T")[1]
+    //   .split(".")[0];
 
     const reqOption = {
       method: "POST",
@@ -917,40 +922,37 @@ export default function AddMovie() {
         director: movie.director.value,
         release_date: movie.releaseDate.value,
         show_date: formattedShowDate,
-        show_time: formattedShowTime,
+        show_time: movie.showTime.value,
         genre: movie.genre.value,
         description: movie.description.value,
         duration: movie.duration.value,
-        language: movie.language.value
-      })
+        language: movie.language.value,
+      }),
     };
 
     fetch("http://localhost:8080/addMovie", reqOption)
-    .then(resp=>{
-      if(resp.ok)
-         return resp.json();
-      else 
-         throw new Error("server error");  
-    })
-    .then(obj => {
-      console.log(JSON.stringify(obj))
-      var fd = new FormData();
-      fd.append("file",file); 
-      const reqOption1 ={
-        mode: 'cors',
-        method :"POST",
-        body:fd
-      }
-      fetch("http://localhost:8080/uploadImage/"+obj.movie_id,reqOption1)
-              .then(resp => resp.json())
-              .then(data => console.log(JSON.stringify(data)))
-
-              nav("/theatreAdmin");
+      .then((resp) => {
+        if (resp.ok) return resp.json();
+        else throw new Error("server error");
       })
-      .catch((error)=> {console.log("Error:"+error)})
+      .then((obj) => {
+        console.log(JSON.stringify(obj));
+        var fd = new FormData();
+        fd.append("file", file);
+        const reqOption1 = {
+          mode: "cors",
+          method: "POST",
+          body: fd,
+        };
+        fetch("http://localhost:8080/uploadImage/" + obj.movie_id, reqOption1)
+          .then((resp) => resp.json())
+          .then((data) => console.log(JSON.stringify(data)));
 
-
-
+        nav("/theatreAdmin");
+      })
+      .catch((error) => {
+        console.log("Error:" + error);
+      });
   };
 
   return (
@@ -1037,7 +1039,7 @@ export default function AddMovie() {
             <div className="invalid-feedback">{movie.showDate.error}</div>
           </FormGroup>
 
-          <FormGroup>
+          {/* <FormGroup>
             <FormLabel>Show Time:</FormLabel>
             <input
               type="time"
@@ -1051,6 +1053,26 @@ export default function AddMovie() {
                   : ""
               }`}
             />
+            <div className="invalid-feedback">{movie.showTime.error}</div>
+          </FormGroup> */}
+
+          <FormGroup>
+            <FormLabel>Show Time:</FormLabel>
+            <select
+              name="showTime"
+              value={movie.showTime.value}
+              onChange={handleChange}
+              className={`form-select ${
+                movie.showTime.touched && !movie.showTime.valid
+                  ? "is-invalid"
+                  : ""
+              }`}
+            >
+              <option value="">Select Time</option>
+              <option value="10:00:00">10:00 AM</option>
+              <option value="14:00:00">2:00 PM</option>
+              <option value="18:00:00">6:00 PM</option>
+            </select>
             <div className="invalid-feedback">{movie.showTime.error}</div>
           </FormGroup>
 
@@ -1081,8 +1103,7 @@ export default function AddMovie() {
 
           <FormGroup>
             <FormLabel>Description:</FormLabel>
-            <input
-              type="text"
+            <textarea
               name="description"
               placeholder="Enter movie description"
               value={movie.description.value}
@@ -1113,7 +1134,7 @@ export default function AddMovie() {
             <div className="invalid-feedback">{movie.duration.error}</div>
           </FormGroup>
 
-          <FormGroup>
+          {/* <FormGroup>
             <FormLabel>Language:</FormLabel>
             <input
               type="text"
@@ -1128,7 +1149,29 @@ export default function AddMovie() {
               }`}
             />
             <div className="invalid-feedback">{movie.language.error}</div>
+          </FormGroup> */}
+
+          <FormGroup>
+            <FormLabel>Language:</FormLabel>
+            <select
+              name="language"
+              value={movie.language.value}
+              onChange={handleChange}
+              className={`form-select ${
+                movie.language.touched && !movie.language.valid
+                  ? "is-invalid"
+                  : ""
+              }`}
+            >
+              <option value="type">Select Language</option>
+              <option value="English">English</option>
+              <option value="Hindi">Hindi</option>
+              <option value="Telugu">Telugu</option>
+              <option value="Tamil">Tamil</option>
+            </select>
+            <div className="invalid-feedback">{movie.language.error}</div>
           </FormGroup>
+
           <FormGroup>
             <FormLabel>Upload Movie Image:</FormLabel>
             <input
@@ -1137,9 +1180,7 @@ export default function AddMovie() {
               accept="image/*"
               onChange={(e) => setFile(e.target.files[0])} // Call handleFileChange on file selection
               className={`form-control${
-                movie.image.touched && !movie.image.valid
-                  ? "is-invalid"
-                  : ""
+                movie.image.touched && !movie.image.valid ? "is-invalid" : ""
               }`}
             />
           </FormGroup>
@@ -1149,7 +1190,7 @@ export default function AddMovie() {
             type="submit"
             onClick={submitData}
             style={{ marginRight: "20px" }}
-            disabled={!movie.formValid} 
+            disabled={!movie.formValid}
           >
             Submit
           </Button>
@@ -1159,10 +1200,9 @@ export default function AddMovie() {
           <p style={{ color: msg === "success" ? "green" : "red" }}>{msg}</p>
         </Form>
       </form>
-</div>
-);
+    </div>
+  );
 }
-
 
 // import React, { useReducer, useState } from "react";
 // import { Form, FormGroup, FormLabel, Button } from "react-bootstrap";
@@ -1480,7 +1520,6 @@ export default function AddMovie() {
 //             <div className="invalid-feedback">{movie.language.error}</div>
 //           </FormGroup>
 
-
 //           {/* <FormGroup>
 //             <FormLabel>Upload Movie Image:</FormLabel>
 //             <input
@@ -1498,7 +1537,7 @@ export default function AddMovie() {
 //             type="submit"
 //             onClick={submitData}
 //             style={{ marginRight: "20px" }}
-//             disabled={!movie.formValid } 
+//             disabled={!movie.formValid }
 //           >
 //             Submit
 //           </Button>
@@ -1511,4 +1550,3 @@ export default function AddMovie() {
 //     </div>
 //   );
 // }
-

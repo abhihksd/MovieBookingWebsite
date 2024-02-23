@@ -1,0 +1,35 @@
+.seat-picker {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .seat-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+  
+  .seat {
+    width: 40px;
+    height: 40px;
+    margin: 5px;
+    background-color: #ccc;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .seat:hover {
+    background-color: #b3b3b3;
+  }
+  
+  .selected {
+    background-color: #6c757d !important;
+color:#fff;
+  }

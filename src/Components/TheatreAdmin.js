@@ -244,6 +244,7 @@ import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { Table, Button, Container, Row, Col } from 'react-bootstrap';
 import EditMovie from "./Theatre_EditMovie";
+import "../CSS/editform.css"
 import NavBar from "./NavBar";
 
 export default function TheatreAdmin() {
@@ -355,7 +356,7 @@ export default function TheatreAdmin() {
                   <tr key={movie.movie_id}>
                     <td>{movie.title}</td>
                     <td>
-                      <Button variant="primary">Edit</Button>{" "}
+                    <Link to={`/editMovie/${movie.movie_id}`}><Button variant="primary">Edit</Button></Link>
                       <Button
                         variant="danger"
                         onClick={() => handleDeleteMovie(movie.movie_id)}
