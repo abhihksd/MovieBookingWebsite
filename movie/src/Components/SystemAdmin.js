@@ -1,6 +1,8 @@
 
 import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
+import { Table, Button } from 'react-bootstrap';
+import NavBar from "./NavBar";
 
 export default function SystemAdmin() {
   const [theaters, setTheaters] = useState([]);
@@ -14,13 +16,11 @@ export default function SystemAdmin() {
 
   const fetchTheaters = async () => {
     try {
-      const response = await fetch(
-        "http://localhost:8080/displaypendingtheaters"
-      );
+      const response = await fetch("http://localhost:8080/displaypendingtheaters"); 
       const data = await response.json();
 
       //check theater_status 0 or not
-      setTheaters(data.filter((theater) => theater.theater_status === 0));
+      setTheaters(data.filter(theater => theater.theater_status === 0)); 
     } catch (error) {
       console.error("Error fetching theaters:", error);
     }
@@ -38,14 +38,12 @@ export default function SystemAdmin() {
       });
 
       // Fetch updated list of theaters after approval
-      const response = await fetch(
-        "http://localhost:8080/displaypendingtheaters"
-      );
-      const data = await response.json();
-      setTheaters(data.filter((theater) => theater.theater_status === 0));
-    } catch (error) {
-      console.error("Error approving theater:", error);
-    }
+    const response = await fetch("http://localhost:8080/displaypendingtheaters");
+    const data = await response.json();
+    setTheaters(data.filter(theater => theater.theater_status === 0));
+  } catch (error) {
+    console.error("Error approving theater:", error);
+  }
   };
 
   const handleReject = async (id) => {
@@ -58,69 +56,47 @@ export default function SystemAdmin() {
         },
         body: JSON.stringify({ status: 0 }),
       });
-      // Fetch updated list of theaters after rejection
-      const response = await fetch(
-        "http://localhost:8080/displaypendingtheaters"
-      );
-      const data = await response.json();
-      setTheaters(data.filter((theater) => theater.theater_status === 0));
-    } catch (error) {
-      console.error("Error rejecting theater:", error);
-    }
+     // Fetch updated list of theaters after rejection
+    const response = await fetch("http://localhost:8080/displaypendingtheaters");
+    const data = await response.json();
+    setTheaters(data.filter(theater => theater.theater_status === 0));
+  } catch (error) {
+    console.error("Error rejecting theater:", error);
+  }
   };
 
   return (
     <div>
-      <ul className="navbar navbar-expand-sm bg-light mb-3">
-        <div className="topnav">
-          <div className="topnav-right">
-            <li className="nav-item search-field">
-              <input className="search" type="text" placeholder="Search" />
-            </li>
-
-            <li className="nav-item">
-              <Link to="/removeTheatre">Remove theatre</Link>
-            </li>
-            <li className="nav-item">
-              <Link to="/editTheatre">Edit theatre details</Link>
-            </li>
-            <li className="nav-item">
-              <Link to="/logout">Logout</Link>
-            </li>
-          </div>
-        </div>
-      </ul>
+      <NavBar/>
       <h1 style={{ textAlign: "center" }}>System Admin Homepage</h1>
 
-      <table className="table">
-        <thead className="thead-dark">
-          <tr>
-            <th>Theater Name</th>
-            <th>Owner Name</th>
-            <th>License No</th>
-            <th>Theater Location</th>
-            <th>Action</th>
+      <Table striped bordered hover>
+      <thead>
+        <tr>
+          <th>Theater Name</th>
+          <th>Owner Name</th>
+          <th>License No</th>
+          <th>Theater Location</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        {theaters.map((theater) => (
+          <tr key={theater.id}>
+            <td>{theater.theater_name}</td>
+            <td>{theater.owner_name}</td>
+            <td>{theater.licence_no}</td>
+            <td>{theater.theater_location}</td>
+            <td>
+              <Button variant="success" onClick={() => handleApprove(theater.theater_id)}>Approve</Button>{' '}
+              <Button variant="danger" onClick={() => handleReject(theater.theater_id)}>Reject</Button>
+            </td>
           </tr>
-        </thead>
-        <tbody>
-          {theaters.map((theater) => (
-            <tr key={theater.id}>
-              <td>{theater.theater_name}</td>
-              <td>{theater.owner_name}</td>
-              <td>{theater.licence_no}</td>
-              <td>{theater.theater_location}</td>
-              <td>
-                <button onClick={() => handleApprove(theater.theater_id)}>
-                  Approve
-                </button>
-                <button onClick={() => handleReject(theater.theater_id)}>
-                  Reject
-                </button>
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+        ))}
+      </tbody>
+    </Table>
     </div>
   );
 }
+
+

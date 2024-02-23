@@ -20,8 +20,8 @@ export default function Home() {
       </ul>
 
       <h1>HOME PAGE!!</h1>
-      <FetchData/>                             
-      
+      <FetchData/>
+
       {/* <h2>Welcome {localStorage.getItem("user")}</h2> */}
       {/* <p>Login Status: {mystate.loggedIn.toString()}</p> */}
     </div>

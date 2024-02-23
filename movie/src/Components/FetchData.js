@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import MovieItem from './MovieItem';
 import '../CSS/card.css';
@@ -12,9 +11,8 @@ function FetchData() {
 
     const fetchMovies = async () => {
         try {
-            const response = await fetch('http://localhost:8080/movies/getAllMovies');
+            const response = await fetch(`http://localhost:8080/movies/getAllMovies/${localStorage.getItem('selectedLocation')}`);
             const data = await response.json();
-            // alert(JSON.stringify(data));
             setMovies(data);
         } catch (error) {
             console.error('Error fetching movies:', error);
@@ -35,8 +33,10 @@ function FetchData() {
                     language={movie.language}
                     director={movie.director}
                     description={movie.description}
+                    // image={`${JSON.parse(movie.image)}`}
                    image={movie.image}
-                  
+                  //image={this.sanitizer.bypassSecurityTrustResourceUrl(`${JSON.parse(movie.image)}`)}
+                   
                 />
             ))}
             </div>
