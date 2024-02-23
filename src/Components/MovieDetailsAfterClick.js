@@ -28,14 +28,14 @@ const MovieDetails = () => {
     return <div>Loading...</div>;
   }
 
-  const { title, description, release_date, genre, duration, language, director, imageurl } = movie;
+  const { title, description, release_date, genre, duration, language, director, image} = movie;
 
   return (
     <Container>
       <Row>
         <Col xs={12} md={6}>
           <Card>
-            <Card.Img variant="top" src={imageurl} alt={`Image for ${title}`} />
+          <img src={`data:image/jpeg;base64,${image}`} height={350} width={350} alt={`Image for ${title}`} />
           </Card>
         </Col>
         <Col xs={12} md={6}>
