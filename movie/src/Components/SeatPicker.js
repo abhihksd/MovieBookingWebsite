@@ -243,7 +243,7 @@ function SeatPicker() {
     <div className="seat-picker">
       <h2>Seat Picker</h2>
       <div className="seat-container">
-        {[...Array(64)].map((_, index) => renderSeat(index + 1))}
+        {[...Array(32)].map((_, index) => renderSeat(index + 1))}
       </div>
       <div className="selected-seats">
         <h3>Selected Seats</h3>

@@ -37,7 +37,12 @@ function App() {
   return (
     <ErrorBoundary fallbackRender={() => {
       return (
+        <div>
+
          <h2> Oops!! Something went wrong</h2>
+         <h2 ><a href="/login">Click here</a>  please try again</h2>
+         
+        </div>
       )
     }}>
     <div>
