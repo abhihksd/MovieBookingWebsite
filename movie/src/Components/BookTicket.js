@@ -42,7 +42,18 @@ const BookTicket = () => {
 
   return (
     <div>
-      <NavBar/>
+     <ul className="navbar navbar-expand-sm bg-secondary mb-3">
+      <div className="container-fluid">
+          <div className="navbar-collapse">                      
+            <ul className="navbar-nav ms-auto">
+              <li className="nav-item">
+                <Link className="nav-link" to="/logout">Logout</Link>
+                
+              </li>
+            </ul>
+          </div>
+        </div>
+      </ul>
     <Container>
       <h2 className="mt-4">Book Ticket</h2>
       <Row>

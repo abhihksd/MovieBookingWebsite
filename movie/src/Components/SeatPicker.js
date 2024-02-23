@@ -136,7 +136,7 @@
 
 
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import "../CSS/Seats.css";
 
 function SeatPicker() {
@@ -240,6 +240,20 @@ function SeatPicker() {
   };
 
   return (
+    <div>
+      <ul className="navbar navbar-expand-sm bg-secondary mb-3">
+        <div className="container-fluid">
+          <div className="navbar-collapse">
+            <ul className="navbar-nav ms-auto">
+              <li className="nav-item">
+                <Link className="nav-link" to="/logout">
+                  Logout
+                </Link>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </ul>
     <div className="seat-picker">
       <h2>Seat Picker</h2>
       <div className="seat-container">
@@ -267,6 +281,7 @@ function SeatPicker() {
           </div>
         )}
       </div>
+    </div>
     </div>
   );
 }

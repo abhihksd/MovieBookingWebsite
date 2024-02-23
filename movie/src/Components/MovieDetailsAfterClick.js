@@ -13,50 +13,82 @@ const MovieDetails = () => {
 
   const fetchMovie = async () => {
     try {
-      const response = await fetch(`http://localhost:8080/movies/getMovieById/${movie_id}`);
+      const response = await fetch(
+        `http://localhost:8080/movies/getMovieById/${movie_id}`
+      );
       const data = await response.json();
       setMovie(data);
     } catch (error) {
-      console.error('Error fetching movie:', error);
+      console.error("Error fetching movie:", error);
     }
   };
-  
+
   if (!movie) {
     return <div>Loading...</div>;
   }
 
-  const { title, description, release_date, genre, duration, language, director, image } = movie;
+  const {
+    title,
+    description,
+    release_date,
+    genre,
+    duration,
+    language,
+    director,
+    image,
+  } = movie;
 
   return (
     <div>
-      <ul className="navbar navbar-expand-sm bg-light mb-3">
-        <div className="topnav">
-          <div className="topnav-right ml-auto">
-            <li className="nav-item">
-              <Link to="/logout">Logout</Link>
-            </li>
+      <ul className="navbar navbar-expand-sm bg-secondary mb-3">
+        <div className="container-fluid">
+          <div className="navbar-collapse">
+            <ul className="navbar-nav ms-auto">
+              <li className="nav-item">
+                <Link className="nav-link" to="/logout">
+                  Logout
+                </Link>
+              </li>
+            </ul>
           </div>
         </div>
       </ul>
       <div className="row">
         <div className="col-xs-3 col-md-3">
           <div className="card">
-            <img src={`data:image/jpeg;base64,${image}`} height={350} width={250} alt={`Image for ${title}`} />
+            <img
+              src={`data:image/jpeg;base64,${image}`}
+              height={350}
+              width={250}
+              alt={`Image for ${title}`}
+            />
           </div>
         </div>
         <div className="col-xs-3 col-md-3">
           <div className="details">
-            <h2 style={{ fontFamily: 'Arial, sans-serif' }}>{title}</h2>
-            <p><strong>Release Date:</strong> {release_date}</p>
-            <p><strong>Genre:</strong> {genre}</p>
-            <p><strong>Duration:</strong> {duration}</p>
-            <p><strong>Language:</strong> {language}</p>
-            <p><strong>Director:</strong> {director}</p>
-            <p><strong>Description:</strong> {description}</p>
+            <h2 style={{ fontFamily: "Arial, sans-serif" }}>{title}</h2>
+            <p>
+              <strong>Release Date:</strong> {release_date}
+            </p>
+            <p>
+              <strong>Genre:</strong> {genre}
+            </p>
+            <p>
+              <strong>Duration:</strong> {duration}
+            </p>
+            <p>
+              <strong>Language:</strong> {language}
+            </p>
+            <p>
+              <strong>Director:</strong> {director}
+            </p>
+            <p>
+              <strong>Description:</strong> {description}
+            </p>
             <br />
-            <a href={`/book-ticket/${movie_id}`}>
-              <button className="btn btn-success">Book Ticket</button>
-            </a>
+            <Link to={`/book-ticket/${movie_id}`} className="btn btn-success">
+              Book Ticket
+            </Link>
           </div>
         </div>
       </div>
