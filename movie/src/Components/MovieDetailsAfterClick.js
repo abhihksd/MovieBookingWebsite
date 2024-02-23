@@ -31,11 +31,7 @@ const MovieDetails = () => {
     <div>
       <ul className="navbar navbar-expand-sm bg-light mb-3">
         <div className="topnav">
-          <div className="topnav-right">
-            <li className="nav-item search-field">
-              <input className="search" type="text" placeholder="Search" />
-            </li>
-            <li className="nav-item">{<TheaterDropDown/>} </li>
+          <div className="topnav-right ml-auto">
             <li className="nav-item">
               <Link to="/logout">Logout</Link>
             </li>
@@ -43,9 +39,9 @@ const MovieDetails = () => {
         </div>
       </ul>
       <div className="row">
-        <div className="col-xs-4 col-md-4">
+        <div className="col-xs-3 col-md-3">
           <div className="card">
-            <img src={`data:image/jpeg;base64,${image}`} height={350} width={350} alt={`Image for ${title}`} />
+            <img src={`data:image/jpeg;base64,${image}`} height={350} width={250} alt={`Image for ${title}`} />
           </div>
         </div>
         <div className="col-xs-3 col-md-3">
