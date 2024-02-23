@@ -83,9 +83,11 @@ public class BookingController {
         Ticket ticket = new Ticket(customer,movie,theater,show,no_of_seats,no_of_seats*200);
         int user_id = customer.getUser_id();
         int movie_id = movie.getMovie_id();
+        int show_id = show.getShow_id();
+        int theater_id = theater.getTheater_id();
         System.out.println(("@@@@@@@@@@@@@@@"+user_id+"  "+movie_id));
 
-        Ticket ticketcheck = ticketRepo.existsByCustomerAndMovie(user_id,movie_id);
+        Ticket ticketcheck = ticketRepo.existsByCustomerAndMovie(user_id,movie_id,show_id,theater_id);
         System.out.println(ticketcheck);
 
 
