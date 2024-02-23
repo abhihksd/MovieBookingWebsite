@@ -29,6 +29,14 @@ public class ShowService {
         return srepo.getShowByTidMid(theater,movie);
     }
 
+    public Show getShowByShowId(int showId) {
+        return srepo.getShowBySid(showId);
+    }
+
+    public Theater getTheaterByShowId(int showId) {
+        return srepo.getTheaterByShowId(showId);
+    }
+
 //    public List<Show> getShowsByDateAndMovie(LocalDate date, Movie movie) {
 //        // Implement logic to fetch shows for a given date and movie
 //

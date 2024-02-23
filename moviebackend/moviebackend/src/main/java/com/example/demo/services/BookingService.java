@@ -1,6 +1,7 @@
 package com.example.demo.services;
 
 import com.example.demo.entities.Booking;
+import com.example.demo.entities.Customer;
 import com.example.demo.repositories.BookingRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,4 +21,8 @@ public class BookingService {
     }
 
 
+
+    public List<Integer> getSNumsCustomer(Customer customer) {
+        return brepo.getSNumsCustomer(customer);
+    }
 }

@@ -16,7 +16,6 @@ public class Booking {
     int booking_id;
     @ManyToOne
     @JoinColumn(name="user_id")
-
     Customer customer;
     @Column
     int show_id;

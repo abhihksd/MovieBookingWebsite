@@ -9,7 +9,6 @@ import Home from "./components/Home";
 import { useSelector } from "react-redux";
 import LogoutComp from "./LogoutComp";
 import UpdatePass from "./components/UpdatePass";
-import OrderHis from "./components/OrderHistory";
 import Welcome from "./components/Welcome";
 
 import SystemAdmin from "./components/SystemAdmin";
@@ -29,6 +28,7 @@ import MovieDetails from "./components/MovieDetailsAfterClick"
 import FetchData from "./components/FetchData";
 import BookTicket from "./components/BookTicket";
 import SeatPicker from "./components/SeatPicker";
+import GenerateTicket from "./components/TicketBooking";
 
 function App() {
   //initialState of logged
@@ -87,6 +87,7 @@ function App() {
           <Route path="/book-ticket/:movie_id" element={<BookTicket />} />
          
           <Route path="/seatselect/:show_id" element={<SeatPicker/>}/>
+          <Route path="/generateTicket" element={<GenerateTicket/>}/>
                  
           
         </Routes>

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import "../css/seat.css";
 
 function SeatPicker() {
@@ -8,6 +9,8 @@ function SeatPicker() {
   const [registeredSeats, setRegisteredSeats] = useState([]);
   const [billAmount, setBillAmount] = useState(0);
   const [registrationSuccess, setRegistrationSuccess] = useState(false); // State to track registration success
+  const [redirectToTicket, setRedirectToTicket] = useState(false); // State to handle redirection
+  const navigate = useNavigate(); // Initialize useNavigate hook
 
   useEffect(() => {
     // Fetch list of registered seats for the given show_id
@@ -60,7 +63,7 @@ function SeatPicker() {
   const handleSeatRegistration = async () => {
     try {
       const user = JSON.parse(localStorage.getItem("user"));
-      const loginId = user.login_id;
+    const loginId = user.login_id;
 
       const response = await fetch('http://localhost:8080/registerSeats', {
         method: 'POST',
@@ -84,6 +87,10 @@ function SeatPicker() {
         setBillAmount(newBillAmount);
         // Set registration success to true
         setRegistrationSuccess(true);
+        // Redirect to generateTicket page
+        setRedirectToTicket(true);
+
+        navigate(`/generateTicket?show_id=${show_id}&login_id=${loginId}`);
       } else {
         console.error('Failed to register seats');
       }
@@ -91,6 +98,11 @@ function SeatPicker() {
       console.error('Error registering seats:', error);
     }
   };
+
+  // Redirect to ticket generation page if registration is successful
+  if (redirectToTicket) {
+    navigate('/generateTicket');
+  }
 
   return (
     <div className="seat-picker">
@@ -113,7 +125,7 @@ function SeatPicker() {
           <div>
             <p>Total Bill: {billAmount} rupees</p>
             {registrationSuccess ? (
-              <button onClick={() => window.location.href='/generateTicket'}>Pay and Generate Ticket</button>
+              <button onClick={handleSeatRegistration}>Pay and Generate Ticket</button>
             ) : (
               <button onClick={handleSeatRegistration}>Pay and Generate Ticket</button>
             )}
