@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
-import NavBar from "./NavBar";
-import TheaterDropDown from "./TheaterDropDown";
+
 
 const MovieDetails = () => {
   const { movie_id } = useParams();
