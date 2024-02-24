@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ScheduleBackendDotNet")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+20e72bbe5c30108c5ddee6836925476c6a762f38")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
 [assembly: System.Reflection.AssemblyProductAttribute("ScheduleBackendDotNet")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ScheduleBackendDotNet")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

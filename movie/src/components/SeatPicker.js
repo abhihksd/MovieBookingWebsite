@@ -1,16 +1,18 @@
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import "../CSS/Seats.css";
-
+import TheaterDropDown from './TheaterDropDown';
+import movie_logo from "../img/logo.jpeg";
+import MovieSearch from './MovieSearchbar';
 function SeatPicker() {
   const { show_id } = useParams();
   const [selectedSeats, setSelectedSeats] = useState([]);
   const [registeredSeats, setRegisteredSeats] = useState([]);
   const [billAmount, setBillAmount] = useState(0);
-  const [registrationSuccess, setRegistrationSuccess] = useState(false); // State to track registration success
-  const [redirectToTicket, setRedirectToTicket] = useState(false); // State to handle redirection
-  const navigate = useNavigate(); // Initialize useNavigate hook
+  const [registrationSuccess, setRegistrationSuccess] = useState(false); 
+  const [redirectToTicket, setRedirectToTicket] = useState(false); 
+  const navigate = useNavigate(); 
 
   useEffect(() => {
     // Fetch list of registered seats for the given show_id
@@ -19,7 +21,7 @@ function SeatPicker() {
 
   const fetchRegisteredSeats = async (showId) => {
     try {
-      const response = await fetch(`http://localhost:8080/getRegisteredSeats/${showId}`);
+      const response = await fetch( `http://localhost:8080/getRegisteredSeats/${showId}`);
       const data = await response.json();
       setRegisteredSeats(data);
     } catch (error) {
@@ -29,11 +31,17 @@ function SeatPicker() {
 
   const toggleSeat = (seatNumber) => {
     const index = selectedSeats.indexOf(seatNumber);
+    let updatedSelectedSeats = [...selectedSeats];
+
     if (index === -1) {
-      setSelectedSeats([...selectedSeats, seatNumber]);
+      updatedSelectedSeats.push(seatNumber);
+      setBillAmount(billAmount + 200); // Increment bill amount by 200 when seat is selected
     } else {
-      setSelectedSeats(selectedSeats.filter(seat => seat !== seatNumber));
+      updatedSelectedSeats.splice(index, 1);
+      setBillAmount(billAmount - 200); // Decrement bill amount by 200 when seat is deselected
     }
+
+    setSelectedSeats(updatedSelectedSeats);
   };
 
   const isSeatRegistered = (seatNumber) => {
@@ -63,7 +71,7 @@ function SeatPicker() {
   const handleSeatRegistration = async () => {
     try {
       const user = JSON.parse(localStorage.getItem("user"));
-    const loginId = user.login_id;
+      const loginId = user.login_id;
 
       const response = await fetch('http://localhost:8080/registerSeats', {
         method: 'POST',
@@ -82,9 +90,6 @@ function SeatPicker() {
         setSelectedSeats([]);
         // Fetch updated list of registered seats
         fetchRegisteredSeats(show_id);
-        // Calculate and set the bill amount
-        const newBillAmount = selectedSeats.length * 200; // Assuming 200 rupees per seat
-        setBillAmount(newBillAmount);
         // Set registration success to true
         setRegistrationSuccess(true);
         // Redirect to generateTicket page
@@ -103,13 +108,44 @@ function SeatPicker() {
   if (redirectToTicket) {
     navigate('/generateTicket');
   }
-
+const theater=JSON.parse(localStorage.getItem("theater"));
+const noseats=theater.total_seats
   return (
+    <div>
+       <nav>
+           <ul className="navbar navbar-expand-sm bg-light mb-3">
+        <div className="topnav">
+          <div className="topnav-right">
+             <li className="nav-item">
+                <Link to={"/user"}>
+                <img className="App-logo" src={movie_logo} alt="Logo" />
+                </Link>
+              </li>
+              <li className="nav-item search-field">
+              <MovieSearch />
+            </li>
+            <li className="nav-item">{<TheaterDropDown/>} </li>
+{/* 
+            <li className="nav-item">
+              <Link to="/bookMovie">Book movie</Link>
+            </li> */}
+
+            <li className="nav-item">
+              <Link to="/logout">Logout</Link>
+            </li>
+          </div>
+        </div>
+      </ul>
+
+  </nav>
     <div className="seat-picker">
+      
       <h2>Seat Picker</h2>
       <div className="seat-container">
         {[...Array(64)].map((_, index) => renderSeat(index + 1))}
       </div>
+      <div className="movie-screen">
+    <p>movie screen is this way</p></div>
       <div className="selected-seats">
         <h3>Selected Seats</h3>
         {selectedSeats.length === 0 ? (
@@ -117,23 +153,20 @@ function SeatPicker() {
         ) : (
           <ul>
             {selectedSeats.map(seat => (
-              <li key={seat}> Seat  {seat},</li>
+              <li key={seat}> Seat {seat},</li>
             ))}
           </ul>
         )}
         {selectedSeats.length > 0 && (
           <div>
-            <p>Per ticket price: 200 rupees</p>
-            {registrationSuccess ? (
-              <button onClick={handleSeatRegistration}>Pay and Generate Ticket</button>
-            ) : (
-              <button onClick={handleSeatRegistration}>Pay and Generate Ticket</button>
-            )}
+            <p>Total Bill: {billAmount} rupees</p>
+            <button onClick={handleSeatRegistration}>Pay and Generate Ticket</button>
           </div>
         )}
       </div>
     </div>
+    </div>
   );
 }
 
-export default SeatPicker;
+export default SeatPicker;

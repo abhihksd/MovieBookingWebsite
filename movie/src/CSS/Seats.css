@@ -88,3 +88,16 @@ color:#fff;
     background-color: #45a049; /* Darker green color on hover for the pay button */
   }
   
+  .movie-screen {
+    margin-top: 5%;
+    background-color: #050505;
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+    font-weight: bold; /* Make the text bold */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  

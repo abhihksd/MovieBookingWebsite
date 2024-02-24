@@ -21,9 +21,6 @@ export default function Home() {
 
       <h1>HOME PAGE!!</h1>
       <FetchData/>
-
-      {/* <h2>Welcome {localStorage.getItem("user")}</h2> */}
-      {/* <p>Login Status: {mystate.loggedIn.toString()}</p> */}
     </div>
   );
 }

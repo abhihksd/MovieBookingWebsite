@@ -72,30 +72,7 @@ public class BookingController {
     public List<Integer> getRegisteredSeats(@PathVariable Integer showId) {
         return bservice.getSeatNumbersByShowId(showId);
     }
-//    @GetMapping("/showDetails")
-//    public TicketInfoPoJo example(@RequestParam("show_id") int showId, @RequestParam("login_id") int loginId) {
-//
-//        Show show = sservice.getShowByShowId(showId);
-//       Movie movie = show.getMovie();
-//       Login login = lservice.getLoginById(loginId);
-//       Customer customer = cservice.getCustomerByLogin(login);
-//
-//       List<Integer> seat_numbers = new ArrayList<Integer>();
-//
-//       Theater theater = sservice.getTheaterByShowId(show.getShow_id());
-//
-//        String movie_name = movie.getTitle();
-//        LocalDate show_date = show.getShow_date();
-//        LocalTime show_time = show.getShow_time();
-//        String theater_name = theater.getTheater_name();
-//
-//        seat_numbers = bservice.getSNumsCustomer(customer);
-//
-//        TicketInfoPoJo ticketInfoPojo = new TicketInfoPoJo(movie_name,theater_name, show_date, show_time, seat_numbers);
-//        return ticketInfoPojo;
-//
-//
-//    }
+
     @GetMapping("/showDetails")
     public TicketInfoPoJo example(@RequestParam("show_id") int showId, @RequestParam("login_id") int loginId) {
 

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import 'bootstrap/dist/css/bootstrap.min.css'; // Import Bootstrap CSS
+// import 'bootstrap/dist/css/bootstrap.min.css'; // Import Bootstrap CSS
 import '../CSS/moviesearch.css'; // Import custom CSS
 
 function MovieSearch() {
@@ -25,7 +25,9 @@ function MovieSearch() {
       console.error("Error fetching movies:", error);
     }
   };
-
+  const handleLinkClick = () => {
+    setShowDropdown(false); // Hide dropdown when link is clicked
+  };
   const handleSearchChange = (e) => {
     const value = e.target.value;
     setSearchTerm(value);
@@ -34,7 +36,7 @@ function MovieSearch() {
   };
 console.log(JSON.stringify(movies));
   return (
-    <div className="container">
+    <div className="container" >
       <div className="input-group mb-3">
         <input
           type="text"
@@ -48,7 +50,7 @@ console.log(JSON.stringify(movies));
         <div className="dropdown-menu">
           {movies.map((movie) => (
             
-            <Link key={movie.movie_id} to={`/movie/${movie.movie_id}`} className="dropdown-item">
+            <Link key={movie.movie_id} to={`/movie/${movie.movie_id}`} className="dropdown-item" onClick={handleLinkClick}>
               {movie.title}
             </Link>
           ))}
