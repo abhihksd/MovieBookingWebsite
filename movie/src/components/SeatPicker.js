@@ -29,11 +29,17 @@ function SeatPicker() {
 
   const toggleSeat = (seatNumber) => {
     const index = selectedSeats.indexOf(seatNumber);
+    let updatedSelectedSeats = [...selectedSeats];
+
     if (index === -1) {
-      setSelectedSeats([...selectedSeats, seatNumber]);
+      updatedSelectedSeats.push(seatNumber);
+      setBillAmount(billAmount + 200); // Increment bill amount by 200 when seat is selected
     } else {
-      setSelectedSeats(selectedSeats.filter(seat => seat !== seatNumber));
+      updatedSelectedSeats.splice(index, 1);
+      setBillAmount(billAmount - 200); // Decrement bill amount by 200 when seat is deselected
     }
+
+    setSelectedSeats(updatedSelectedSeats);
   };
 
   const isSeatRegistered = (seatNumber) => {
@@ -63,7 +69,7 @@ function SeatPicker() {
   const handleSeatRegistration = async () => {
     try {
       const user = JSON.parse(localStorage.getItem("user"));
-    const loginId = user.login_id;
+      const loginId = user.login_id;
 
       const response = await fetch('http://localhost:8080/registerSeats', {
         method: 'POST',
@@ -82,9 +88,6 @@ function SeatPicker() {
         setSelectedSeats([]);
         // Fetch updated list of registered seats
         fetchRegisteredSeats(show_id);
-        // Calculate and set the bill amount
-        const newBillAmount = selectedSeats.length * 200; // Assuming 200 rupees per seat
-        setBillAmount(newBillAmount);
         // Set registration success to true
         setRegistrationSuccess(true);
         // Redirect to generateTicket page
@@ -124,11 +127,7 @@ function SeatPicker() {
         {selectedSeats.length > 0 && (
           <div>
             <p>Total Bill: {billAmount} rupees</p>
-            {registrationSuccess ? (
-              <button onClick={handleSeatRegistration}>Pay and Generate Ticket</button>
-            ) : (
-              <button onClick={handleSeatRegistration}>Pay and Generate Ticket</button>
-            )}
+            <button onClick={handleSeatRegistration}>Pay and Generate Ticket</button>
           </div>
         )}
       </div>
