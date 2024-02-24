@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b778588d-22db-445e-bdf4-1445db05692c" name="Changes" comment="method for getting movie list based on theater id" />
+    <list default="true" id="b778588d-22db-445e-bdf4-1445db05692c" name="Changes" comment="method for getting movie list based on theater id">
+      <change beforePath="$PROJECT_DIR$/../../movie/node_modules/.cache/.eslintcache" beforeDir="false" afterPath="$PROJECT_DIR$/../../movie/node_modules/.cache/.eslintcache" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
