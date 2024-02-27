@@ -1,3 +1,4 @@
+import { Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
 export default function TheaterNavbar(){
@@ -12,14 +13,14 @@ export default function TheaterNavbar(){
               <li className="nav-item">
                 <Link className="nav-link" to="/viewSchedule">View scheduled bookings</Link>
               </li>
-              <li className="nav-item">
+              {/* <li className="nav-item">
                 <Link className="nav-link" to="/addSlot">Add slot</Link>
               </li>
               <li className="nav-item">
                 <Link className="nav-link" to="/editSlot">Edit slot</Link>
-              </li>          
+              </li>           */}
               <li className="nav-item">
-                <Link className="nav-link" to="/logout">Logout</Link>
+                <Link className="nav-link" to="/logout"><Button >Logout</Button></Link>
               </li>
             </ul>
           </div>

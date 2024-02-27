@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
-
+import NavBar from "./NavBar";
+import TheaterDropDown from "./TheaterDropDown";
+import { Button } from "react-bootstrap";
 
 const MovieDetails = () => {
   const { movie_id } = useParams();
@@ -45,7 +47,7 @@ const MovieDetails = () => {
             <ul className="navbar-nav ms-auto">
               <li className="nav-item">
                 <Link className="nav-link" to="/logout">
-                  Logout
+                <Button >Logout</Button>
                 </Link>
               </li>
             </ul>
@@ -95,4 +97,4 @@ const MovieDetails = () => {
   );
 };
 
-export default MovieDetails;
+export default MovieDetails;

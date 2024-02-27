@@ -7,7 +7,6 @@
   .card {
     width: calc(18.6667% - 15px); 
     margin: 12px; 
-    height: 100%;
   }
   
   .card:last-child {
@@ -15,14 +14,8 @@
 }
 
 
-/* .card {
-  width: 14rem;
-  
-  margin: 12px; 
-} */
-
 .custom-card {
-  width: 14rem; 
-  height: 100%; 
-  margin: 12px; 
+  width: 14rem; /* Set a fixed width for all cards */
+  height: 100%; /* Set a fixed height for all cards */
+  margin: 12px; /* Adjust margin for spacing between cards */
 }

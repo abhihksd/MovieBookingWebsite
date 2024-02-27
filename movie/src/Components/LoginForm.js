@@ -4,7 +4,6 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { login } from "../loggedSlice";
 import { useCookies } from "react-cookie";
-import NavBar from "./NavBar";
 
 export default function LoginForm() {
   const [username, setUsername] = useState(""); // State for username
@@ -119,8 +118,9 @@ export default function LoginForm() {
   };
 
   return (
-    <div>
+    <div style={{ height: '100vh', paddingLeft:'50vh', paddingTop:'25vh'}}>
       <form className="my-4">
+        <h1 >LOGIN</h1>
         <div className="mb-3 row">
           <label htmlFor="username" className="col-sm-2 col-form-label">
             Enter Username:
@@ -177,7 +177,6 @@ export default function LoginForm() {
           </div>
         </div>
       </form>
-      
     </div>
   );
 }

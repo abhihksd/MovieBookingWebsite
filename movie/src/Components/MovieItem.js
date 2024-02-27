@@ -28,6 +28,7 @@ const MovieItem = ({ movie_id, title, description, release_date, genre, duration
   return (
     <div>
       <Card style={{ width: "14rem" }}>
+        {/*<Card.Img variant="top" src={M1} alt={`Image for ${title}`} />*/}
         <Card.Img variant="top" src={`data:image/jpeg;base64,${mobject.image}`} height={350} width={100} alt={`Image for ${title}`} />
 
         <Card.Body>

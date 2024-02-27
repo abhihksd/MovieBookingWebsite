@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 export default function AddSlot() {
 
@@ -23,7 +24,7 @@ export default function AddSlot() {
               <input className="search" type="text" placeholder="Search" />
             </li>
             <li className="nav-item">
-              <Link to="/logout">Logout</Link>
+              <Link to="/logout"><Button >Logout</Button></Link>
             </li>
           </div>
         </div>

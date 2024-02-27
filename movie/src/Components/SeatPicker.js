@@ -19,7 +19,7 @@ function SeatPicker() {
 
   const fetchRegisteredSeats = async (showId) => {
     try {
-      const response = await fetch( `http://localhost:8080/getRegisteredSeats/${showId}`);
+      const response = await fetch(`http://localhost:8080/getRegisteredSeats/${showId}`);
       const data = await response.json();
       setRegisteredSeats(data);
     } catch (error) {
@@ -29,17 +29,11 @@ function SeatPicker() {
 
   const toggleSeat = (seatNumber) => {
     const index = selectedSeats.indexOf(seatNumber);
-    let updatedSelectedSeats = [...selectedSeats];
-
     if (index === -1) {
-      updatedSelectedSeats.push(seatNumber);
-      setBillAmount(billAmount + 200); // Increment bill amount by 200 when seat is selected
+      setSelectedSeats([...selectedSeats, seatNumber]);
     } else {
-      updatedSelectedSeats.splice(index, 1);
-      setBillAmount(billAmount - 200); // Decrement bill amount by 200 when seat is deselected
+      setSelectedSeats(selectedSeats.filter(seat => seat !== seatNumber));
     }
-
-    setSelectedSeats(updatedSelectedSeats);
   };
 
   const isSeatRegistered = (seatNumber) => {
@@ -69,7 +63,7 @@ function SeatPicker() {
   const handleSeatRegistration = async () => {
     try {
       const user = JSON.parse(localStorage.getItem("user"));
-      const loginId = user.login_id;
+    const loginId = user.login_id;
 
       const response = await fetch('http://localhost:8080/registerSeats', {
         method: 'POST',
@@ -88,6 +82,9 @@ function SeatPicker() {
         setSelectedSeats([]);
         // Fetch updated list of registered seats
         fetchRegisteredSeats(show_id);
+        // Calculate and set the bill amount
+        const newBillAmount = selectedSeats.length * 200; // Assuming 200 rupees per seat
+        setBillAmount(newBillAmount);
         // Set registration success to true
         setRegistrationSuccess(true);
         // Redirect to generateTicket page
@@ -120,14 +117,18 @@ function SeatPicker() {
         ) : (
           <ul>
             {selectedSeats.map(seat => (
-              <li key={seat}> Seat {seat},</li>
+              <li key={seat}> Seat  {seat},</li>
             ))}
           </ul>
         )}
         {selectedSeats.length > 0 && (
           <div>
-            <p>Total Bill: {billAmount} rupees</p>
-            <button onClick={handleSeatRegistration}>Pay and Generate Ticket</button>
+            <p>Per ticket price: 200 rupees</p>
+            {registrationSuccess ? (
+              <button onClick={handleSeatRegistration}>Pay and Generate Ticket</button>
+            ) : (
+              <button onClick={handleSeatRegistration}>Pay and Generate Ticket</button>
+            )}
           </div>
         )}
       </div>
@@ -135,4 +136,4 @@ function SeatPicker() {
   );
 }
 
-export default SeatPicker;
+export default SeatPicker;
