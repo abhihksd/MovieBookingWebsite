@@ -1,3 +1,5 @@
+//new code from shubham yache's branch(on 16/02/2024 8 : 50 pm)
+
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../CSS/UpdateForm.css";
@@ -19,7 +21,7 @@ export default function UpdatePass() {
         newpassword: newpass,
       }),
     };
-    fetch("http://localhost:9000/update", reqOption)
+    fetch("http://localhost:8080/update", reqOption)
       .then((resp) => resp.text())
       .then((data) => {
         setMsg(data);

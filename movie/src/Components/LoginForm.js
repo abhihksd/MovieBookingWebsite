@@ -1,33 +1,50 @@
-import { Form, Button, Image } from "react-bootstrap/";
-import "../CSS/LoginForm.css";
-import { Component, useReducer, useState } from "react";
+import React, { useState } from "react";
+import { Form, Button } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { login } from "../loggedSlice";
-
+import { useCookies } from "react-cookie";
 
 export default function LoginForm() {
-  const init = {
-    username: "",
-    password: "",
-  };
-  // const dispatch=useDispatch()
-  const reducer = (state, action) => {
-    switch (action.type) {
-      case "update":
-        return { ...state, [action.fld]: action.val };
-      case "reset":
-        return init;
-    }
-  };
-  const [info, dispatch] = useReducer(reducer, init);
-  const [msg, setMsg] = useState("");
+  const [username, setUsername] = useState(""); // State for username
+  const [password, setPassword] = useState(""); // State for password
+  const [errorMessage, setErrorMessage] = useState(""); // State for error message
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
-  const reducerAction = useDispatch();
-  //to login
+  // Function to clear error message
+  const clearErrorMessage = () => {
+    setErrorMessage("");
+  };
+
+  // Function to handle changes in the username field
+  const handleUsernameChange = (e) => {
+    setUsername(e.target.value);
+    clearErrorMessage(); // Clear error message when username changes
+  };
+
+  // Function to handle changes in the password field
+  const handlePasswordChange = (e) => {
+    setPassword(e.target.value);
+    clearErrorMessage(); // Clear error message when password changes
+  };
+
+  // Function to handle unsuccessful login
+  const handleLoginFailure = () => {
+    setErrorMessage("Wrong username or password"); // Set error message state
+  };
+
+  // Function to handle successful login
+  const handleLoginSuccess = () => {
+    setErrorMessage(""); // Clear error message state
+  };
+
   const sendData = (e) => {
     e.preventDefault();
+    const info = { username, password }; // Create an object with username and password
+    localStorage.setItem("username", username);
+    localStorage.setItem("password", password);
+
     const reqOptions = {
       method: "POST",
       headers: { "content-type": "application/json" },
@@ -37,41 +54,73 @@ export default function LoginForm() {
     fetch("http://localhost:8080/chkLogin", reqOptions)
       .then((resp) => {
         if (resp.ok) {
-          console.log(resp.status);
           return resp.text();
         } else {
           console.log(resp.statusText);
           throw new Error("Server error");
         }
-      }) //revice normal text
-      .then((text) => (text.length ? JSON.parse(text) : {})) //to check length of text
+      })
+      .then((text) => (text.length ? JSON.parse(text) : {}))
       .then((obj) => {
+        console.log(JSON.stringify(obj));
+        //setting user object in localstorage..BM
+        localStorage.setItem("user", JSON.stringify(obj));
         if (Object.keys(obj).length === 0) {
-          //if uid or pwd is wrong
-          setMsg("Wrong uid or password");
+          handleLoginFailure(); // Call function to handle unsuccessful login
         } else {
           if (obj.status === false) {
-            //req is not approved
-            alert("request has not been approved");
+            alert("Request has not been approved");
           } else {
-            reducerAction(login()); //state false to true
-
+            dispatch(login()); // Set login state to true
             if (obj.role_id.role_id === 1) {
+              
               navigate("/user");
             } else if (obj.role_id.role_id === 2) {
-              navigate("/theatreAdmin");
+
+              const theaterAdminInfo = { username: username, password: password };
+              const theaterAdminReqOptions = {
+                method: "POST",
+                headers: { "content-type": "application/json" },
+                body: JSON.stringify(theaterAdminInfo),
+              };
+
+              fetch("http://localhost:8080/getTheaterAdminStatus", theaterAdminReqOptions)
+                .then((resp) => {
+                  if (resp.ok) {
+                    return resp.json();
+                  } else {
+                    console.log(resp.statusText);
+                    throw new Error("Server error");
+                  }
+                })
+                .then((statusObj) => {
+                 
+                  if (statusObj.theater_status === 1) {                   
+                    
+                    dispatch(login()); // Set login state to true
+                    navigate("/theatreAdmin");
+                  } else {
+                    alert("Access not granted");
+                  }
+                })
+                .catch((error) => console.error("Error checking theater admin status:", error));
             } else if (obj.role_id.role_id === 3) {
+             
               navigate("/systemAdmin");
             }
           }
         }
       })
-      .catch((error) => alert("wrong uid or pwd"));
+      .catch((error) => {
+        //handleLoginFailure();
+        alert("Connection Error!!!", error);
+      });
   };
 
   return (
-    <div>
+    <div style={{ height: '100vh', paddingLeft:'50vh', paddingTop:'25vh'}}>
       <form className="my-4">
+        <h1 >LOGIN</h1>
         <div className="mb-3 row">
           <label htmlFor="username" className="col-sm-2 col-form-label">
             Enter Username:
@@ -82,14 +131,8 @@ export default function LoginForm() {
               className="form-control form-control-sm"
               id="username"
               name="username"
-              value={info.username}
-              onChange={(e) => {
-                dispatch({
-                  type: "update",
-                  fld: "username",
-                  val: e.target.value,
-                });
-              }}
+              value={username}
+              onChange={handleUsernameChange}
             />
           </div>
         </div>
@@ -103,14 +146,8 @@ export default function LoginForm() {
               className="form-control form-control-sm"
               id="password"
               name="password"
-              value={info.password}
-              onChange={(e) => {
-                dispatch({
-                  type: "update",
-                  fld: "password",
-                  val: e.target.value,
-                });
-              }}
+              value={password}
+              onChange={handlePasswordChange}
             />
           </div>
         </div>
@@ -120,9 +157,8 @@ export default function LoginForm() {
             <button
               type="submit"
               className="btn btn-primary me-2"
-              onClick={(e) => {
-                sendData(e);
-              }}
+              onClick={sendData}
+              disabled={!username || !password}
             >
               Submit
             </button>
@@ -130,17 +166,17 @@ export default function LoginForm() {
               type="reset"
               className="btn btn-danger"
               onClick={() => {
-                dispatch({ type: "reset" });
+                setUsername("");
+                setPassword("");
+                clearErrorMessage();
               }}
             >
               Reset
             </button>
+            {errorMessage && <p className="text-danger">{errorMessage}</p>}
           </div>
         </div>
       </form>
-
-      {/* <p>{JSON.stringify(info)}</p> */}
-      {/* <Image className="image-container" src={img}></Image> */}
     </div>
   );
 }

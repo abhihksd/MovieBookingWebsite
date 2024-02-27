@@ -1,0 +1,103 @@
+/* .seat-picker {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .seat-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+  
+  .seat {
+    width: 40px;
+    height: 40px;
+    margin: 5px;
+    background-color: #ccc;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .seat:hover {
+    background-color: #b3b3b3;
+  }
+  
+  .selected {
+    background-color: #6c757d !important;
+color:#fff;
+  } */
+
+  /* Basic styling for the seat picker container */
+  .seat-picker {
+    font-family: Arial, sans-serif;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  /* Styling for individual seat */
+  .seat {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    margin: 5px;
+    text-align: center;
+    line-height: 40px;
+    border: 1px solid #ccc;
+    background-color: #eee; /* Default background color */
+  }
+  
+  
+  .seat.selected {
+    background-color: #36cb23ba;
+  }
+  
+  
+  .seat.registered {
+    background-color: #ff6347; 
+  }
+  
+ 
+  .seat.clickable:hover {
+    background-color: #add8e6; 
+  }
+  
+  /* Styling for the container of selected seats */
+  .selected-seats {
+    margin-top: 20px;
+  }
+  
+  /* Styling for the pay button */
+  .selected-seats button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #4caf50; /* Green color for the pay button */
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+  
+  /* Styling for the pay button on hover */
+  .selected-seats button:hover {
+    background-color: #45a049; /* Darker green color on hover for the pay button */
+  }
+  
+  .movie-screen {
+    margin-top: 5%;
+    background-color: #050505;
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+    font-weight: bold; /* Make the text bold */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  

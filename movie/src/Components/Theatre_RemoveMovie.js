@@ -14,7 +14,8 @@ export default function RemoveMovie() {
           </div>
         </div>
       </ul>
-      <h1>Remove Movie</h1>
+      <h1 style={{ textAlign: "center"}}>Remove Movie</h1>
+      
     </div>
   );
 }

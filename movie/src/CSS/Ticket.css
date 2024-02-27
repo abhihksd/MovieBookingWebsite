@@ -1,0 +1,27 @@
+.ticket-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+  }
+  
+  .ticket {
+    border: 1px solid #000000;
+    border-radius: 20px;
+    padding: 100px;
+    max-width: 400px; /* Adjust the width as needed */
+    width: 300%;
+  }
+  
+  .ticket-header {
+    border-bottom: 1px solid #000000;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+  }
+  
+  .ticket-footer {
+    border-top: 1px solid #d59494;
+    padding-top: 20px;
+    margin-top: 20px;
+  }
+  
