@@ -1,8 +1,3 @@
-<<<<<<< HEAD
-
-
-=======
->>>>>>> AbhishekS
 //new code from shubham yache's branch(on 17/02/2024 8 :39 pm)
 import { useReducer, useState } from "react";
 import { Form, FormGroup, FormLabel, Button, Image } from "react-bootstrap";
