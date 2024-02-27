@@ -11,5 +11,9 @@ public class MoviebackendApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(MoviebackendApplication.class, args);
 	}
+<<<<<<< HEAD:backend/src/main/java/com/example/demo/MoviebackendApplication.java
 		
+=======
+
+>>>>>>> AbhishekS:moviebackend/src/main/java/com/example/demo/MoviebackendApplication.java
 }

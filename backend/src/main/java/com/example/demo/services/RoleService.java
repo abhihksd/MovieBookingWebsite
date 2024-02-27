@@ -9,7 +9,11 @@ import com.example.demo.repositories.RoleRepository;
 @Service
 public class RoleService {
 	@Autowired
+<<<<<<< HEAD:backend/src/main/java/com/example/demo/services/RoleService.java
 	private RoleRepository rrepo;
+=======
+	RoleRepository rrepo;
+>>>>>>> AbhishekS:moviebackend/src/main/java/com/example/demo/services/RoleService.java
 	
 	public Role getRole(int id)
 	{

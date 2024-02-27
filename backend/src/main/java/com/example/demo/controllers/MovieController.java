@@ -138,5 +138,45 @@ public class MovieController {
 		}
 		return flag;
 	}
+<<<<<<< HEAD:backend/src/main/java/com/example/demo/controllers/MovieController.java
 	
+=======
+
+
+
+
+
+	
+	// @GetMapping("/getMovies/{id}")
+	// public List<Movie> getMoviesByTheaterLoginId(@PathVariable("id") int loginId) {
+
+	// 	Login login = lservice.getLoginById(loginId);
+
+	// 	Theater theater = tservice.getTheaterByLogin(login);
+
+	// 	return mservice.moviesByTheater(theater);
+		
+		
+	// }
+
+	// as on 19/02/2024
+	// @DeleteMapping("/deleteMovie/{movie_id}")
+	// public void deleteMovie(@PathVariable int movie_id) {
+	// 	mservice.deleteMovieById(movie_id);
+
+	// }
+
+	// @PostMapping(value = "/uploadImage/{movie_id}", consumes = "multipart/form-data")
+	// public boolean uploadImage(@PathVariable("movie_id") int did, @RequestBody MultipartFile file) {
+		
+		
+	// 	boolean flag = true;
+	// 	try {
+	// 		flag = mservice.uploadImage(did, file.getBytes());
+	// 	} catch (Exception e) {
+	// 		flag = false;
+	// 	}
+	// 	return flag;
+	// }
+>>>>>>> AbhishekS:moviebackend/moviebackend/src/main/java/com/example/demo/controllers/MovieController.java
 }

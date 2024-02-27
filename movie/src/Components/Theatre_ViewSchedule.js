@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 // // import { Link } from "react-router-dom";
 // // export default function ViewSchedule() {
 // //   return (
@@ -99,6 +100,8 @@
 //   );
 // }
 
+=======
+>>>>>>> AbhishekS
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
@@ -146,6 +149,7 @@ export default function ViewSchedule() {
 
   return (
     <div>
+<<<<<<< HEAD
       {/* <ul className="navbar navbar-expand-sm bg-light mb-3">
         <div className="topnav">
           <div className="topnav-right">
@@ -156,6 +160,9 @@ export default function ViewSchedule() {
           </div>
         </div>
       </ul> */}
+=======
+      
+>>>>>>> AbhishekS
       <ul className="navbar navbar-expand-sm bg-secondary mb-3">
       <div className="container-fluid">
           <div className="navbar-collapse">                      
@@ -169,6 +176,7 @@ export default function ViewSchedule() {
             </div>
             </ul>
       <h1 style={{ textAlign: "center" }}>View scheduled Bookings</h1>
+<<<<<<< HEAD
       {/* <table className="table ">
         <thead>
           <tr>
@@ -185,6 +193,8 @@ export default function ViewSchedule() {
           ))}
         </tbody>
       </table> */}
+=======
+>>>>>>> AbhishekS
       <table className="table table-striped">
   <thead className="thead-dark">
     <tr>

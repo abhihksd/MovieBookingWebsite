@@ -1,7 +1,11 @@
 import { useEffect, useState } from "react";
 import { Button, Table } from "react-bootstrap";
 import { Link } from "react-router-dom";
+<<<<<<< HEAD
 
+=======
+import movie_logo from "../img/logo.jpeg";
+>>>>>>> AbhishekS
 export default function ShowTheater(){
 
     useEffect(()=>{
@@ -44,6 +48,7 @@ export default function ShowTheater(){
     return (
         <div>
 
+<<<<<<< HEAD
 <ul className="navbar navbar-expand-sm bg-light mb-3">
         <div className="topnav">
           <div className="topnav-right">
@@ -51,16 +56,29 @@ export default function ShowTheater(){
               <input className="search" type="text" placeholder="Search" />
             </li>
            
+=======
+<ul className="navbar navbar-expand-sm bg-secondary mb-3">
+        <div className="topnav">
+          <div className="topnav-right">
+          <li className="nav-item">
+                <Link to={"/systemAdmin"}>
+                <img className="App-logo" src={movie_logo} alt="Logo" />
+                </Link>
+              </li>
+>>>>>>> AbhishekS
            <li className="nav-item">
               <Link to="/showTheater">Show Theaters</Link>
            </li>
             <li className="nav-item">
+<<<<<<< HEAD
               <Link to="/removeTheatre">Remove Theatre</Link>
             </li>
             <li className="nav-item">
               <Link to="/editTheatre">Edit Theatre details</Link>
             </li>
             <li className="nav-item">
+=======
+>>>>>>> AbhishekS
               <Link to="/logout">Logout</Link>
             </li>
           </div>
@@ -73,6 +91,10 @@ export default function ShowTheater(){
             <th>Owner Name</th>
             <th>License No</th>
             <th>Theater Location</th>
+<<<<<<< HEAD
+=======
+            <th>Status</th>
+>>>>>>> AbhishekS
             <th>Action</th>
           </tr>
         </thead>

@@ -1,5 +1,10 @@
 package com.example.demo.entities;
 
+<<<<<<< HEAD:backend/src/main/java/com/example/demo/entities/Customer.java
+=======
+import java.sql.Date;
+
+>>>>>>> AbhishekS:moviebackend/src/main/java/com/example/demo/entities/Customer.java
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -22,9 +27,19 @@ public class Customer {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	int user_id;
 	String name;
+<<<<<<< HEAD:backend/src/main/java/com/example/demo/entities/Customer.java
 	String email;
 	String phone_number;
 	String address;
+=======
+
+	String email;
+
+	String phone_number;
+
+	String address;
+
+>>>>>>> AbhishekS:moviebackend/src/main/java/com/example/demo/entities/Customer.java
 	@OneToOne
 	@JoinColumn(name="login_id")
 	Login login_id;

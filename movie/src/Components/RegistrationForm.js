@@ -1,7 +1,9 @@
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> AbhishekS
 //new code from shubham yache's branch(on 17/02/2024 8 :39 pm)
-
 import { useReducer, useState } from "react";
 import { Form, FormGroup, FormLabel, Button, Image } from "react-bootstrap";
 // import img from "../img/movie.jpg"
@@ -10,7 +12,7 @@ import { useNavigate } from "react-router-dom";
 export default function Register() {
   const nav = useNavigate();
   const [msg, setMsg] = useState("");
-  const [licenseNumber, setLicenseNumber] = useState(""); // 1. Add state for license number
+  const [licenseNumber, setLicenseNumber] = useState(""); 
   const [theater_name, setTheaterName] = useState("");
   const [total_seats, setTotalSeats] = useState("");
   const [theater_location, setTheaterLocation] = useState("");
@@ -46,7 +48,7 @@ export default function Register() {
     let error = "";
     switch (key) {
       case "name":
-        // var pattern = /^[a-zA-Z\s]{1,20}$/;
+        
         var pattern = /^[A-Z]{1}[a-z]{1,} [A-Z]{1}[a-z]{1,}$/; //First Alphabet of First and Last NAME should be capital
         if (!pattern.test(val)) {
           valid = false;

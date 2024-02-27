@@ -44,8 +44,13 @@ function App() {
          <h2 ><a href="/login">Click here</a>  please try again</h2>
          
         </div>
+<<<<<<< HEAD
       )
     }}>
+=======
+)
+}}>
+>>>>>>> AbhishekS
     <div>
       <header
         // className="App-header"
@@ -95,6 +100,10 @@ function App() {
           <Route path="/removeTheatre" element={<RemoveTheatre />} />
           <Route path="/editTheatre" element={<EditTheatre />} />
           <Route path="/bookMovie" element={<BookMovie />} />
+<<<<<<< HEAD
+=======
+          <Route path="/showTheater" element={<ShowTheater />} />
+>>>>>>> AbhishekS
           {/* <Route path="/MovieDetails" element={<MovieDetails />}/> */}
           {/* <Route path="/movie/:movie_id"  component={MovieDetails} /> */}
           <Route path="/movie/:movie_id" element={<MovieDetails />} />

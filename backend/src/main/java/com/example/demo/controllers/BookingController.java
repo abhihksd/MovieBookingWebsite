@@ -2,6 +2,7 @@ package com.example.demo.controllers;
 
 
 import com.example.demo.POJO.BookingPoJo;
+<<<<<<< HEAD:backend/src/main/java/com/example/demo/controllers/BookingController.java
 import com.example.demo.POJO.TicketInfoPoJo;
 import com.example.demo.entities.Booking;
 import com.example.demo.entities.Customer;
@@ -29,12 +30,27 @@ import org.springframework.web.bind.annotation.RestController;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
+=======
+import com.example.demo.entities.Booking;
+import com.example.demo.entities.Customer;
+import com.example.demo.entities.Login;
+import com.example.demo.services.BookingService;
+import com.example.demo.services.CustomerService;
+import com.example.demo.services.LoginService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
+
+>>>>>>> AbhishekS:moviebackend/moviebackend/src/main/java/com/example/demo/controllers/BookingController.java
 import java.util.List;
 
 @CrossOrigin(origins="http://localhost:3000",exposedHeaders = "**")
 @RestController
 public class BookingController {
 
+<<<<<<< HEAD:backend/src/main/java/com/example/demo/controllers/BookingController.java
 	 @Autowired
 	    private BookingService bservice;
 
@@ -51,6 +67,17 @@ public class BookingController {
 
 	    @Autowired
 	    private TicketRepository ticketRepo;
+=======
+    @Autowired
+    private BookingService bservice;
+
+    @Autowired
+    private CustomerService cservice;
+
+    @Autowired
+    private LoginService lservice;
+
+>>>>>>> AbhishekS:moviebackend/moviebackend/src/main/java/com/example/demo/controllers/BookingController.java
     @PostMapping("/registerSeats")
     public String saveBooking(@RequestBody BookingPoJo bj){
 
@@ -68,6 +95,7 @@ public class BookingController {
         return "success";
 
     }
+<<<<<<< HEAD:backend/src/main/java/com/example/demo/controllers/BookingController.java
     @GetMapping("/getRegisteredSeats/{showId}")
     public List<Integer> getRegisteredSeats(@PathVariable Integer showId) {
         return bservice.getSeatNumbersByShowId(showId);
@@ -136,4 +164,6 @@ public class BookingController {
 
     }
 
+=======
+>>>>>>> AbhishekS:moviebackend/moviebackend/src/main/java/com/example/demo/controllers/BookingController.java
 }

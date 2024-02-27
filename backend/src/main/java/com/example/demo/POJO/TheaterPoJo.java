@@ -1,4 +1,8 @@
+<<<<<<< HEAD:backend/src/main/java/com/example/demo/POJO/TheaterPoJo.java
 package com.example.demo.POJO;
+=======
+package com.example.demo.pojo;
+>>>>>>> AbhishekS:moviebackend/moviebackend/src/main/java/com/example/demo/POJO/TheaterPoJo.java
 
 import com.example.demo.entities.Login;
 

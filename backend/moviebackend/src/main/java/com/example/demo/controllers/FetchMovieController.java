@@ -27,9 +27,12 @@ public class FetchMovieController {
     	return fmservice.getAllMoviesByTheaterLocation(city);
     	
     }
+<<<<<<< HEAD:backend/moviebackend/src/main/java/com/example/demo/controllers/FetchMovieController.java
     @GetMapping("/getMovieById/{id}")
     public Movie getMovie(@PathVariable("id") int id){
         return fmservice.getMovieById(id);
     }
+=======
+>>>>>>> AbhishekS:moviebackend/moviebackend/src/main/java/com/example/demo/controllers/FetchMovieController.java
 
 }

@@ -11,12 +11,20 @@ import com.example.demo.repositories.LoginRepository;
 @Service
 public class LoginService {
 	@Autowired
+<<<<<<< HEAD:backend/src/main/java/com/example/demo/services/LoginService.java
 	private LoginRepository lrepo;
+=======
+	LoginRepository lrepo;
+>>>>>>> AbhishekS:moviebackend/src/main/java/com/example/demo/services/LoginService.java
 	
 	public Login getLogin(String username,String password)
 	{
 		Login l;
+<<<<<<< HEAD:backend/src/main/java/com/example/demo/services/LoginService.java
 		Optional<Login> ol = lrepo.getLogin(username, password);
+=======
+		Optional<Login> ol=lrepo.getLogin(username, password);
+>>>>>>> AbhishekS:moviebackend/src/main/java/com/example/demo/services/LoginService.java
 		try {
 			l=ol.get();
 		}catch(Exception e)
@@ -29,8 +37,11 @@ public class LoginService {
 	{
 		return lrepo.save(l);
 	}
+<<<<<<< HEAD:backend/src/main/java/com/example/demo/services/LoginService.java
 
 	public Login getLoginById(int id) {
 		return  lrepo.getLoginByLId(id);
 	}
+=======
+>>>>>>> AbhishekS:moviebackend/src/main/java/com/example/demo/services/LoginService.java
 }

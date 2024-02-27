@@ -1,9 +1,16 @@
+<<<<<<< HEAD
 
+=======
+>>>>>>> AbhishekS
 import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Table, Button } from 'react-bootstrap';
 import NavBar from "./NavBar";
+<<<<<<< HEAD
 
+=======
+import movie_logo from "../img/logo.jpeg";
+>>>>>>> AbhishekS
 export default function SystemAdmin() {
   const [theaters, setTheaters] = useState([]);
   const location = useLocation();
@@ -71,7 +78,21 @@ export default function SystemAdmin() {
       <ul className="navbar navbar-expand-sm bg-secondary mb-3">
       <div className="container-fluid">
           <div className="navbar-collapse">                      
+<<<<<<< HEAD
             <ul className="navbar-nav ms-auto">
+=======
+            <ul  className="navbar-nav flex-grow-1">
+            <li className="nav-item">
+                <Link to={"/systemAdmin"}>
+                <img className="App-logo" src={movie_logo} alt="Logo" />
+                </Link>
+              </li>
+              <li className="nav-item">
+              <Link to="/showTheater">Show Theaters</Link>
+           </li>
+            {/* </ul>
+              <ul className="navbar-nav ms-auto"> */}
+>>>>>>> AbhishekS
               <li className="nav-item">
                 <Link className="nav-link" to="/logout">Logout</Link>
                 
