@@ -9,7 +9,7 @@ import com.example.demo.repositories.RoleRepository;
 @Service
 public class RoleService {
 	@Autowired
-	RoleRepository rrepo;
+	private RoleRepository rrepo;
 	
 	public Role getRole(int id)
 	{

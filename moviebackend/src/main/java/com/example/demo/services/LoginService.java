@@ -11,12 +11,12 @@ import com.example.demo.repositories.LoginRepository;
 @Service
 public class LoginService {
 	@Autowired
-	LoginRepository lrepo;
+	private LoginRepository lrepo;
 	
 	public Login getLogin(String username,String password)
 	{
 		Login l;
-		Optional<Login> ol=lrepo.getLogin(username, password);
+		Optional<Login> ol = lrepo.getLogin(username, password);
 		try {
 			l=ol.get();
 		}catch(Exception e)
@@ -28,5 +28,9 @@ public class LoginService {
 	public Login save(Login l)
 	{
 		return lrepo.save(l);
+	}
+
+	public Login getLoginById(int id) {
+		return  lrepo.getLoginByLId(id);
 	}
 }
